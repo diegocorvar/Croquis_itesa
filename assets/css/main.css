@@ -1,0 +1,11 @@
+/* 1. Base y Configuración */
+@import url('./base/fuentes.css');
+@import url('./base/variables.css');
+@import url('./base/reset.css');
+
+/* 2. Componentes Globales */
+@import url('./componentes/menu-desplegable.css');
+@import url('./componentes/barra-busqueda.css');
+
+/* 3. Estilos de Vistas Especiales */
+@import url('./vistas/inicio.css');

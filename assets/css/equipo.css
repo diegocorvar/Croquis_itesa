@@ -1,0 +1,328 @@
+/* ===== BASE ===== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --accent: #00c6ff;
+  --accent2: #0072ff;
+  --dark: #0a0e1a;
+
+  --glass: rgba(255, 255, 255, 0.07);
+  --glass-border: rgba(255, 255, 255, 0.13);
+
+  --text: #e8f0ff;
+  --muted: rgba(200, 220, 255, 0.55);
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: var(--dark);
+}
+
+/* ===== FONDO ===== */
+.fondo {
+  position: fixed;
+  inset: 0;
+  background: url('../img/fondo.jpg') no-repeat center center / cover;
+  filter: blur(3px) brightness(0.35) saturate(0.8);
+  z-index: 0;
+}
+
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* ===== HEADER ===== */
+.header {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  background: rgba(10, 16, 36, 0.82);
+  backdrop-filter: blur(24px) saturate(1.4);
+  border-bottom: 1px solid var(--glass-border);
+  box-shadow:
+    0 10px 40px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.header-container {
+  width: 100%;
+  max-width: 1500px;
+  margin: auto;
+  padding: 16px 42px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ===== LOGO ===== */
+.logo {
+  width: 90px;
+  object-fit: contain;
+  filter:
+    drop-shadow(0 0 10px rgba(0, 198, 255, 0.7))
+    drop-shadow(0 0 22px rgba(0, 198, 255, 0.35));
+}
+
+/* ===== MENU ===== */
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 35px;
+}
+
+.menu-item {
+  position: relative;
+  text-decoration: none;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: 1px;
+  transition: all 0.25s ease;
+}
+
+/* LÍNEA ANIMADA */
+.menu-item::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+  width: 0%;
+  height: 2px;
+  background: linear-gradient(90deg, #00c6ff, #0072ff);
+  transition: width 0.25s ease;
+}
+
+.menu-item:hover {
+  color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.menu-item:hover::after {
+  width: 100%;
+}
+
+/* ACTIVO */
+.menu-item.active {
+  color: var(--accent);
+}
+
+.menu-item.active::after {
+  width: 100%;
+}
+
+/* ===== BREADCRUMB ===== */
+.breadcrumb-container {
+  position: relative;
+  z-index: 9;
+  width: 100%;
+  padding: 18px 42px;
+  background: rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  color: var(--muted);
+  max-width: 1500px;
+  margin: auto;
+}
+
+.separator {
+  opacity: 0.5;
+}
+
+.current {
+  color: var(--accent);
+  font-weight: 500;
+}
+
+/* ===== CONTENIDO ===== */
+.content {
+  position: relative;
+  z-index: 5;
+  min-height: calc(100vh - 160px);
+}
+
+/* =====================================================
+   SECCIÓN EQUIPO
+===================================================== */
+.team-section {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 80px 40px 100px;
+}
+
+/* ENCABEZADO */
+.team-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.team-header h1 {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 3.2rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 20px;
+  text-shadow: 0 0 30px rgba(0, 198, 255, 0.25);
+}
+
+.team-header p {
+  max-width: 900px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+  line-height: 1.9;
+  color: rgba(220, 230, 255, 0.82);
+}
+
+/* GRID */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 35px;
+}
+
+/* TARJETAS */
+.team-card {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(20px) saturate(1.4);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 28px;
+  padding: 35px 25px;
+  text-align: center;
+  transition: all 0.35s ease;
+  box-shadow:
+    0 15px 35px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.team-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  border-color: rgba(0, 198, 255, 0.45);
+  box-shadow:
+    0 25px 45px rgba(0, 0, 0, 0.45),
+    0 0 30px rgba(0, 198, 255, 0.18);
+}
+
+/* FOTO */
+.team-photo {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 25px;
+  border: 4px solid rgba(0, 198, 255, 0.45);
+  box-shadow:
+    0 0 25px rgba(0, 198, 255, 0.25),
+    0 0 50px rgba(0, 114, 255, 0.15);
+}
+
+/* NOMBRE */
+.team-card h3 {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.3;
+  margin-bottom: 12px;
+}
+
+/* DESCRIPCIÓN */
+.team-card p {
+  font-size: 1rem;
+  color: rgba(220, 230, 255, 0.78);
+  line-height: 1.6;
+}
+
+/* TARJETA DEL ASESOR */
+.advisor-card {
+  margin-top: 70px;
+  padding: 35px;
+  text-align: center;
+  border-radius: 24px;
+  background: rgba(0, 198, 255, 0.08);
+  border: 1px solid rgba(0, 198, 255, 0.2);
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.25),
+    0 0 30px rgba(0, 198, 255, 0.08);
+}
+
+.advisor-card h2 {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 2rem;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+
+.advisor-card p {
+  font-size: 1.3rem;
+  color: #ffffff;
+  margin-bottom: 6px;
+}
+
+.advisor-card span {
+  font-size: 1rem;
+  color: rgba(220, 230, 255, 0.75);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .header-container {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .menu {
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .team-section {
+    padding: 60px 20px 80px;
+  }
+
+  .team-header h1 {
+    font-size: 2.4rem;
+  }
+
+  .team-header p {
+    font-size: 1rem;
+  }
+
+  .team-photo {
+    width: 130px;
+    height: 130px;
+  }
+
+  .team-card {
+    padding: 30px 20px;
+  }
+
+  .advisor-card {
+    padding: 30px 20px;
+  }
+
+  .advisor-card h2 {
+    font-size: 1.6rem;
+  }
+
+  .advisor-card p {
+    font-size: 1.1rem;
+  }
+}

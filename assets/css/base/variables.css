@@ -1,0 +1,17 @@
+:root {
+    /* Colores */
+    --bg-principal: #313a44;
+    --color-verde1: #027871;
+    --color-gris1: #d6d6d6;
+    --color-azul-menu: #003362;
+    --color-fuente-principal: #003362;
+    --color-fuente-secundaria: #027871;
+
+    /* Tipografías */
+    --font-titulos: 'Coolvetica', sans-serif;
+    --font-textos: 'Altone Regular', sans-serif;
+    --font-menu: 'Inter', sans-serif;
+
+    /* Filtros */
+    --filtro-blanco: invert(100%) sepia(30%) saturate(2%) hue-rotate(88deg) brightness(113%) contrast(101%);
+}

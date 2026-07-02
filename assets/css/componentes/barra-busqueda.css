@@ -1,0 +1,138 @@
+/* --- CONTENEDOR GENERAL EN LA ESQUINA --- */
+.busqueda-zona {
+    position: fixed;
+    box-sizing: border-box;
+    width: 80%;
+    max-width: 600px; /* Evita que en pantallas gigantes la barra se estire infinitamente */
+    margin-top: 10px;
+    padding: 0 10px;
+    right: 0;
+    z-index: 9997;
+}
+
+/* Alinea la lupa y el bloque de búsqueda de derecha a izquierda */
+.busqueda-interfaz {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 10px;
+    width: 100%;
+    align-items: flex-start; /* Evita que los hijos se estiren verticalmente a la fuerza */
+}
+
+/* --- BOTÓN DE LA LUPA --- */
+.busqueda-lupa-boton {
+    box-sizing: border-box;
+    cursor: pointer;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    padding: 12px;
+    border-radius: 50%;
+    background-color: var(--color-verde1);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    flex-shrink: 0; /* Evita que se deforme */
+}
+
+.busqueda-lupa-boton:hover {
+    background-color: var(--color-gris1);
+}
+
+.busqueda-lupa-icono {
+    height: 100%;
+    filter: invert();
+    transition: filter 0.3s ease;
+}
+
+.busqueda-lupa-boton:hover .busqueda-lupa-icono {
+    filter: invert(21%) sepia(95%) saturate(2068%) hue-rotate(160deg) brightness(99%) contrast(98%);
+}
+
+/* --- BLOQUE DESPLEGABLE (INPUT + FILTROS) --- */
+.busqueda-desplegable {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 10px;
+    
+    /* Configuración de la animación de cortina */
+    max-height: 120px; /* Altura suficiente para el input + espacio + botones */
+    opacity: 1;
+    transform: translateY(0);
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+                opacity 0.3s ease, 
+                transform 0.3s ease;
+}
+
+.busqueda-desplegable.oculto {
+    opacity: 0;
+    transform: translateX(100%);
+    pointer-events: none;
+}
+
+/* --- CAMPO DE TEXTO (INPUT) --- */
+.busqueda-input {
+    box-sizing: border-box;
+    width: 100%;
+    height: 50px;
+    border-radius: 50px;
+    border: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    padding: 0 1.5rem;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.15);
+}
+
+.busqueda-input:focus {
+    outline: none;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
+}
+
+/* --- CONTENEDOR DE BOTONES FILTROS --- */
+.busqueda-filtros-contenedor {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding-left: 5px;
+}
+
+/* --- BOTONES DE FILTRO INDIVIDUALES --- */
+.busqueda-filtro-boton {
+    cursor: pointer;
+    height: 35px;
+    flex: 1;
+    max-width: 150px;
+    border-radius: 50px;
+    border: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5em;
+    color: white;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.15);
+    transition: filter 0.2s ease, transform 0.1s ease;
+}
+
+.busqueda-filtro-boton:hover {
+    filter: brightness(1.2);
+}
+
+.busqueda-filtro-boton:active {
+    transform: scale(0.97);
+}
+
+.busqueda-filtro-boton img {
+    height: 1rem;
+    filter: invert();
+}
+
+/* Colores personalizados de los filtros */
+#filtro-edificio { background-color: #084469; }
+#filtro-personal { background-color: #be4d06; }
+#filtro-area { background-color: #004a2f; }

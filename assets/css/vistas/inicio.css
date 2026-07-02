@@ -1,0 +1,141 @@
+/* =========================
+  TIPOGRAFÍA
+========================= */
+h1 {
+  margin-bottom: 0;
+
+  font-size: 4rem;
+  color: var(--color-fuente-principal);
+}
+
+h1 abbr {
+  color: var(--color-fuente-secundaria);
+}
+
+h1,
+.eslogan,
+.pregunta-ubicacion,
+.boton-ir-mapa {
+  font-family: 'Coolvetica';
+  letter-spacing: 2px;
+}
+
+.texto-informativo {
+  margin: 3em 0;
+
+  font-family: 'Altone Regular';
+  font-size: 1rem;
+  font-weight: 100;
+  letter-spacing: 1px;
+
+  color: var(--color-fuente-principal);
+}
+
+.ocultar {
+  display: none;
+}
+
+
+/* =========================
+  LAYOUT GENERAL
+========================= */
+.seccion-hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100vw;
+  height: 100vh;
+
+  background-image: url('/assets/img/fondo_claro.png');
+  background-size: cover;
+  background-position: center;
+}
+
+.contenedor-bienvenida {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 40%;
+  height: 100%;
+}
+
+.contenedor-logo {
+  position: absolute;
+  top: 20px;
+
+  display: flex;
+  justify-content: center;
+
+  width: 100%;
+  height: 10%;
+}
+
+.logo {
+  height: 100%;
+}
+
+
+/* =========================
+  BLOQUES DE CONTENIDO
+========================= */
+.contenedor-texto-bienvenida,
+.contenedor-boton-mapa {
+  text-align: center;
+}
+
+.contenedor-boton-mapa {
+  width: 100%;
+}
+
+
+/* =========================
+  ELEMENTOS DE TEXTO
+========================= */
+.eslogan {
+  margin-top: 0;
+
+  font-size: 1.5rem;
+  color: var(--color-fuente-secundaria);
+
+  text-shadow: 1px 1px 1px #005b9b;
+}
+
+.pregunta-ubicacion {
+  font-size: 1rem;
+  color: #003362;
+}
+
+.pregunta-ubicacion span:first-of-type {
+  color: rgb(137, 171, 223);
+}
+
+.pregunta-ubicacion span:last-of-type {
+  color: rgb(223, 164, 137);
+}
+
+
+/* =========================
+  BOTONES
+========================= */
+.boton-ir-mapa {
+  cursor: pointer;
+
+  padding: 1em 4em;
+
+  border: none;
+  border-radius: 20px;
+
+  font-size: 1.5rem;
+  font-weight: bold;
+
+  color: white;
+  background-color: var(--color-fuente-secundaria);
+}
+
+.boton-ir-mapa:hover {
+  color: white;
+  background-color: var(--color-fuente-principal);
+}
