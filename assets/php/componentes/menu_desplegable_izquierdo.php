@@ -10,7 +10,7 @@
     <div id="modal-menu-izquierdo" class="modal-fondo oculto">
         <header class="menu-lateral">
             <div class="menu-logo-contenedor">
-                <img class="logo-institucional" src="/assets/img/logo-itesa2.png" alt="Logo de ITESA">
+                <img class="logo-institucional" src="/assets/img/logos/logo-itesa2.png" alt="Logo de ITESA">
                 <img id="boton-cerrar-menu" src="/assets/img/iconos/cruz.png" alt="Icono cerrar menú">
             </div>
             

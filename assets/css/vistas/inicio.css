@@ -47,7 +47,7 @@ h1,
   width: 100vw;
   height: 100vh;
 
-  background-image: url('/assets/img/fondo_claro.png');
+  background-image: url('/assets/img/fondos/fondo_claro.png');
   background-size: cover;
   background-position: center;
 }
