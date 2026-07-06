@@ -1,0 +1,9 @@
+#croquisItesa {
+    width: 100vw;
+    height: 100vh;
+    background-color: white;
+}
+
+.leaflet-control-zoom-out {
+    display: none !important;
+}
