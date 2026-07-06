@@ -1,3 +1,12 @@
+/*
+    main.css
+        Aqui convergen todos los archvios de estilos (css) hechos para cada
+        html o php creados, así se evita tener que importar multiples css
+        en cada uno de estos, haciendo que solo se tenga que agregar este.
+
+        <link rel="stylesheet" href="/assets/css/main.css">
+*/
+
 /* 1. Base y Configuración */
 @import url('./base/fuentes.css');
 @import url('./base/variables.css');
@@ -9,3 +18,4 @@
 
 /* 3. Estilos de Vistas Especiales */
 @import url('./vistas/inicio.css');
+@import url('./vistas/estilos_vista_croquis.css');
