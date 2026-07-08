@@ -7,3 +7,18 @@
 .leaflet-control-zoom-out {
     display: none !important;
 }
+
+.poligono-edificio {
+    stroke: none;
+    fill-opacity: 0%;
+}
+
+.poligono-edificio:hover {
+    stroke: yellow;
+    stroke-width: 2px;
+}
+
+.poligono-edificio:focus {
+    border: none;
+    outline: none;
+}
