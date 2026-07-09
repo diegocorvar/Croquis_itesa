@@ -48,7 +48,7 @@ map.on('click', function(e) {
 
 // CARGA DE IMAGEN COMO MAPA ==================================================================================
 
-const rutaImgCroquis = '/assets/img/material_croquis/croquis_itesa.png';
+const rutaImgCroquis = '/assets/img/material_croquis/croquis_itesa.webp';
 
 let imagenCroquis = new Image();
 imagenCroquis.src = rutaImgCroquis;
@@ -72,3 +72,62 @@ imagenCroquis.onload = function () {
     map.fitBounds(limites);
     map.setMaxBounds(limites);
 };
+
+// ABRIR VENTANA FOLANTE DE EDIFICIO ==================================================================================
+
+edificioE.on("click", () => {
+    abrirVentanaInformacion(
+        'Edificio E',
+        'Edificio de la carrera de Ingeniería en Sistemas Computacionales',
+        'fachada_edificioE.webp',
+        ['LC1', 'LC2', 'LC3', 'LC4', 'LC5', 'LC6', 'LC7', 'SITE']
+    );
+});
+
+function abrirVentanaInformacion(nombreEdificio, infoEdficio, nombreImg, listaAreas) {
+    const listaAreasHTML = listaAreas.map(area => `<li class="nombre-area">${area}</li>`).join('');
+    
+    const ventanaEdificio = `
+        <div id="modal-edificio" class="modal">
+            <div class="ventana-informacion-edificio">
+                <button id="btn-cerrar-modal" class="boton-cerrar-info-edificio">
+                    <img src="/assets/img/iconos/cruz.png">
+                </button>
+                <div class="contenedor-imagen-edificio">
+                    <img class="imagen-edficio" src="/assets/img/material_croquis/fotos_de_edificios/${nombreImg}">
+                </div>
+                <div class="contenedor-informacion-edificio">
+                    <p class="nombre-edificio">${nombreEdificio}</p>
+                    <p class="informacion-edificio">${infoEdficio}</p>
+                    <div class="areas-edificio">
+                        <p>Áreas y salones/laboratorios</p>
+                        <ul>
+                            ${listaAreasHTML}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+
+    document.body.insertAdjacentHTML('beforeend', ventanaEdificio);
+
+    const modal = document.getElementById('modal-edificio');
+    const btnCerrar = document.getElementById('btn-cerrar-modal');
+
+    const cerrarModalConAnimacion = () => {
+        modal.classList.add('cerrando');
+
+        setTimeout(() => {
+            modal.remove();
+        }, 250); 
+    };
+
+    btnCerrar.addEventListener('click', cerrarModalConAnimacion);
+
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            cerrarModalConAnimacion();
+        }
+    });
+}

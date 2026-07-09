@@ -20,11 +20,6 @@
         <script src="/assets/js/croquis_interactivo.js" defer></script>
 
         <div id="croquisItesa"></div>
-        <div class="ventana-informacion-edificio">
-            <div class="contenedor-imagen-edificio">
-                <img class="imagen-edficio" src="/assets/img/material_croquis/fotos_de_edificios/fachada_edificioE.webp">
-            </div>
-        </div>
     </main>
 </body>
 </html>
