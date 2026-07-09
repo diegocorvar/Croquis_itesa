@@ -16,9 +16,6 @@
         
         <div class="seccion-hero">
             <div class="contenedor-bienvenida">
-                <div class="contenedor-logo">
-                    <img class="logo" src="./assets/img/logos/logo-itesa.png" alt="Logo ITESA">
-                </div>
                 <div class="contenedor-texto-bienvenida">
                     <h1>¡Bienvenido/a al <abbr title="Instituto Tecnológico Superior del Oriente del Estado de Hidalgo">ITESA</abbr>!</h1>
                     <p class="eslogan">“Por un México Tecnológicamente Independiente”</p>
