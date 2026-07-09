@@ -47,9 +47,11 @@ h1,
   width: 100vw;
   height: 100vh;
 
-  background-image: url('/assets/img/fondos/fondo_claro.png');
+  /* ¡CAMBIO APLICADO AQUÍ! Se corrigió la ruta con ../../ y se agregó fixed para el scroll */
+  background-image: url('../../img/fondos/fondo_claro.png');
   background-size: cover;
   background-position: center;
+  background-attachment: fixed; 
 }
 
 .contenedor-bienvenida {
@@ -138,4 +140,100 @@ h1,
 .boton-ir-mapa:hover {
   color: white;
   background-color: var(--color-fuente-principal);
+}
+
+
+/* =========================
+  NUEVAS SECCIONES (VIDEOS Y EQUIPO)
+========================= */
+
+/* --- SECCIÓN DE VIDEOS --- */
+.seccion-videos {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 30px;
+    padding: 60px 5%;
+    justify-content: center;
+    align-items: center;
+}
+
+.contenedor-video {
+    flex: 1 1 400px; 
+    max-width: 600px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    border: 2px solid rgba(0, 150, 136, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.contenedor-video:hover {
+    transform: translateY(-5px);
+}
+
+.contenedor-video video {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* --- SECCIÓN DEL EQUIPO --- */
+.seccion-equipo {
+    padding: 80px 5%;
+    text-align: center;
+}
+
+.titulo-equipo {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    color: var(--color-fuente-principal); 
+    font-family: 'Coolvetica';
+    letter-spacing: 2px;
+}
+
+.grid-equipo {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+}
+
+.tarjeta-integrante {
+    background: rgba(255, 255, 255, 0.6); 
+    backdrop-filter: blur(10px);
+    padding: 30px 20px;
+    border-radius: 20px;
+    width: 260px;
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tarjeta-integrante:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+.tarjeta-integrante img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+    border: 3px solid var(--color-fuente-secundaria);
+}
+
+.tarjeta-integrante h3 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    color: var(--color-fuente-principal);
+    font-family: 'Altone Regular';
+    font-weight: bold;
+}
+
+.tarjeta-integrante p {
+    font-size: 0.9rem;
+    color: #555555;
+    font-family: 'Altone Regular';
 }
