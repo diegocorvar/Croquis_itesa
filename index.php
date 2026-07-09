@@ -54,25 +54,25 @@
             
             <div class="grid-equipo">
                 <div class="tarjeta-integrante">
-                    <img src="./assets/img/equipo/brandon.jpg" alt="Foto de Brandon">
+                    <img src="./assets/img/equipo/Joshua.jpg" alt="Foto de Joshua">
                     <h3>Brandon Joshua</h3>
                     <p>Desarrollo Front-end</p>
                 </div>
                 
                 <div class="tarjeta-integrante">
-                    <img src="./assets/img/equipo/luis.jpg" alt="Foto de Luis">
+                    <img src="./assets/img/equipo/Diego.jpg" alt="Foto de Diego">
                     <h3>Diego</h3>
                     <p>Ingeniería de Software</p>
                 </div>
 
                 <div class="tarjeta-integrante">
-                    <img src="./assets/img/equipo/paulina.jpg" alt="Foto de Paulina">
+                    <img src="./assets/img/equipo/Ingrid.jpg" alt="Foto de Ingrid">
                     <h3>Ingrid</h3>
                     <p>Modelado 3D (Blender)</p>
                 </div>
 
                 <div class="tarjeta-integrante">
-                    <img src="./assets/img/equipo/dassaefd.jpg" alt="Foto de Dassaefd">
+                    <img src="./assets/img/equipo/Angel.jpg" alt="Foto de Angel">
                     <h3>Angel</h3>
                     <p>Modelado 3D (Blender)</p>
                 </div>
