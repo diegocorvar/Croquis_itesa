@@ -36,14 +36,14 @@
         <section class="seccion-videos">
             <div class="contenedor-video anim-video-izq">
                 <video autoplay loop muted playsinline>
-                    <source src="./assets/videos/maqueta-fisica.mp4" type="video/mp4">
+                    <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
                     Tu navegador no soporta videos.
                 </video>
             </div>
-            
+    
             <div class="contenedor-video anim-video-der">
                 <video autoplay loop muted playsinline>
-                    <source src="./assets/videos/render-blender.mp4" type="video/mp4">
+                    <source src="https://www.w3schools.com/html/movie.mp4" type="video/mp4">
                     Tu navegador no soporta videos.
                 </video>
             </div>
