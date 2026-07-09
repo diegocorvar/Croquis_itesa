@@ -5,15 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crookies ITESA</title>
 
-    <!-- Ruta de CSS corregida con el punto inicial -->
     <link rel="stylesheet" href="./assets/css/main.css">
-    
-    <!-- Librería AOS para las animaciones al scrollear -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
     <main>
-        <!-- Componentes PHP (Asegúrate de que dentro de estos archivos también uses "./" en las imágenes) -->
         <div>
             <?php include('./assets/php/componentes/menu_desplegable_izquierdo.php'); ?>
             <?php include('./assets/php/componentes/barra_busqueda.php'); ?>
@@ -38,16 +33,15 @@
             </div>
         </div>
 
-        <!-- SECCIÓN 2: VIDEOS (Maqueta y Blender) -->
         <section class="seccion-videos">
-            <div class="contenedor-video" data-aos="fade-right">
+            <div class="contenedor-video anim-video-izq">
                 <video autoplay loop muted playsinline>
                     <source src="./assets/videos/maqueta-fisica.mp4" type="video/mp4">
                     Tu navegador no soporta videos.
                 </video>
             </div>
             
-            <div class="contenedor-video" data-aos="fade-left">
+            <div class="contenedor-video anim-video-der">
                 <video autoplay loop muted playsinline>
                     <source src="./assets/videos/render-blender.mp4" type="video/mp4">
                     Tu navegador no soporta videos.
@@ -55,36 +49,36 @@
             </div>
         </section>
 
-        <!-- SECCIÓN 3: EQUIPO DE TRABAJO -->
         <section class="seccion-equipo">
-            <h2 class="titulo-equipo" data-aos="fade-up">Nuestro Equipo de Trabajo</h2>
+            <h2 class="titulo-equipo anim-titulo">Nuestro Equipo de Trabajo</h2>
             
             <div class="grid-equipo">
-                <div class="tarjeta-integrante" data-aos="zoom-in" data-aos-delay="0">
+                <div class="tarjeta-integrante">
                     <img src="./assets/img/equipo/brandon.jpg" alt="Foto de Brandon">
-                    <h3>Joshua</h3>
+                    <h3>Brandon Joshua</h3>
                     <p>Desarrollo Front-end</p>
                 </div>
                 
-                <div class="tarjeta-integrante" data-aos="zoom-in" data-aos-delay="100">
+                <div class="tarjeta-integrante">
                     <img src="./assets/img/equipo/luis.jpg" alt="Foto de Luis">
                     <h3>Diego</h3>
                     <p>Ingeniería de Software</p>
                 </div>
 
-                <div class="tarjeta-integrante" data-aos="zoom-in" data-aos-delay="200">
+                <div class="tarjeta-integrante">
                     <img src="./assets/img/equipo/paulina.jpg" alt="Foto de Paulina">
-                    <h3>Angel</h3>
-                    <p>Ingeniería de Software</p>
-                </div>
-
-                <div class="tarjeta-integrante" data-aos="zoom-in" data-aos-delay="300">
-                    <img src="./assets/img/equipo/dassaefd.jpg" alt="Foto de Dassaefd">
                     <h3>Ingrid</h3>
                     <p>Modelado 3D (Blender)</p>
                 </div>
 
-                <div class="tarjeta-integrante" data-aos="zoom-in" data-aos-delay="500">
+                <div class="tarjeta-integrante">
+                    <img src="./assets/img/equipo/dassaefd.jpg" alt="Foto de Dassaefd">
+                    <h3>Angel</h3>
+                    <p>Modelado 3D (Blender)</p>
+                </div>
+
+
+                <div class="tarjeta-integrante">
                     <img src="./assets/img/equipo/profesor.jpg" alt="Foto del Profesor">
                     <h3>Profesor</h3>
                     <p>Asesor del Proyecto</p>
@@ -93,12 +87,65 @@
         </section>
     </main>
 
-    <!-- Scripts (Librería de animaciones y su activación) -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    
     <script>
-        AOS.init({
-            duration: 1000, 
-            once: true 
+        // Registrar el plugin ScrollTrigger en el motor de GSAP
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Animación para el Video Izquierdo (Entrada desde la izquierda)
+        gsap.from(".anim-video-izq", {
+            x: -150,
+            opacity: 0,
+            duration: 1.2,
+            ease: "power2.out",
+            scrollTrigger: {
+                trigger: ".seccion-videos",
+                start: "top 80%",
+                // play: al entrar, none: al salir, none: al regresar, reverse: reinicia al subir
+                toggleActions: "play none none reverse"
+            }
+        });
+
+        // Animación para el Video Derecho (Entrada desde la derecha)
+        gsap.from(".anim-video-der", {
+            x: 150,
+            opacity: 0,
+            duration: 1.2,
+            ease: "power2.out",
+            scrollTrigger: {
+                trigger: ".seccion-videos",
+                start: "top 80%",
+                toggleActions: "play none none reverse"
+            }
+        });
+
+        // Animación para el Título del Equipo
+        gsap.from(".anim-titulo", {
+            y: -30,
+            opacity: 0,
+            duration: 1,
+            ease: "power2.out",
+            scrollTrigger: {
+                trigger: ".seccion-equipo",
+                start: "top 85%",
+                toggleActions: "play none none reverse"
+            }
+        });
+
+        // Animación en Cascada (Stagger) para las Tarjetas de los Integrantes
+        gsap.from(".tarjeta-integrante", {
+            y: 60,
+            opacity: 0,
+            duration: 0.8,
+            stagger: 0.15, // Retraso secuencial entre cada tarjeta
+            ease: "power3.out",
+            scrollTrigger: {
+                trigger: ".grid-equipo",
+                start: "top 85%",
+                toggleActions: "play none none reverse"
+            }
         });
     </script>
 </body>

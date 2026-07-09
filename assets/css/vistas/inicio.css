@@ -47,7 +47,6 @@ h1,
   width: 100vw;
   height: 100vh;
 
-  /* ¡CAMBIO APLICADO AQUÍ! Se corrigió la ruta con ../../ y se agregó fixed para el scroll */
   background-image: url('../../img/fondos/fondo_claro.png');
   background-size: cover;
   background-position: center;
@@ -144,48 +143,64 @@ h1,
 
 
 /* =========================
-  NUEVAS SECCIONES (VIDEOS Y EQUIPO)
+  NUEVAS SECCIONES OPTIMIZADAS (GSAP & PALETA DE COLORES)
 ========================= */
 
-/* --- SECCIÓN DE VIDEOS --- */
+/* --- CONFIGURACIÓN DEL FONDO GRIS CLARO PARA EL CONTENIDO --- */
+.seccion-videos,
+.seccion-equipo {
+    background-color: #f4f6f9; /* Gris claro moderno que unifica el scroll inferior */
+    position: relative;
+    width: 100vw;
+    box-sizing: border-box;
+}
+
+/* --- ESTILOS DE LA SECCIÓN DE VIDEOS --- */
 .seccion-videos {
     display: flex;
     flex-wrap: wrap; 
-    gap: 30px;
-    padding: 60px 5%;
+    gap: 40px;
+    padding: 100px 5% 60px 5%;
     justify-content: center;
     align-items: center;
 }
 
 .contenedor-video {
     flex: 1 1 400px; 
-    max-width: 600px;
-    border-radius: 20px;
+    max-width: 550px;
+    border-radius: 24px;
     overflow: hidden;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-    border: 2px solid rgba(0, 150, 136, 0.2);
-    transition: transform 0.3s ease;
+    
+    /* Integración de color de la paleta: Fondo e iluminación basados en la identidad visual */
+    background: #ffffff; 
+    box-shadow: 0 20px 40px rgba(0, 51, 98, 0.08); 
+    border: 3px solid var(--color-fuente-principal); /* Acento de color principal */
+    
+    padding: 10px; /* Efecto de marco profesional para el video */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .contenedor-video:hover {
-    transform: translateY(-5px);
+    transform: translateY(-8px);
+    box-shadow: 0 30px 50px rgba(0, 51, 98, 0.15);
 }
 
 .contenedor-video video {
     width: 100%;
     height: auto;
     display: block;
+    border-radius: 16px; /* Redondeado interno alineado al contenedor */
 }
 
-/* --- SECCIÓN DEL EQUIPO --- */
+/* --- ESTILOS DE LA SECCIÓN DEL EQUIPO --- */
 .seccion-equipo {
-    padding: 80px 5%;
+    padding: 60px 5% 100px 5%;
     text-align: center;
 }
 
 .titulo-equipo {
-    font-size: 2.5rem;
-    margin-bottom: 40px;
+    font-size: 2.8rem;
+    margin-bottom: 50px;
     color: var(--color-fuente-principal); 
     font-family: 'Coolvetica';
     letter-spacing: 2px;
@@ -194,46 +209,55 @@ h1,
 .grid-equipo {
     display: flex;
     flex-wrap: wrap;
-    gap: 30px;
+    gap: 35px;
     justify-content: center;
+    max-width: 1300px;
+    margin: 0 auto;
 }
 
 .tarjeta-integrante {
-    background: rgba(255, 255, 255, 0.6); 
-    backdrop-filter: blur(10px);
-    padding: 30px 20px;
-    border-radius: 20px;
+    /* Integración de color de la paleta: Fondo blanco puro para resaltar sobre el gris claro */
+    background: #ffffff; 
+    padding: 40px 25px;
+    border-radius: 22px;
     width: 260px;
     text-align: center;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.4);
+    
+    /* Sombreado suave y borde sutil utilizando el color secundario del proyecto */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 91, 155, 0.1); 
+    
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .tarjeta-integrante:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    transform: translateY(-12px);
+    box-shadow: 0 20px 40px rgba(0, 91, 155, 0.12);
+    border: 1px solid var(--color-fuente-secundaria); /* Resalta el borde al pasar el cursor */
 }
 
 .tarjeta-integrante img {
-    width: 120px;
-    height: 120px;
+    width: 130px;
+    height: 130px;
     border-radius: 50%;
     object-fit: cover;
-    margin-bottom: 20px;
-    border: 3px solid var(--color-fuente-secundaria);
+    margin-bottom: 25px;
+    
+    /* Borde de la imagen utilizando la variable de color secundaria */
+    border: 4px solid var(--color-fuente-secundaria); 
 }
 
 .tarjeta-integrante h3 {
-    font-size: 1.3rem;
-    margin-bottom: 10px;
+    font-size: 1.4rem;
+    margin-bottom: 8px;
     color: var(--color-fuente-principal);
     font-family: 'Altone Regular';
     font-weight: bold;
 }
 
 .tarjeta-integrante p {
-    font-size: 0.9rem;
-    color: #555555;
+    font-size: 0.95rem;
+    color: #666666;
     font-family: 'Altone Regular';
+    font-weight: 300;
 }
