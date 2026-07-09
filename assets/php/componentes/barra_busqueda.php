@@ -4,7 +4,7 @@
         <button class="busqueda-lupa-boton" id="busqueda-activador-boton" aria-label="Buscar">
             <img
                 class="busqueda-lupa-icono"
-                src="/assets/img/iconos/lupa.png"
+                src="./assets/img/iconos/lupa.png"
                 alt="Icono de lupa"
             />
         </button>
@@ -20,15 +20,15 @@
             
             <div class="busqueda-filtros-contenedor">
                 <button id="filtro-edificio" class="busqueda-filtro-boton">
-                    <img src="/assets/img/iconos/edificio.png" alt="">
+                    <img src="./assets/img/iconos/edificio.png" alt="">
                     Edificio
                 </button>
                 <button id="filtro-personal" class="busqueda-filtro-boton">
-                    <img src="/assets/img/iconos/jefe.png" alt="">
+                    <img src="./assets/img/iconos/jefe.png" alt="">
                     Personal
                 </button>
                 <button id="filtro-area" class="busqueda-filtro-boton">
-                    <img src="/assets/img/iconos/mapa.png" alt="">
+                    <img src="./assets/img/iconos/mapa.png" alt="">
                     Área
                 </button>
             </div>
@@ -37,4 +37,4 @@
     </div>
 </div>
 
-<script src="/assets/js/controlador-menus-despl.js" defer></script>
+<script src="./assets/js/controlador-menus-despl.js" defer></script>
