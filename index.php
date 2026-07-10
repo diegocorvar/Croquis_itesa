@@ -25,7 +25,7 @@
                 </div>
                 <div class="contenedor-boton-mapa">
                     <p class="pregunta-ubicacion">¿Buscas algún <span>lugar</span> o <span>persona</span>?</p>
-                    <button class="boton-ir-mapa">IR AL MAPA</button>
+                    <button class="boton-ir-mapa" onclick="window.location.href='./assets/php/vistas/vista_croquis_itesa.php'">IR AL MAPA</button>
                 </div>
             </div>
         </div>
