@@ -48,7 +48,7 @@ map.on('click', function(e) {
 
 // CARGA DE IMAGEN COMO MAPA ==================================================================================
 
-const rutaImgCroquis = '/assets/img/material_croquis/croquis_itesa.webp';
+const rutaImgCroquis = 'assets/img/material_croquis/croquis_itesa.webp';
 
 let imagenCroquis = new Image();
 imagenCroquis.src = rutaImgCroquis;
