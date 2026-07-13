@@ -1,3 +1,7 @@
+<?php 
+include_once __DIR__ . '/config.php'; 
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -5,13 +9,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crookies ITESA</title>
 
-    <link rel="stylesheet" href="./assets/css/main.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/main.css">
 </head>
 <body>
     <main>
         <div>
-            <?php include('./assets/php/componentes/menu_desplegable_izquierdo.php'); ?>
-            <?php include('./assets/php/componentes/barra_busqueda.php'); ?>
+            <?php include __DIR__ . '/assets/php/componentes/menu_desplegable_izquierdo.php'; ?>
         </div>
         
         <div class="seccion-hero">
@@ -25,7 +28,7 @@
                 </div>
                 <div class="contenedor-boton-mapa">
                     <p class="pregunta-ubicacion">¿Buscas algún <span>lugar</span> o <span>persona</span>?</p>
-                    <button class="boton-ir-mapa" onclick="window.location.href='./assets/php/vistas/vista_croquis_itesa.php'">IR AL MAPA</button>
+                    <button class="boton-ir-mapa" onclick="window.location.href='<?php echo BASE_URL; ?>assets/php/vistas/vista_croquis_itesa.php'">IR AL MAPA</button>
                 </div>
             </div>
         </div>
@@ -51,32 +54,32 @@
             
             <div class="grid-equipo">
                 <div class="tarjeta-integrante">
-                    <img src="./assets/img/equipo/Joshua.jpg" alt="Foto de Joshua">
+                    <img src="<?php echo BASE_URL; ?>assets/img/equipo/Joshua.jpg" alt="Foto de Joshua">
                     <h3>Brandon Joshua</h3>
                     <p>Desarrollo Front-end</p>
                 </div>
                 
                 <div class="tarjeta-integrante">
-                    <img src="./assets/img/equipo/Diego.jpg" alt="Foto de Diego">
+                    <img src="<?php echo BASE_URL; ?>assets/img/equipo/Diego.jpg" alt="Foto de Diego">
                     <h3>Diego</h3>
                     <p>Ingeniería de Software</p>
                 </div>
 
                 <div class="tarjeta-integrante">
-                    <img src="./assets/img/equipo/Ingrid.jpg" alt="Foto de Ingrid">
+                    <img src="<?php echo BASE_URL; ?>assets/img/equipo/Ingrid.jpg" alt="Foto de Ingrid">
                     <h3>Ingrid</h3>
                     <p>Modelado 3D (Blender)</p>
                 </div>
 
                 <div class="tarjeta-integrante">
-                    <img src="./assets/img/equipo/Angel.jpg" alt="Foto de Angel">
+                    <img src="<?php echo BASE_URL; ?>assets/img/equipo/Angel.jpg" alt="Foto de Angel">
                     <h3>Angel</h3>
                     <p>Modelado 3D (Blender)</p>
                 </div>
 
 
                 <div class="tarjeta-integrante">
-                    <img src="./assets/img/equipo/profesor.jpg" alt="Foto del Profesor">
+                    <img src="<?php echo BASE_URL; ?>assets/img/equipo/profesor.jpg" alt="Foto del Profesor">
                     <h3>Profesor</h3>
                     <p>Asesor del Proyecto</p>
                 </div>
