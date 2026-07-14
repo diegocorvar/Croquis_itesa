@@ -3,6 +3,9 @@
 const botonAbrirMenu = document.getElementById('boton-abrir-menu');
 const modalMenuIzquierdo = document.getElementById('modal-menu-izquierdo');
 const botonCerrarMenu = document.getElementById('boton-cerrar-menu');
+const botonAbrirLoginAdmin = document.getElementById('boton-admin');
+const botonCerrarLoginAdmin = document.getElementById('boton-cerrar-login');
+const modalLoginAdmin = document.getElementById('modal-login-admin');
 
 const mostrarMenu = () => {
     modalMenuIzquierdo.classList.remove('oculto');
@@ -20,6 +23,24 @@ botonCerrarMenu.addEventListener('click', ocultarMenu);
 modalMenuIzquierdo.addEventListener('click', (e) => {
     if (e.target === modalMenuIzquierdo) {
         ocultarMenu();
+    }
+});
+
+const mostrarLoginAdmin = () => {
+    ocultarMenu();
+    modalLoginAdmin.classList.remove('oculto');
+}
+
+const ocultarLoginAdmin = () => {
+    modalLoginAdmin.classList.add('oculto');
+}
+
+botonAbrirLoginAdmin.addEventListener('click', mostrarLoginAdmin);
+botonCerrarLoginAdmin.addEventListener('click', ocultarLoginAdmin);
+
+modalLoginAdmin.addEventListener('click', (e) => {
+    if (e.target === modalLoginAdmin) {
+        ocultarLoginAdmin();
     }
 });
 
