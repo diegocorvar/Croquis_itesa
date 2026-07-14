@@ -1,3 +1,8 @@
+<?php 
+$pagina_actual = basename($_SERVER['PHP_SELF']); 
+?>
+
+
 <div>
     <div class="contenedor-boton-menu" id="boton-abrir-menu">
         <img
@@ -16,18 +21,30 @@
             
             <nav class="menu-navegacion">
                 <ul class="lista-navegacion">
-                    <li class="item-navegacion activo">
-                        <img class="icono-item" src="<?php echo BASE_URL; ?>assets/img/iconos/pagina-de-inicio.png" alt="Inicio"/>
-                        Inicio
-                    </li>
-                    <li class="item-navegacion">
-                        <img class="icono-item" src="<?php echo BASE_URL; ?>assets/img/iconos/boton-web-de-ayuda.png" alt="Ayuda"/>
-                        Ayuda
-                    </li>
-                    <li class="item-navegacion">
-                        <img class="icono-item" src="<?php echo BASE_URL; ?>assets/img/iconos/administrador.png" alt="Admin"/>
-                        Admin
-                    </li>
+                    <a href="<?php echo BASE_URL; ?>index.php">
+                        <li class="item-navegacion <?php echo ($pagina_actual == 'index.php') ? 'activo' : ''; ?>">
+                            <img class="icono-item" src="<?php echo BASE_URL; ?>assets/img/iconos/pagina-de-inicio.png" alt="Inicio"/>
+                            Inicio
+                        </li>
+                    </a>
+                    <a href="<?php echo BASE_URL; ?>assets/php/vistas/vista_croquis_itesa.php">
+                        <li class="item-navegacion <?php echo ($pagina_actual == 'vista_croquis_itesa.php') ? 'activo' : ''; ?>">
+                            <img class="icono-item" src="<?php echo BASE_URL; ?>assets/img/iconos/mapa-icono.png" alt="Inicio"/>
+                            Mapa
+                        </li>
+                    </a>
+                    <a>
+                        <li class="item-navegacion">
+                            <img class="icono-item" src="<?php echo BASE_URL; ?>assets/img/iconos/boton-web-de-ayuda.png" alt="Ayuda"/>
+                            Ayuda
+                        </li>
+                    </a>
+                    <a>
+                        <li class="item-navegacion">
+                            <img class="icono-item" src="<?php echo BASE_URL; ?>assets/img/iconos/administrador.png" alt="Admin"/>
+                            Admin
+                        </li>
+                    </a>
                 </ul>
             </nav>
             <div class="menu-sesion-espacio"></div>

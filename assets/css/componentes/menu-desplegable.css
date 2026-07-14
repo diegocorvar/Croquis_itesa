@@ -13,6 +13,10 @@
     transition: background-color 0.3s ease, opacity 0.3s ease;
 }
 
+a {
+    all: unset;
+}
+
 .contenedor-boton-menu.oculto {
     opacity: 0;
     pointer-events: none; /* Evita que se pueda clickear estando invisible */
@@ -120,8 +124,13 @@
     margin-bottom: 1rem;
     padding: 0.5rem 1rem;
     border-radius: 10px;
-    width: 90%;
+    width: 100%;
     transition: background-color 0.2s ease;
+}
+
+.lista-navegacion a {
+    box-sizing: border-box;
+    width: 90%;
 }
 
 .item-navegacion:hover:not(.activo) {
