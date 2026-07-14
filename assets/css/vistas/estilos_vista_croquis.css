@@ -22,8 +22,8 @@ main {
 }
 
 .poligono-edificio:hover {
-    stroke: yellow;
-    stroke-width: 2px;
+    stroke: #107f77;
+    stroke-width: 3px;
 }
 
 .poligono-edificio:focus {
@@ -216,3 +216,4 @@ main {
         transform: scale(0.95) translateY(10px);
     }
 }
+
