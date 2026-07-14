@@ -3,7 +3,6 @@
 const botonAbrirMenu = document.getElementById('boton-abrir-menu');
 const modalMenuIzquierdo = document.getElementById('modal-menu-izquierdo');
 const botonCerrarMenu = document.getElementById('boton-cerrar-menu');
-const opcionesMenu = document.querySelectorAll('.item-navegacion');
 
 const mostrarMenu = () => {
     modalMenuIzquierdo.classList.remove('oculto');
@@ -23,24 +22,6 @@ modalMenuIzquierdo.addEventListener('click', (e) => {
         ocultarMenu();
     }
 });
-
-for (let opcionMenu of opcionesMenu) {
-    opcionMenu.addEventListener('click', () => {
-        atenuarOpcionesDelMenu();
-        resaltarOpcionDeMenu(opcionMenu);
-        console.log("hola")
-    })
-}
-
-function resaltarOpcionDeMenu(opcionMenu) {
-    opcionMenu.classList.add("activo");
-}
-
-function atenuarOpcionesDelMenu() {
-    for (let opcionMenu of opcionesMenu) {
-        opcionMenu.classList.remove("activo");
-    }
-}
 
 // BARRA DE BÚSQUEDA ===========================================================
 

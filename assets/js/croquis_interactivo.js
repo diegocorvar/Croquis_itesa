@@ -105,6 +105,11 @@ function abrirVentanaInformacion(nombreEdificio, infoEdficio, nombreImg, listaAr
                             ${listaAreasHTML}
                         </ul>
                     </div>
+                    <div class="contenedor-boton-como-llegar">
+                        <button class="boton-como-llegar">
+                            ¿Cómo llego aquí?
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
