@@ -13,6 +13,10 @@
     transition: background-color 0.3s ease, opacity 0.3s ease;
 }
 
+a {
+    all: unset;
+}
+
 .contenedor-boton-menu.oculto {
     opacity: 0;
     pointer-events: none; /* Evita que se pueda clickear estando invisible */
@@ -120,8 +124,13 @@
     margin-bottom: 1rem;
     padding: 0.5rem 1rem;
     border-radius: 10px;
-    width: 90%;
+    width: 100%;
     transition: background-color 0.2s ease;
+}
+
+.lista-navegacion a {
+    box-sizing: border-box;
+    width: 90%;
 }
 
 .item-navegacion:hover:not(.activo) {
@@ -137,4 +146,134 @@
 .activo {
     background-color: var(--color-verde1);
     color: #fbfbfb;
+}
+
+.contenedor-boton-admin {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#boton-admin img {
+    filter: invert(13%) sepia(79%) saturate(1756%) hue-rotate(189deg) brightness(97%) contrast(103%);
+}
+
+#boton-admin {
+    cursor: pointer;
+    display: flex;
+    color: #003362;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 1rem 2rem;
+    width: 95%;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    border: none;
+    background-color: transparent;
+}
+
+#boton-admin:hover {
+    color: white;
+    background-color: rgba(197, 48, 48, 0.5);
+}
+
+#boton-admin:hover img {
+    filter: invert(100%) sepia(0%) saturate(7478%) hue-rotate(39deg) brightness(117%) contrast(96%);
+}
+
+/*===================================== 
+
+    VENTANA PARA INGRESAR COMO ADMIN
+
+===================================== */
+
+.contenedor-ingreso-admin {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contenedor-clave-admin {
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(117, 58, 58);
+    border-radius: 20px;
+
+    color: white;
+    padding: 50px;
+
+    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.7);
+    position: relative;
+}
+
+.contenedor-clave-admin p, 
+.contenedor-clave-admin label,
+#boton-ingresar-admin {
+    font-family: 'Inter', sans-serif;
+}
+
+.contenedor-clave-admin p:first-of-type {
+    font-weight: bold;
+}
+
+.contenedor-clave-admin p:last-of-type {
+    font-size: 0.85rem;
+}
+
+.contenedor-clave-admin label {
+    color: rgb(255, 162, 162);
+    font-size: 0.9rem;
+}
+
+#clave-acceso-admin {
+    box-sizing: border-box;
+    font-size: 1rem;
+    padding: 10px;
+    margin: 5px 0 10px;
+    border-radius: 10px;
+}
+
+#boton-ingresar-admin {
+    cursor: pointer;
+    font-weight: bold;
+    box-sizing: border-box;
+    padding: 0.2rem 1.5rem;
+    border-radius: 20px;
+    background-color: rgb(119, 49, 49);
+    border-color: white;
+    color: white;
+}
+
+#boton-ingresar-admin:hover {
+    background-color: white;
+    color: rgb(119, 49, 49);
+}
+
+#boton-cerrar-login {
+    position: absolute;
+    height: 15px;
+    width: 15px;
+    top: 0;
+    right: 0;
+
+    margin-right: 15px;
+    margin-top: 15px;
+
+    filter: invert();
+
+    cursor: pointer;
+}
+
+#boton-cerrar-login:hover {
+    filter: invert(80%) sepia(32%) saturate(6995%) hue-rotate(312deg) brightness(123%) contrast(156%);;
 }

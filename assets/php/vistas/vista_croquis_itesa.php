@@ -27,6 +27,7 @@ include_once __DIR__ . '/../../../config.php';
         <script src="<?php echo BASE_URL; ?>assets/js/croquis_interactivo.js" defer></script>
 
         <div id="croquisItesa"></div>
+        
     </main>
 </body>
 </html> 
