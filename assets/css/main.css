@@ -19,3 +19,4 @@
 /* 3. Estilos de Vistas Especiales */
 @import url('./vistas/inicio.css');
 @import url('./vistas/estilos_vista_croquis.css');
+@import url('./vistas/admin/estilos_vista_admin.css');

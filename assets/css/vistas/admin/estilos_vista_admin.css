@@ -1,0 +1,53 @@
+#main-inicio-admin {
+    min-height: 100vh;
+    min-width: 100vw;
+
+    display: flex;
+
+    background-color: white;
+}
+
+.barra-lateral-izq-admin {
+    box-sizing: border-box;
+    padding: 10px 0;
+
+    width: 70px;
+    height: 100vh;
+    
+    background-color: #003362;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.boton-barra-lateral-admin {
+    width: 50px;
+    height: 50px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.boton-barra-lateral-admin:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+.admin-nav {
+    margin-top: 20px;
+}
+
+.boton-barra-lateral-admin img {
+    width: 90%;
+    filter: invert();
+}
+
+#boton-salir-admin img{
+    --rojo: invert(16%) sepia(81%) saturate(5829%) hue-rotate(339deg) brightness(81%) contrast(128%);
+
+    filter: var(--rojo);
+}
