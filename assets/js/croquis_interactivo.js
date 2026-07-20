@@ -93,8 +93,7 @@ function abrirVentanaInformacion(nombreEdificio, infoEdficio, nombreImg, listaAr
                 <button id="btn-cerrar-modal" class="boton-cerrar-info-edificio">
                     <img src="/assets/img/iconos/cruz.png">
                 </button>
-                <div class="contenedor-imagen-edificio">
-                    <img class="imagen-edficio" src="/assets/img/material_croquis/fotos_de_edificios/${nombreImg}">
+                <div id="visor-360" class="contenedor-imagen-edificio">
                 </div>
                 <div class="contenedor-informacion-edificio">
                     <p class="nombre-edificio">${nombreEdificio}</p>
@@ -119,20 +118,39 @@ function abrirVentanaInformacion(nombreEdificio, infoEdficio, nombreImg, listaAr
 
     const modal = document.getElementById('modal-edificio');
     const btnCerrar = document.getElementById('btn-cerrar-modal');
+    const visor360 = document.getElementById('visor-360');
 
-    const cerrarModalConAnimacion = () => {
-        modal.classList.add('cerrando');
-
-        setTimeout(() => {
-            modal.remove();
-        }, 250); 
-    };
-
-    btnCerrar.addEventListener('click', cerrarModalConAnimacion);
+    btnCerrar.addEventListener('click', () => cerrarModalConAnimacion(modal));
 
     modal.addEventListener('click', (e) => {
         if (e.target === modal) {
-            cerrarModalConAnimacion();
+            cerrarModalConAnimacion(modal);
         }
     });
+
+    inicializarVisor360();
+}
+
+function cerrarModalConAnimacion(modal) {
+    modal.classList.add('cerrando');
+
+    setTimeout(() => {
+        modal.remove();
+    }, 250); 
+}
+
+function inicializarVisor360() {
+    let visor360 = null;
+
+    if (!visor360) {
+        visor360 = pannellum.viewer('visor-360', {
+            "type": "equirectangular",
+            "panorama": BASE_URL + 'assets/img/material_croquis/imagenes_360/edificio_E.webp',
+            "autoLoad": true,
+            "autoRotate": -2,
+            "showZoomCtrl": true
+        });
+    } else {
+        visor360.resize();
+    }
 }

@@ -192,6 +192,8 @@ main {
     background-color: #027871;
     border: none;
     border-radius: 5px;
+
+    z-index: 9999;
 }
 
 .boton-cerrar-info-edificio:hover {
