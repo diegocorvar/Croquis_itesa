@@ -28,7 +28,7 @@
             // Variable global en JavaScript con la URL Base de PHP
             const BASE_URL = "<?php echo BASE_URL; ?>";
         </script>
-        <script src="<?php echo BASE_URL; ?>assets/js/croquis_interactivo.js" defer></script>
+        <script type="module" src="<?php echo BASE_URL; ?>assets/js/croquis/ventana_info_360.js" defer></script>
 
         <div id="croquisItesa"></div>
         
