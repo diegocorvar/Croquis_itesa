@@ -10,6 +10,9 @@ include_once __DIR__ . '/../../../config.php';
 
     <!-- Estilos de Leaflet.js: biblioteca de JavaScript de código abierto diseñada para crear mapas web interactivos -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <!-- CSS y JS de Pannellum desde CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pannellum/2.5.6/pannellum.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pannellum/2.5.6/pannellum.js"></script>
 
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/main.css">
 </head>
