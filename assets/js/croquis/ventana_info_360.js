@@ -77,6 +77,7 @@ function cerrarModalConAnimacion(modal) {
 function inicializarVisor360(imagenPanoramica) {
     pannellum.viewer('visor-360', {
         "type": "equirectangular",
+        "vaov": 60,
         "panorama": `${BASE_URL}assets/img/material_croquis/imagenes_360/${imagenPanoramica}`,
         "autoLoad": true,
         "autoRotate": -2,

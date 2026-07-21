@@ -24,7 +24,7 @@
             </button>
             <nav class="admin-nav">
                 <!-- RUTAS =========================================================== -->
-                <button id="boton-rutas" class="boton-barra-lateral-admin">
+                <button id="boton-rutas" class="boton-barra-lateral-admin boton-activo">
                     <img src="<?php echo BASE_URL; ?>assets/img/iconos/ruta.png"/>
                     <div class="tooltip-boton-barra-lateral-admin ocultar">
                         <p>Rutas</p>

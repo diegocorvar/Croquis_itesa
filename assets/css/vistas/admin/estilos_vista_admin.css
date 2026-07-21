@@ -73,8 +73,13 @@
     z-index: 10;
 }
 
-.boton-barra-lateral-admin:hover {
+.boton-barra-lateral-admin:hover:not(.boton-activo) {
     background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+.boton-activo {
+    background-color: rgba(0, 0, 0, 0.3);
     border-radius: 5px;
 }
 

@@ -5,3 +5,12 @@
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
 
 <div id="croquisItesa"></div>
+
+<div class="contenedor-editar-ruta">
+    <div class="barra-lateral-izq-admin">
+
+    </div>
+    <div>
+
+    </div>
+</div>
