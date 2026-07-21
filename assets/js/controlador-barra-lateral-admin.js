@@ -13,3 +13,9 @@ function activarToolTips(botones) {
         });
     }
 };
+
+const botonSalirAdmin = document.getElementById('boton-salir-admin');
+
+botonSalirAdmin.addEventListener('click', () => {
+    window.location.href = BASE_URL;
+});
