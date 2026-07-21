@@ -15,8 +15,10 @@
 /* 2. Componentes Globales */
 @import url('./componentes/menu-desplegable.css');
 @import url('./componentes/barra-busqueda.css');
+@import url('./componentes/croquis.css');
 
 /* 3. Estilos de Vistas Especiales */
 @import url('./vistas/inicio.css');
 @import url('./vistas/estilos_vista_croquis.css');
 @import url('./vistas/admin/estilos_vista_admin.css');
+@import url('./vistas/admin/rutas.css');

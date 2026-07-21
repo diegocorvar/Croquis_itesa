@@ -14,8 +14,8 @@
     <script src="<?php echo BASE_URL; ?>assets/js/controlador-barra-lateral-admin.js" defer></script>
 </head>
 <body>
-    <main id="main-inicio-admin">
-        <header class="barra-lateral-izq-admin">
+    <div id="contenedor-admin">
+        <aside class="barra-lateral-izq-admin">
             <button id="boton-salir-admin" class="boton-barra-lateral-admin">
                 <img src="<?php echo BASE_URL; ?>assets/img/iconos/salir.png"/>
                 <div class="tooltip-boton-barra-lateral-admin ocultar">
@@ -59,8 +59,13 @@
                 </button>
                 
             </nav>
-        </header>
-        <div></div>
-    </main>
+        </aside>
+        <main class="vista-admin">
+            <div id="vista-admin-rutas">
+                <?php include __DIR__ . '/vistas_admin/rutas.php'; ?>
+            </div>
+            
+        </main>
+    </div>
 </body>
 </html>

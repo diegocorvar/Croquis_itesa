@@ -3,11 +3,14 @@
 }
 
 
-#main-inicio-admin {
-    min-height: 100vh;
-    min-width: 100vw;
+#contenedor-admin {
+    height: 100vh;
+    width: 100vw;
 
     display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow: hidden;
 
     background-color: white;
 }
@@ -22,8 +25,11 @@
     background-color: #003362;
     display: flex;
     flex-direction: column-reverse;
+    flex-shrink: 0;
     justify-content: space-between;
     align-items: center;
+
+    z-index: 2;
 }
 
 .admin-nav {
@@ -63,6 +69,8 @@
     color: white;
     font-family: 'Inter', sans-serif;
     font-weight: bold;
+
+    z-index: 10;
 }
 
 .boton-barra-lateral-admin:hover {
@@ -73,4 +81,15 @@
 .boton-barra-lateral-admin img {
     width: 85%;
     filter: invert();
+}
+
+.vista-admin {
+    min-height: 100vh;
+    min-width: 0;
+    position: relative;
+}
+
+#vista-admin-rutas {
+    height: 100%;
+    width: 100%;
 }
