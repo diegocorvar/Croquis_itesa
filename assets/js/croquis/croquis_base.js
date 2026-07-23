@@ -16,7 +16,7 @@
 
 const CROQUIS_BASE = L.map('croquisItesa', {
     crs: L.CRS.Simple,
-    minZoom: -2,
+    minZoom: -1,
     maxZoom: 1,
 
     zoomSnap: 0,
