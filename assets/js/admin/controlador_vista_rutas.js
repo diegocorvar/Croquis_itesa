@@ -21,4 +21,23 @@ edificioE.on('click', () => {
 function alternarOpcionesMenu() {
     opcionesEditarRuta.classList.toggle('ocultar');
     opcionesMenuAdmin.classList.toggle('ocultar');
+};
+
+/* ====================================================
+    MODAL DE AYUDA
+==================================================== */
+
+let tiempoInactivo;
+reiniciarTemporizador();
+
+function reiniciarTemporizador() {
+    clearTimeout(tiempoInactivo);
+    document.querySelector('.modal-ayuda').classList.add('ocultar');
+
+    tiempoInactivo = setTimeout(() => {
+        if (!opcionesEditarRuta.classList.contains('ocultar')) return;
+        document.querySelector('.modal-ayuda').classList.remove('ocultar');
+    }, 3000);
 }
+
+window.addEventListener('mousemove', reiniciarTemporizador);
