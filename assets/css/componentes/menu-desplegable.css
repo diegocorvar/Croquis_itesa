@@ -275,5 +275,5 @@ a {
 }
 
 #boton-cerrar-login:hover {
-    filter: invert(80%) sepia(32%) saturate(6995%) hue-rotate(312deg) brightness(123%) contrast(156%);;
+    filter: invert(80%) sepia(32%) saturate(6995%) hue-rotate(312deg) brightness(123%) contrast(156%);
 }

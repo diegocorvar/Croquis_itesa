@@ -1,6 +1,10 @@
 <?php 
 $pagina_actual = basename($_SERVER['PHP_SELF']); 
 ?>
+<script>
+    // Variable global en JavaScript con la URL Base de PHP
+    const BASE_URL = "<?php echo BASE_URL; ?>";
+</script>
 
 
 <div>

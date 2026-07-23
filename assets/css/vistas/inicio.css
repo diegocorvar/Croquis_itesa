@@ -32,7 +32,7 @@ h1,
 }
 
 .ocultar {
-  display: none;
+  display: none !important;
 }
 
 

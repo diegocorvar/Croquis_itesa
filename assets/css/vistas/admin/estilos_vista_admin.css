@@ -1,0 +1,100 @@
+:root {
+    --width-barra-lateral: 80px;
+}
+
+
+#contenedor-admin {
+    height: 100vh;
+    width: 100vw;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow: hidden;
+
+    background-color: white;
+}
+
+.barra-lateral-izq-admin {
+    box-sizing: border-box;
+    padding: 10px 0;
+
+    width: var(--width-barra-lateral);
+    height: 100vh;
+    
+    background-color: #003362;
+    display: flex;
+    flex-direction: column-reverse;
+    flex-shrink: 0;
+    justify-content: space-between;
+    align-items: center;
+
+    z-index: 2;
+}
+
+.admin-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.boton-barra-lateral-admin {
+    width: 50px;
+    height: 50px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+}
+
+.tooltip-boton-barra-lateral-admin {
+    position: absolute;
+    height: 90%;
+    width: auto;
+    box-sizing: border-box;
+
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    background-color: #012e58;
+
+    border-radius: 5px;
+    left: calc(var(--width-barra-lateral) - 14px);
+
+    color: white;
+    font-family: 'Inter', sans-serif;
+    font-weight: bold;
+
+    z-index: 10;
+}
+
+.boton-barra-lateral-admin:hover:not(.boton-activo) {
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+.boton-activo {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+}
+
+.boton-barra-lateral-admin img {
+    width: 85%;
+    filter: invert();
+}
+
+.vista-admin {
+    min-height: 100vh;
+    min-width: 0;
+    position: relative;
+}
+
+#vista-admin-rutas {
+    height: 100%;
+    width: 100%;
+}

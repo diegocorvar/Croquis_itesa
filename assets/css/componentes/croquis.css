@@ -1,0 +1,38 @@
+
+.leaflet-control-zoom-out {
+    display: none !important;
+}
+
+#croquisItesa {
+    width: 100% !important;
+    height: 100% !important;
+    background-color: white;
+    position: relative;
+    z-index: 1;
+}
+
+.poligono-edificio {
+    stroke: none;
+    fill-opacity: 0%;
+}
+
+.poligono-edificio:hover {
+    stroke: #107f77;
+    stroke-width: 3px;
+}
+
+.poligono-edificio:focus {
+    border: none;
+    outline: none;
+}
+
+.poligono-camino {
+    cursor: default;
+    stroke: none;
+    fill: #107f77;
+    fill-opacity: 50%;
+}
+
+.poligono-camino:hover {
+    cursor: default;
+}

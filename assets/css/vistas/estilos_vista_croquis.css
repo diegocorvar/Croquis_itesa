@@ -5,32 +5,6 @@ main {
     position: relative;
 }
 
-
-#croquisItesa {
-    width: 100vw;
-    height: 100vh;
-    background-color: white;
-}
-
-.leaflet-control-zoom-out {
-    display: none !important;
-}
-
-.poligono-edificio {
-    stroke: none;
-    fill-opacity: 0%;
-}
-
-.poligono-edificio:hover {
-    stroke: #107f77;
-    stroke-width: 3px;
-}
-
-.poligono-edificio:focus {
-    border: none;
-    outline: none;
-}
-
 .modal {
     position: fixed;
     top: 0;

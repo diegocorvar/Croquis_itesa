@@ -1,5 +1,5 @@
 <?php
-include_once __DIR__ . '/../../../config.php';
+    include_once __DIR__ . '/../../../config.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,6 +15,7 @@ include_once __DIR__ . '/../../../config.php';
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pannellum/2.5.6/pannellum.js"></script>
 
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/main.css">
+    <link rel="shortcut icon" href="<?php echo BASE_URL; ?>assets/img/logos/logo-itesa2.ico" type="image/x-icon">
 </head>
 <body>
     <main>
@@ -27,7 +28,7 @@ include_once __DIR__ . '/../../../config.php';
             // Variable global en JavaScript con la URL Base de PHP
             const BASE_URL = "<?php echo BASE_URL; ?>";
         </script>
-        <script src="<?php echo BASE_URL; ?>assets/js/croquis_interactivo.js" defer></script>
+        <script type="module" src="<?php echo BASE_URL; ?>assets/js/croquis/ventana_info_360.js" defer></script>
 
         <div id="croquisItesa"></div>
         
