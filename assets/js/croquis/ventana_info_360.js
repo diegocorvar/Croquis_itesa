@@ -1,6 +1,9 @@
+import { mostrarRutaEdificio } from './gestor_rutas.js';
+
 const rutaModulo = `${BASE_URL}assets/js/croquis/croquis_base.js`;
 const modulo = await import(rutaModulo);
 
+const CROQUIS_BASE = modulo.CROQUIS_BASE;
 const edificioE = modulo.edificioE;
 
 /* ========================================================
@@ -9,6 +12,7 @@ const edificioE = modulo.edificioE;
 
 edificioE.on("click", () => {
     abrirVentanaInformacion(
+        'E',
         'Edificio E',
         'Edificio de la carrera de Ingeniería en Sistemas Computacionales',
         'edificio_E.webp',
@@ -16,7 +20,7 @@ edificioE.on("click", () => {
     );
 });
 
-function abrirVentanaInformacion(nombreEdificio, infoEdficio, nombreImg, listaAreas) {
+function abrirVentanaInformacion(idEdificio, nombreEdificio, infoEdficio, nombreImg, listaAreas) {
     const listaAreasHTML = listaAreas.map(area => `<li class="nombre-area">${area}</li>`).join('');
     
     const ventanaEdificio = `
@@ -37,7 +41,7 @@ function abrirVentanaInformacion(nombreEdificio, infoEdficio, nombreImg, listaAr
                         </ul>
                     </div>
                     <div class="contenedor-boton-como-llegar">
-                        <button class="boton-como-llegar">
+                        <button id="btn-como-llegar" class="boton-como-llegar">
                             ¿Cómo llego aquí?
                         </button>
                     </div>
@@ -50,6 +54,7 @@ function abrirVentanaInformacion(nombreEdificio, infoEdficio, nombreImg, listaAr
 
     const modal = document.getElementById('modal-edificio');
     const btnCerrar = document.getElementById('btn-cerrar-modal');
+    const btnComoLlegar = document.getElementById('btn-como-llegar');
 
     btnCerrar.addEventListener('click', () => cerrarModalConAnimacion(modal));
 
@@ -57,6 +62,11 @@ function abrirVentanaInformacion(nombreEdificio, infoEdficio, nombreImg, listaAr
         if (e.target === modal) {
             cerrarModalConAnimacion(modal);
         }
+    });
+
+    btnComoLlegar.addEventListener('click', () => {
+        cerrarModalConAnimacion(modal);
+        mostrarRutaEdificio(idEdificio, CROQUIS_BASE);
     });
 
     inicializarVisor360(nombreImg);
