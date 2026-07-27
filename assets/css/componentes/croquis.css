@@ -27,10 +27,7 @@
 }
 
 .poligono-camino {
-    cursor: default;
-    stroke: none;
-    fill: #107f77;
-    fill-opacity: 50%;
+    
 }
 
 .poligono-camino:hover {
@@ -51,4 +48,29 @@
         fill: #2b6cb0;
         fill-opacity: 0;
     }
+}
+
+/* Ruta pública activa */
+.poligono-camino-activo {
+    fill: #2563eb;
+    fill-opacity: 0.6;
+    stroke: none;
+}
+
+/* Modo Administrador: Disponible para seleccionar */
+.camino-admin-disponible {
+    fill: #9ca3af;
+    fill-opacity: 0.3;
+    color: #4b5563;
+    stroke-width: 1px;
+    cursor: pointer;
+}
+
+/* Modo Administrador: Seleccionado actualmente */
+.camino-admin-seleccionado {
+    fill: #16a34a;
+    fill-opacity: 0.7;
+    color: #15803d;
+    stroke-width: 2px;
+    cursor: pointer;
 }

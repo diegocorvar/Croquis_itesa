@@ -6,3 +6,32 @@
 
     z-index: 9999;
 }
+
+.modal-ayuda {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    flex-direction: column;
+
+    z-index: 9999;
+}
+
+.modal-ayuda p {
+    margin: 0;
+    background-color: transparent;
+    font-size: 4rem;
+    text-align: center;
+    max-width: 50%;
+    font-family: 'Inter', sans-serif;
+    font-weight: bold;
+    color: white;
+}
