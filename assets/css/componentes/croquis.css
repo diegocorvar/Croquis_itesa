@@ -36,3 +36,19 @@
 .poligono-camino:hover {
     cursor: default;
 }
+
+.poligono-remarcado {
+    animation: parpadeo 2s ease-in-out infinite;
+}
+
+@keyframes parpadeo {
+    0%, 100% {
+        fill: #107f77;
+        fill-opacity: 50%;
+        stroke: none;
+    }
+    50% {
+        fill: #2b6cb0;
+        fill-opacity: 0;
+    }
+}
