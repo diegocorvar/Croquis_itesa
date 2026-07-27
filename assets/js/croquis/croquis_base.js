@@ -291,3 +291,44 @@ const coordsCamino4 = [
 export const camino2 = L.polygon(coordsCamino2, {className: 'poligono-camino'}).addTo(CROQUIS_BASE);
 export const camino3 = L.polygon(coordsCamino3, {className: 'poligono-camino'}).addTo(CROQUIS_BASE);
 export const camino4 = L.polygon(coordsCamino4, {className: 'poligono-camino'}).addTo(CROQUIS_BASE);
+
+/* ====================================================
+    VARIABLE Y TIMEOUT PARA EL POLÍGONO ACTIVO
+==================================================== */
+let poligonoActivo = null;
+let temporizadorParpadeo = null;
+
+/**
+ * Enfoca el mapa en el polígono del edificio y lo hace parpadear por 5 segundos.
+ * @param {L.Polygon} poligonoLeaflet Instancia del polígono en Leaflet
+ */
+export function resaltarEdificioEnMapa(poligonoLeaflet) {
+    if (!poligonoLeaflet) return;
+
+    // Limpiar cualquier parpadeo previo y temporizador activo
+    if (poligonoActivo) {
+        poligonoActivo.getElement()?.classList.remove('poligono-remarcado');
+    }
+    if (temporizadorParpadeo) {
+        clearTimeout(temporizadorParpadeo);
+    }
+
+    // Mover la cámara al polígono
+    CROQUIS_BASE.flyToBounds(poligonoLeaflet.getBounds(), {
+        padding: [50, 50],
+        duration: 1.2
+    });
+
+    // Activar el parpadeo agregando la clase CSS
+    const elementoSVG = poligonoLeaflet.getElement();
+    if (elementoSVG) {
+        elementoSVG.classList.add('poligono-remarcado');
+
+        // Detener el parpadeo exactamente a los 5 segundos (5000 ms)
+        temporizadorParpadeo = setTimeout(() => {
+            elementoSVG.classList.remove('poligono-remarcado');
+        }, 5000);
+    }
+
+    poligonoActivo = poligonoLeaflet;
+}
