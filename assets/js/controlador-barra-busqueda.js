@@ -3,10 +3,6 @@
 =========================================================== */
 // Agregar un nuevo edificio en el futuro es tan fácil como añadir un objeto a esta lista:
 const EDIFICIOS_PLANTEL = [
-    { id: 'A', nombre: 'Edificio A', icono: 'edificio-3d.png' },
-    { id: 'B', nombre: 'Edificio B', icono: 'edificio-3d.png' },
-    { id: 'C', nombre: 'Edificio C', icono: 'edificio-3d.png' },
-    { id: 'D', nombre: 'Edificio D', icono: 'edificio-3d.png' },
     { id: 'E', nombre: 'Edificio E', icono: 'edificio-3d.png' },
     // { id: 'F', nombre: 'Edificio F', icono: 'edificio-3d.png' }
 ];
