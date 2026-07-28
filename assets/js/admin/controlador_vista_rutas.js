@@ -1,26 +1,50 @@
-const rutaModulo = `${BASE_URL}assets/js/croquis/croquis_base.js`;
-const modulo = await import(rutaModulo);
+const rutaGestorRutas = `${BASE_URL}assets/js/croquis/gestor_rutas.js`;
+const rutaCroquisBase = `${BASE_URL}assets/js/croquis/croquis_base.js`;
+
+const moduloGestorRutas = await import(rutaGestorRutas);
+const moduloCroquisBase = await import(rutaCroquisBase);
+const CROQUIS_BASE = moduloCroquisBase.CROQUIS_BASE;
 
 
+/* ====================================================
+    ELEMENTOS DEL DOOM
+==================================================== */
 
+const btnMostrarRuta = document.getElementById('boton-nav-mostrar-ruta');
 const salirEditarRuta = document.getElementById('boton-salir-editar-ruta');
 const opcionesEditarRuta = document.getElementById('botones-editar-ruta');
 const opcionesMenuAdmin = document.getElementById('botones-inicio-admin');
+const nombreEdificioEnEdicion = document.getElementById('nombre-edificio-editando');
+const contenedorNombreElementoEdicion = document.querySelector('.contenedor-edificio-seleccionado');
 
 salirEditarRuta.addEventListener('click', alternarOpcionesMenu);
 
 
-const edificioE = modulo.edificioE;
+const edificioE = moduloCroquisBase.edificioE;
 
 edificioE.on('click', () => {
     if (opcionesEditarRuta.classList.contains('ocultar')) {
         alternarOpcionesMenu();
-    } 
+    }
+    mostrarNombreEdificioEnEdicion('Edificio E');
+    activarBotonMostrarRuta('E'); 
 });
+
+function mostrarNombreEdificioEnEdicion(nombre) {
+    nombreEdificioEnEdicion.textContent = nombre;
+    contenedorNombreElementoEdicion.classList.remove('ocultar');
+}
+
+function activarBotonMostrarRuta(idEdificio) {
+    btnMostrarRuta.addEventListener('click', () => {
+        moduloGestorRutas.mostrarRutaEdificio(idEdificio, CROQUIS_BASE);
+    });
+}
 
 function alternarOpcionesMenu() {
     opcionesEditarRuta.classList.toggle('ocultar');
     opcionesMenuAdmin.classList.toggle('ocultar');
+    contenedorNombreElementoEdicion.classList.add('ocultar');
 };
 
 /* ====================================================

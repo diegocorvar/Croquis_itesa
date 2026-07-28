@@ -17,7 +17,7 @@
 export const CROQUIS_BASE = L.map('croquisItesa', {
     crs: L.CRS.Simple,
     minZoom: -2,
-    maxZoom: 2,
+    maxZoom: 1,
 
     zoomSnap: 0,
     zoomDelta: 0.25,

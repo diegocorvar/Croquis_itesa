@@ -35,3 +35,35 @@
     font-weight: bold;
     color: white;
 }
+
+.contenedor-edificio-seleccionado {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 10px;
+    width: auto;
+    height: auto;
+    background-color: #945207;
+    color: white;
+
+    padding: 10px 20px;
+    font-family: 'Inter', sans-serif;
+    font-weight: bold;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    border-radius: 10px;
+
+    z-index: 9999;
+}
+
+.contenedor-edificio-seleccionado p {
+    margin: 0;
+}
+
+#nombre-edificio-editando {
+    font-size: 2rem;
+}

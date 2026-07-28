@@ -11,3 +11,8 @@
     <p><i class="fa-solid fa-circle-info" style="color: rgb(255, 212, 59);"></i></p>
     <p>Seleccione algún edificio para editar su ruta</p>
 </div>
+
+<div class="contenedor-edificio-seleccionado ocultar">
+    <p>Editando la ruta de</p>
+    <p id="nombre-edificio-editando">Edificio E</p>
+</div>
