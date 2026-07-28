@@ -14,5 +14,5 @@
 
 <div class="contenedor-edificio-seleccionado ocultar">
     <p>Editando la ruta de</p>
-    <p id="nombre-edificio-editando">Edificio E</p>
+    <p id="nombre-edificio-editando"></p>
 </div>

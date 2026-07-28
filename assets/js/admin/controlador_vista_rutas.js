@@ -11,6 +11,7 @@ const CROQUIS_BASE = moduloCroquisBase.CROQUIS_BASE;
 ==================================================== */
 
 const btnMostrarRuta = document.getElementById('boton-nav-mostrar-ruta');
+const btnOcultarRuta = document.getElementById('boton-nav-ocultar-ruta');
 const salirEditarRuta = document.getElementById('boton-salir-editar-ruta');
 const opcionesEditarRuta = document.getElementById('botones-editar-ruta');
 const opcionesMenuAdmin = document.getElementById('botones-inicio-admin');
@@ -23,12 +24,21 @@ salirEditarRuta.addEventListener('click', alternarOpcionesMenu);
 const edificioE = moduloCroquisBase.edificioE;
 
 edificioE.on('click', () => {
+    gestionarSeleccionEdificio(
+        'E',
+        'Edificio E'
+    );
+});
+
+function gestionarSeleccionEdificio(idEdificio, nombreEdificio) {
     if (opcionesEditarRuta.classList.contains('ocultar')) {
         alternarOpcionesMenu();
     }
-    mostrarNombreEdificioEnEdicion('Edificio E');
-    activarBotonMostrarRuta('E'); 
-});
+    mostrarNombreEdificioEnEdicion(nombreEdificio);
+    activarBotonMostrarRuta(idEdificio);
+    activarBotonOcultarRuta();
+    moduloCroquisBase.toggleEstadoEdificios(true);
+}
 
 function mostrarNombreEdificioEnEdicion(nombre) {
     nombreEdificioEnEdicion.textContent = nombre;
@@ -38,6 +48,16 @@ function mostrarNombreEdificioEnEdicion(nombre) {
 function activarBotonMostrarRuta(idEdificio) {
     btnMostrarRuta.addEventListener('click', () => {
         moduloGestorRutas.mostrarRutaEdificio(idEdificio, CROQUIS_BASE);
+        btnMostrarRuta.classList.add('ocultar');
+        btnOcultarRuta.classList.remove('ocultar');
+    });
+}
+
+function activarBotonOcultarRuta() {
+    btnOcultarRuta.addEventListener('click', () => {
+        moduloGestorRutas.ocultarRutas();
+        btnOcultarRuta.classList.add('ocultar');
+        btnMostrarRuta.classList.remove('ocultar');
     });
 }
 
@@ -45,6 +65,7 @@ function alternarOpcionesMenu() {
     opcionesEditarRuta.classList.toggle('ocultar');
     opcionesMenuAdmin.classList.toggle('ocultar');
     contenedorNombreElementoEdicion.classList.add('ocultar');
+    moduloCroquisBase.toggleEstadoEdificios(false);
 };
 
 /* ====================================================

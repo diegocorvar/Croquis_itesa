@@ -13,6 +13,13 @@
         </div>
     </button>
 
+    <button id="boton-nav-ocultar-ruta" class="boton-barra-lateral-admin ocultar">
+        <img src="<?php echo BASE_URL; ?>assets/img/iconos/oculto.png"/>
+        <div class="tooltip-boton-barra-lateral-admin ocultar">
+            <p>Ocultar Ruta</p>
+        </div>
+    </button>
+
 
     <!-- EDIFICIOS ======================================================= -->
     <button id="boton-nav-editar-ruta" class="boton-barra-lateral-admin">

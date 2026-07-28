@@ -64,6 +64,10 @@
     margin: 0;
 }
 
+.contenedor-edificio-seleccionado p:first-of-type {
+    color: #2e1902;
+}
+
 #nombre-edificio-editando {
     font-size: 2rem;
 }

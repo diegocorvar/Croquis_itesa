@@ -83,6 +83,27 @@ const coordsEdificioE = [
 
 export const edificioE = L.polygon(coordsEdificioE, {className: 'poligono-edificio'}).addTo(CROQUIS_BASE);
 
+export const EDIFICIOS_MAPA = [
+    edificioE
+];
+
+/**
+ * Activa o desactiva la interacción visual de todos los edificios vía CSS
+ * @param {boolean} desactivar 
+ */
+export function toggleEstadoEdificios(desactivar) {
+    EDIFICIOS_MAPA.forEach(edificio => {
+        const elementoSVG = edificio.getElement();
+        if (elementoSVG) {
+            if (desactivar) {
+                elementoSVG.classList.add('edificio-desactivado');
+            } else {
+                elementoSVG.classList.remove('edificio-desactivado');
+            }
+        }
+    });
+}
+
 /* ====================================================
     TOOLTIPS DE EDIFICIOS
 ==================================================== */
