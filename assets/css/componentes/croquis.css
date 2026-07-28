@@ -63,6 +63,11 @@
     cursor: pointer;
 }
 
+.camino-admin-disponible:hover {
+    fill: yellow;
+    fill-opacity: 0.5;
+}
+
 /* Modo Administrador: Seleccionado actualmente */
 .camino-admin-seleccionado {
     fill: #16a34a;

@@ -1,3 +1,22 @@
+.menu-flotante {
+    position: absolute;
+    width: auto;
+    height: auto;
+    bottom: 0;
+    left: 0;
+
+    z-index: 9999;
+    background-color: rebeccapurple;
+    margin: 10px;
+    border-radius: 5px;
+    padding: 10px 20px;
+}
+
+.edicion-nav {
+    display: flex;
+    flex-direction: row;
+}
+
 .contenedor-editar-ruta {
     position: absolute;
     width: 100vw;
