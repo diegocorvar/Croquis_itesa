@@ -5,7 +5,7 @@
     </div>
 </button>
 <nav class="admin-nav">
-    <!-- RUTAS =========================================================== -->
+    <!-- VISUALIZACIÓN DE RUTAS ================================================== -->
     <button id="boton-nav-mostrar-ruta" class="boton-barra-lateral-admin">
         <img src="<?php echo BASE_URL; ?>assets/img/iconos/ojo.png"/>
         <div class="tooltip-boton-barra-lateral-admin ocultar">
@@ -21,11 +21,18 @@
     </button>
 
 
-    <!-- EDIFICIOS ======================================================= -->
+    <!-- EDICIÓN DE RUTAS ======================================================= -->
     <button id="boton-nav-editar-ruta" class="boton-barra-lateral-admin">
         <img src="<?php echo BASE_URL; ?>assets/img/iconos/editar.png"/>
         <div class="tooltip-boton-barra-lateral-admin ocultar">
             <p>Editar Ruta</p>
+        </div>
+    </button>
+
+    <button id="boton-nav-guardar-ruta" class="boton-barra-lateral-admin ocultar">
+        <img src="<?php echo BASE_URL; ?>assets/img/iconos/guardar.png"/>
+        <div class="tooltip-boton-barra-lateral-admin ocultar">
+            <p>Guardar Ruta</p>
         </div>
     </button>
 

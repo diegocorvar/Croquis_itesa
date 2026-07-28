@@ -52,8 +52,9 @@ export function mostrarRutaEdificio(idEdificio, mapaInstancia) {
 }
 
 export function ocultarRutas() {
+    if(grupoRutaActiva === null) return;
     grupoRutaActiva.clearLayers();
-}
+};
 
 
 /* ====================================================
@@ -67,10 +68,10 @@ let capaAdministradorGroup = L.featureGroup();
  * Inicia el modo de selección gráfica de caminos para un edificio
  * @param {string} idEdificio El edificio al que le asignaremos caminos
  */
-export function activarModoAsignacion(idEdificio) {
+export function activarModoAsignacion(idEdificio, mapaInstancia) {
     ocultarRutas();
     capaAdministradorGroup.clearLayers();
-    capaAdministradorGroup.addTo(CROQUIS_BASE);
+    capaAdministradorGroup.addTo(mapaInstancia);
 
     // Cargar selección previa si ya existía
     const seleccionPrevia = CONFIG_RUTAS_LOCAL[idEdificio] || [];
@@ -104,7 +105,7 @@ export function activarModoAsignacion(idEdificio) {
 
         capaAdministradorGroup.addLayer(poligono);
     });
-}
+};
 
 /**
  * Confirma y guarda la selección actual en el mapa local
@@ -116,4 +117,4 @@ export function confirmarSeleccionAdmin(idEdificio) {
     // Limpiamos el modo admin y mostramos el resultado
     capaAdministradorGroup.clearLayers();
     mostrarRutaEdificio(idEdificio);
-}
+};

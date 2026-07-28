@@ -5,6 +5,9 @@ const moduloGestorRutas = await import(rutaGestorRutas);
 const moduloCroquisBase = await import(rutaCroquisBase);
 const CROQUIS_BASE = moduloCroquisBase.CROQUIS_BASE;
 
+const DESACTIVAR_EDIFICIOS = true;
+const ACTIVAR_EDIFICIOS = false;
+
 
 /* ====================================================
     ELEMENTOS DEL DOOM
@@ -12,6 +15,8 @@ const CROQUIS_BASE = moduloCroquisBase.CROQUIS_BASE;
 
 const btnMostrarRuta = document.getElementById('boton-nav-mostrar-ruta');
 const btnOcultarRuta = document.getElementById('boton-nav-ocultar-ruta');
+const btnEditarRuta = document.getElementById('boton-nav-editar-ruta');
+const btnGuardarRuta = document.getElementById('boton-nav-guardar-ruta');
 const salirEditarRuta = document.getElementById('boton-salir-editar-ruta');
 const opcionesEditarRuta = document.getElementById('botones-editar-ruta');
 const opcionesMenuAdmin = document.getElementById('botones-inicio-admin');
@@ -37,7 +42,9 @@ function gestionarSeleccionEdificio(idEdificio, nombreEdificio) {
     mostrarNombreEdificioEnEdicion(nombreEdificio);
     activarBotonMostrarRuta(idEdificio);
     activarBotonOcultarRuta();
-    moduloCroquisBase.toggleEstadoEdificios(true);
+    activarBotonEditarRuta(idEdificio);
+    activarBotonGuardarRuta(idEdificio);
+    moduloCroquisBase.toggleEstadoEdificios(DESACTIVAR_EDIFICIOS);
 }
 
 function mostrarNombreEdificioEnEdicion(nombre) {
@@ -48,24 +55,41 @@ function mostrarNombreEdificioEnEdicion(nombre) {
 function activarBotonMostrarRuta(idEdificio) {
     btnMostrarRuta.addEventListener('click', () => {
         moduloGestorRutas.mostrarRutaEdificio(idEdificio, CROQUIS_BASE);
-        btnMostrarRuta.classList.add('ocultar');
-        btnOcultarRuta.classList.remove('ocultar');
+        alternarVisibilidadBotones(btnMostrarRuta, btnOcultarRuta);
     });
 }
 
 function activarBotonOcultarRuta() {
     btnOcultarRuta.addEventListener('click', () => {
         moduloGestorRutas.ocultarRutas();
-        btnOcultarRuta.classList.add('ocultar');
-        btnMostrarRuta.classList.remove('ocultar');
+        alternarVisibilidadBotones(btnMostrarRuta, btnOcultarRuta);
     });
+}
+
+function activarBotonEditarRuta(idEdificio) {
+    btnEditarRuta.addEventListener('click', () => {
+        moduloGestorRutas.activarModoAsignacion(idEdificio, CROQUIS_BASE);
+        alternarVisibilidadBotones(btnEditarRuta, btnGuardarRuta);
+    });
+}
+
+function activarBotonGuardarRuta(idEdificio) {
+    btnGuardarRuta.addEventListener('click', () => {
+        moduloGestorRutas.confirmarSeleccionAdmin(idEdificio);
+        alternarVisibilidadBotones(btnEditarRuta, btnGuardarRuta);
+    })
+}
+
+function alternarVisibilidadBotones(boton1, boton2) {
+    boton1.classList.toggle('ocultar');
+    boton2.classList.toggle('ocultar');
 }
 
 function alternarOpcionesMenu() {
     opcionesEditarRuta.classList.toggle('ocultar');
     opcionesMenuAdmin.classList.toggle('ocultar');
     contenedorNombreElementoEdicion.classList.add('ocultar');
-    moduloCroquisBase.toggleEstadoEdificios(false);
+    moduloCroquisBase.toggleEstadoEdificios(ACTIVAR_EDIFICIOS);
 };
 
 /* ====================================================
