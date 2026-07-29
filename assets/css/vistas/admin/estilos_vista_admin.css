@@ -17,6 +17,7 @@
     overflow: hidden;
 
     background-color: white;
+    position: relative;
 }
 
 .barra-lateral-izq-admin > div{
@@ -72,7 +73,7 @@
 
     display: flex;
     align-items: center;
-    text-align: left;;
+    text-align: left;
     padding: 0 10px;
     background-color: #012e58;
 
@@ -84,6 +85,13 @@
     font-weight: bold;
 
     z-index: 10;
+}
+
+.sobre-elemento {
+    left: 0;
+    top: -60px;
+    left: -10px;
+    text-align: center;
 }
 
 .boton-barra-lateral-admin:hover:not(.boton-activo) {

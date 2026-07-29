@@ -19,10 +19,11 @@
             <div id="botones-inicio-admin" class="">
                 <?php include __DIR__ . '/botones_menu/botones_inicio_admin.php'; ?>
             </div>
-            <div id="botones-editar-ruta" class="sub-menu ocultar">
-                <?php include __DIR__ . '/botones_menu/botones_editar_ruta.php'; ?>
-            </div>
         </aside>
+        <div id="botones-editar-ruta" class="sub-menu ocultar">
+            <?php include __DIR__ . '/botones_menu/botones_editar_ruta.php'; ?>
+        </div>
+        
         <main class="vista-admin">
             <div id="vista-admin-rutas">
                 <?php include __DIR__ . '/vistas_admin/rutas.php'; ?>
