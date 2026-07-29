@@ -86,3 +86,97 @@
     pointer-events: none !important;
     opacity: 0.3;
 }
+
+/* ====================================================
+    ESTILOS PARA TOOLTIPS DEL CROQUIS
+==================================================== */
+
+/* Contenedor principal del Tooltip */
+.leaflet-tooltip.custom-tooltip-croquis {
+    color: #f8fafc;
+    border: 1px solid #334155;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-family: 'Inter', sans-serif;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    text-align: center;
+}
+
+/* Personalizar la flecha indicadora inferior */
+.leaflet-tooltip-top.custom-tooltip-croquis::before {
+    border-top-color: #1e293b;
+}
+
+/* Estilos para el HTML interno */
+.tooltip-edificio-contenido .tooltip-titulo {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-weight: bold;
+    font-size: 1rem;
+    color: #084469;
+    margin-bottom: 2px;
+}
+
+.tooltip-edificio-contenido img {
+    object-fit: cover;
+    width: 100%;
+    border-radius: 5px;
+}
+
+.leaflet-tooltip.custom-tooltip-croquis {
+    background-color: rgba(255, 255, 255, 0.95);
+    border: none;
+}
+
+.tooltip-edificio-contenido .tooltip-descripcion {
+    margin: 0;
+    font-size: 0.8rem;
+    color: black;
+    line-height: 1.2;
+}/* ====================================================
+    ESTILOS PARA TOOLTIPS DEL CROQUIS
+==================================================== */
+
+/* Contenedor principal del Tooltip */
+.leaflet-tooltip.custom-tooltip-croquis {
+    color: #f8fafc;
+    border: 1px solid #334155;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-family: 'Inter', sans-serif;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    text-align: center;
+}
+
+/* Personalizar la flecha indicadora inferior */
+.leaflet-tooltip-top.custom-tooltip-croquis::before {
+    border-top-color: #1e293b;
+}
+
+/* Estilos para el HTML interno */
+.tooltip-edificio-contenido .tooltip-titulo {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-weight: bold;
+    font-size: 1rem;
+    color: #084469;
+    margin-bottom: 2px;
+}
+
+.tooltip-edificio-contenido img {
+    object-fit: cover;
+    width: 100%;
+    border-radius: 5px;
+}
+
+.leaflet-tooltip.custom-tooltip-croquis {
+    background-color: rgba(255, 255, 255, 0.95);
+    border: none;
+}
+
+.tooltip-edificio-contenido .tooltip-descripcion {
+    margin: 0;
+    font-size: 0.8rem;
+    color: black;
+    line-height: 1.2;
+}

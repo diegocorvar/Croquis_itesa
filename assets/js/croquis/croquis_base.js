@@ -109,12 +109,18 @@ export function toggleEstadoEdificios(desactivar) {
 ==================================================== */
 
 edificioE.bindTooltip(`
-    <b>Edificio E</b>
-    <br>Edificio de la carrera de Ingeniería en Sistemas Computacionales
+    <div class="tooltip-edificio-contenido">
+        <img src="${BASE_URL}assets/img/material_croquis/fotos_de_edificios/fachada_edificioE.webp"/>
+        <span class="tooltip-titulo">Edificio E</span>
+        <p class="tooltip-descripcion">Ingeniería en Sistemas Computacionales</p>
+    </div>
     `, {
-    sticky: true,
+    sticky: false,
     direction: 'top',
-    opacity: 0.95
+    permanent: false,
+    opacity: 0.95,
+    className: 'custom-tooltip-croquis',
+    offset: [0, -30]
 });
 
 /* ====================================================
