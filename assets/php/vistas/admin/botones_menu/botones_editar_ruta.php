@@ -46,14 +46,5 @@
             </div>
         </button>
     
-    
-        <!-- PERSONAL ======================================================== -->
-        <button id="boton-nav-agregar-ruta" class="boton-barra-lateral-admin">
-            <img src="<?php echo BASE_URL; ?>assets/img/iconos/agregar.png"/>
-            <div class="tooltip-boton-barra-lateral-admin sobre-elemento ocultar">
-                <p>Agregar Ruta</p>
-            </div>
-        </button>
-    
     </nav>
 </div>

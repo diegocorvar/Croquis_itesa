@@ -77,6 +77,11 @@
     cursor: pointer;
 }
 
+.camino-admin-seleccionado:hover {
+    fill: red;
+    fill-opacity: 0.5;
+}
+
 .edificio-desactivado {
     pointer-events: none !important;
     opacity: 0.3;

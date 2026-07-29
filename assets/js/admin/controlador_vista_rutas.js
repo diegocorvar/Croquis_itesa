@@ -21,7 +21,6 @@ const btnOcultarRuta = document.getElementById('boton-nav-ocultar-ruta');
 const btnEditarRuta  = document.getElementById('boton-nav-editar-ruta');
 const btnGuardarRuta = document.getElementById('boton-nav-guardar-ruta');
 const btnBorrarRuta  = document.getElementById('boton-nav-borrar-ruta');
-const btnAgregarRuta = document.getElementById('boton-nav-agregar-ruta');
 
 const salirEditarRuta = document.getElementById('boton-salir-editar-ruta');
 const opcionesEditarRuta = document.getElementById('botones-editar-ruta');
@@ -36,7 +35,6 @@ const TODOS_LOS_BOTONES_NAV = [
     btnEditarRuta,
     btnGuardarRuta,
     btnBorrarRuta,
-    btnAgregarRuta,
     salirEditarRuta
 ];
 
@@ -71,11 +69,6 @@ btnGuardarRuta.addEventListener('click', () => {
 });
 
 btnBorrarRuta.addEventListener('click', () => {
-    if (!edificioSeleccionadoId) return;
-    
-});
-
-btnAgregarRuta.addEventListener('click', () => {
     if (!edificioSeleccionadoId) return;
     
 });
@@ -149,7 +142,6 @@ function restablecerNavegacion() {
     btnEditarRuta.classList.remove('ocultar');
     btnGuardarRuta.classList.add('ocultar');
     btnBorrarRuta.classList.remove('ocultar');
-    btnAgregarRuta.classList.remove('ocultar');
     salirEditarRuta.classList.remove('ocultar');
 }
 
