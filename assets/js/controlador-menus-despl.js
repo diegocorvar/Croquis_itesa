@@ -46,19 +46,19 @@ modalLoginAdmin.addEventListener('click', (e) => {
 
 // IR A ADMIN ===========================================================
 
-const botonIngresarAdmin = document.getElementById('boton-ingresar-admin');
+const formLoginAdmin = document.getElementById('form-login-admin');
 
-botonIngresarAdmin.addEventListener('click', () => {
+formLoginAdmin.addEventListener('submit', (e) => {
+    e.preventDefault();
+
     const clave = document.getElementById('clave-acceso-admin').value;
 
     if (clave === 'admin123') {
-        window.location.href = BASE_URL + "/assets/php/vistas/admin/inicio_admin.php";
+        window.location.href = BASE_URL + "assets/php/vistas/admin/inicio_admin.php";
+    } else {
+        console.log('Contraseña incorrecta:', clave);
     }
-    else {
-        console.log('contraseña incorrecta');
-        console.log(clave);
-    }
-})
+});
 
 // BARRA DE BÚSQUEDA ===========================================================
 
