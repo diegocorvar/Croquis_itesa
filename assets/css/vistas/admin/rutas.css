@@ -1,3 +1,22 @@
+.menu-flotante {
+    position: absolute;
+    width: auto;
+    height: auto;
+    bottom: 0;
+    left: 0;
+
+    z-index: 9999;
+    background-color: rebeccapurple;
+    margin: 10px;
+    border-radius: 5px;
+    padding: 10px 20px;
+}
+
+.edicion-nav {
+    display: flex;
+    flex-direction: row;
+}
+
 .contenedor-editar-ruta {
     position: absolute;
     width: 100vw;
@@ -5,4 +24,70 @@
     background-color: red;
 
     z-index: 9999;
+}
+
+.modal-ayuda {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    flex-direction: column;
+
+    z-index: 9999;
+    cursor: default;
+}
+
+.modal-ayuda p {
+    margin: 0;
+    background-color: transparent;
+    font-size: 4rem;
+    text-align: center;
+    max-width: 50%;
+    font-family: 'Inter', sans-serif;
+    font-weight: bold;
+    color: white;
+}
+
+.contenedor-edificio-seleccionado {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 10px;
+    width: auto;
+    height: auto;
+    background-color: #945207;
+    color: white;
+
+    padding: 10px 20px;
+    font-family: 'Inter', sans-serif;
+    font-weight: bold;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    border-radius: 10px;
+
+    z-index: 9999;
+}
+
+.contenedor-edificio-seleccionado p {
+    margin: 0;
+}
+
+.contenedor-edificio-seleccionado p:first-of-type {
+    color: #2e1902;
+}
+
+#nombre-edificio-editando {
+    font-size: 2rem;
 }

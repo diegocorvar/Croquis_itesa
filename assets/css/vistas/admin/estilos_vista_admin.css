@@ -2,6 +2,10 @@
     --width-barra-lateral: 80px;
 }
 
+.ocultar {
+    display: none !important;
+}
+
 
 #contenedor-admin {
     height: 100vh;
@@ -13,9 +17,10 @@
     overflow: hidden;
 
     background-color: white;
+    position: relative;
 }
 
-.barra-lateral-izq-admin {
+.barra-lateral-izq-admin > div{
     box-sizing: border-box;
     padding: 10px 0;
 
@@ -30,6 +35,10 @@
     align-items: center;
 
     z-index: 2;
+}
+
+.sub-menu {
+    background-color: #945207 !important;
 }
 
 .admin-nav {
@@ -52,6 +61,10 @@
     position: relative;
 }
 
+.sub-menu .tooltip-boton-barra-lateral-admin {
+    background-color: #945207 !important;
+}
+
 .tooltip-boton-barra-lateral-admin {
     position: absolute;
     height: 90%;
@@ -60,6 +73,7 @@
 
     display: flex;
     align-items: center;
+    text-align: left;
     padding: 0 10px;
     background-color: #012e58;
 
@@ -71,6 +85,13 @@
     font-weight: bold;
 
     z-index: 10;
+}
+
+.sobre-elemento {
+    left: 0;
+    top: -60px;
+    left: -10px;
+    text-align: center;
 }
 
 .boton-barra-lateral-admin:hover:not(.boton-activo) {
@@ -97,4 +118,5 @@
 #vista-admin-rutas {
     height: 100%;
     width: 100%;
+    position: relative;
 }

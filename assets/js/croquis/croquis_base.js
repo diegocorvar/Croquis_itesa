@@ -14,7 +14,7 @@
     MAPA BASE
 ==================================================== */
 
-const CROQUIS_BASE = L.map('croquisItesa', {
+export const CROQUIS_BASE = L.map('croquisItesa', {
     crs: L.CRS.Simple,
     minZoom: -2,
     maxZoom: 1,
@@ -28,7 +28,7 @@ const CROQUIS_BASE = L.map('croquisItesa', {
 CROQUIS_BASE.on('click', function(e) {
     const y = Math.round(e.latlng.lat);
     const x = Math.round(e.latlng.lng);
-    console.log(`Coordenada capturada: [${y}, ${x}]`);
+    console.log(`[${y}, ${x}]`);
 });
 
 /* ====================================================
@@ -83,211 +83,90 @@ const coordsEdificioE = [
 
 export const edificioE = L.polygon(coordsEdificioE, {className: 'poligono-edificio'}).addTo(CROQUIS_BASE);
 
+export const EDIFICIOS_MAPA = [
+    edificioE
+];
+
+/**
+ * Activa o desactiva la interacción visual de todos los edificios vía CSS
+ * @param {boolean} desactivar 
+ */
+export function toggleEstadoEdificios(desactivar) {
+    EDIFICIOS_MAPA.forEach(edificio => {
+        const elementoSVG = edificio.getElement();
+        if (elementoSVG) {
+            if (desactivar) {
+                elementoSVG.classList.add('edificio-desactivado');
+            } else {
+                elementoSVG.classList.remove('edificio-desactivado');
+            }
+        }
+    });
+}
+
 /* ====================================================
     TOOLTIPS DE EDIFICIOS
 ==================================================== */
 
 edificioE.bindTooltip(`
-    <b>Edificio E</b>
-    <br>Edificio de la carrera de Ingeniería en Sistemas Computacionales
+    <div class="tooltip-edificio-contenido">
+        <img src="${BASE_URL}assets/img/material_croquis/fotos_de_edificios/fachada_edificioE.webp"/>
+        <span class="tooltip-titulo">Edificio E</span>
+        <p class="tooltip-descripcion">Ingeniería en Sistemas Computacionales</p>
+    </div>
     `, {
-    sticky: true,
+    sticky: false,
     direction: 'top',
-    opacity: 0.95
+    permanent: false,
+    opacity: 0.95,
+    className: 'custom-tooltip-croquis',
+    offset: [0, -30]
 });
 
 /* ====================================================
-    COORDENADAS DE CAMINOS
+    VARIABLE Y TIMEOUT PARA EL POLÍGONO ACTIVO
 ==================================================== */
+let poligonoActivo = null;
+let temporizadorParpadeo = null;
 
-const coordsCamino1 = [
-    [742, 389],
-    [754, 403],
-    [837, 410],
-    [900, 416],
-    [1026, 435],
-    [1118, 447],
-    [1232, 459],
-    [1269, 467],
-    [1288, 475],
-    [1308, 486],
-    [1317, 499],
-    [1325, 517],
-    [1335, 537],
-    [1338, 558],
-    [1343, 579],
-    [1309, 575],
-    [1309, 550],
-    [1301, 528],
-    [1291, 514],
-    [1280, 503],
-    [1260, 496],
-    [1231, 490],
-    [1188, 487],
-    [1158, 482],
-    [1132, 479],
-    [1090, 474],
-    [1048, 467],
-    [1016, 465],
-    [988, 460],
-    [953, 457],
-    [921, 451],
-    [893, 451],
-    [869, 456],
-    [854, 471],
-    [841, 486],
-    [828, 499],
-    [798, 489],
-    [767, 475],
-    [754, 473],
-    [723, 464],
-    [704, 459],
-    [683, 452],
-    [649, 442],
-    [631, 434],
-    [617, 426],
-    [643, 400],
-    [664, 380]
-];
-
-const coordsCamino2 = [
-    [591, 447],
-    [612, 476],
-    [630, 499],
-    [649, 518],
-    [670, 541],
-    [684, 558],
-    [707, 586],
-    [729, 612],
-    [754, 644],
-    [764, 653],
-    [785, 686],
-    [808, 719],
-    [824, 741],
-    [837, 760],
-    [855, 785],
-    [873, 807],
-    [884, 822],
-    [892, 838],
-    [936, 896],
-    [963, 936],
-    [987, 971],
-    [1002, 993],
-    [1013, 1005],
-    [1052, 1011],
-    [1094, 1018],
-    [1136, 1027],
-    [1174, 1030],
-    [1207, 1036],
-    [1241, 1041],
-    [1278, 1047],
-    [1312, 1051],
-    [1330, 1056],
-    [1334, 1033],
-    [1339, 1007],
-    [1309, 998],
-    [1277, 993],
-    [1240, 987],
-    [1198, 978],
-    [1149, 970],
-    [1099, 961],
-    [1067, 957],
-    [1051, 943],
-    [1038, 921],
-    [1021, 899],
-    [1007, 878],
-    [978, 838],
-    [962, 818],
-    [947, 797],
-    [923, 759],
-    [907, 740],
-    [892, 718],
-    [878, 698],
-    [846, 658],
-    [815, 615],
-    [805, 597],
-    [793, 578],
-    [778, 559],
-    [758, 542],
-    [745, 525],
-    [734, 512],
-    [723, 503],
-    [694, 474],
-    [672, 462],
-    [651, 444],
-    [616, 426]
-];
-
-const coordsCamino3 = [
-    [1281, 1050],
-    [1276, 1075],
-    [1272, 1106],
-    [1271, 1127],
-    [1275, 1153],
-    [1280, 1177],
-    [1293, 1194],
-    [1282, 1232],
-    [1279, 1252],
-    [1277, 1272],
-    [1271, 1300],
-    [1271, 1323],
-    [1266, 1345],
-    [1260, 1374],
-    [1252, 1421],
-    [1283, 1428],
-    [1292, 1376],
-    [1297, 1350],
-    [1300, 1325],
-    [1305, 1298],
-    [1309, 1267],
-    [1313, 1245],
-    [1315, 1220],
-    [1321, 1201],
-    [1324, 1173],
-    [1328, 1158],
-    [1329, 1144],
-    [1337, 1126],
-    [1331, 1108],
-    [1326, 1087],
-    [1328, 1060]
-];
-
-const coordsCamino4 = [
-    [1292, 1378],
-    [1352, 1389],
-    [1413, 1397],
-    [1464, 1407],
-    [1504, 1413],
-    [1541, 1419],
-    [1586, 1427],
-    [1627, 1432],
-    [1643, 1433],
-    [1682, 1441],
-    [1722, 1446],
-    [1714, 1490],
-    [1677, 1485],
-    [1640, 1480],
-    [1598, 1473],
-    [1563, 1469],
-    [1536, 1460],
-    [1501, 1457],
-    [1464, 1449],
-    [1425, 1442],
-    [1384, 1437],
-    [1345, 1431],
-    [1339, 1441],
-    [1315, 1437],
-    [1283, 1433],
-    [1280, 1430]
-];
+/**
+ * Enfoca el mapa en el polígono del edificio y lo hace parpadear por 5 segundos.
+ * @param {L.Polygon} poligonoLeaflet Instancia del polígono en Leaflet
+ */
+export function resaltarEdificioEnMapa(poligonoLeaflet) {
+    if (!poligonoLeaflet) return;
 
 
+    reiniciarPoligonoRemarcado();
+    acercarCamaraAlPoligono(poligonoLeaflet);
+    activarParpadeoPoligono(poligonoLeaflet.getElement());    
 
-/* ====================================================
-    COORDENADAS DE CAMINOS
-==================================================== */
+    poligonoActivo = poligonoLeaflet;
+}
 
-// export const camino1 = L.polygon(coordsCamino1, {className: 'poligono-camino'}).addTo(CROQUIS_BASE);
-export const camino2 = L.polygon(coordsCamino2, {className: 'poligono-camino'}).addTo(CROQUIS_BASE);
-export const camino3 = L.polygon(coordsCamino3, {className: 'poligono-camino'}).addTo(CROQUIS_BASE);
-export const camino4 = L.polygon(coordsCamino4, {className: 'poligono-camino'}).addTo(CROQUIS_BASE);
+function activarParpadeoPoligono(elementoSVG) {
+    if (elementoSVG) {
+        elementoSVG.classList.add('poligono-remarcado');
+
+        temporizadorParpadeo = setTimeout(() => {
+            elementoSVG.classList.remove('poligono-remarcado');
+        }, 5000);
+    }
+}
+
+// Limpia cualquier parpadeo previo y temporizador activo
+function reiniciarPoligonoRemarcado() {
+    if (poligonoActivo) {
+        poligonoActivo.getElement()?.classList.remove('poligono-remarcado');
+    }
+    if (temporizadorParpadeo) {
+        clearTimeout(temporizadorParpadeo);
+    }
+}
+
+function acercarCamaraAlPoligono(poligono) {
+    CROQUIS_BASE.flyToBounds(poligono.getBounds(), {
+        padding: [50, 50],
+        duration: 1.2
+    });
+}

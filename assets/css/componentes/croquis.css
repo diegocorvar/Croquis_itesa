@@ -14,6 +14,7 @@
 .poligono-edificio {
     stroke: none;
     fill-opacity: 0%;
+    transition: opacity 0.3s ease, fill-opacity 0.3s ease;
 }
 
 .poligono-edificio:hover {
@@ -26,13 +27,156 @@
     outline: none;
 }
 
-.poligono-camino {
-    cursor: default;
-    stroke: none;
-    fill: #107f77;
-    fill-opacity: 50%;
-}
-
 .poligono-camino:hover {
     cursor: default;
+}
+
+.poligono-remarcado {
+    animation: parpadeo 2s ease-in-out infinite;
+}
+
+@keyframes parpadeo {
+    0%, 100% {
+        fill: #107f77;
+        fill-opacity: 50%;
+        stroke: none;
+    }
+    50% {
+        fill: #2b6cb0;
+        fill-opacity: 0;
+    }
+}
+
+/* Ruta pública activa */
+.poligono-camino-activo {
+    fill: #2563eb;
+    fill-opacity: 0.6;
+    stroke: none;
+}
+
+/* Modo Administrador: Disponible para seleccionar */
+.camino-admin-disponible {
+    fill: #9ca3af;
+    fill-opacity: 0.3;
+    color: #4b5563;
+    stroke-width: 1px;
+    cursor: pointer;
+}
+
+.camino-admin-disponible:hover {
+    fill: yellow;
+    fill-opacity: 0.5;
+}
+
+/* Modo Administrador: Seleccionado actualmente */
+.camino-admin-seleccionado {
+    fill: #16a34a;
+    fill-opacity: 0.7;
+    color: #15803d;
+    stroke-width: 2px;
+    cursor: pointer;
+}
+
+.camino-admin-seleccionado:hover {
+    fill: red;
+    fill-opacity: 0.5;
+}
+
+.edificio-desactivado {
+    pointer-events: none !important;
+    opacity: 0.3;
+}
+
+/* ====================================================
+    ESTILOS PARA TOOLTIPS DEL CROQUIS
+==================================================== */
+
+/* Contenedor principal del Tooltip */
+.leaflet-tooltip.custom-tooltip-croquis {
+    color: #f8fafc;
+    border: 1px solid #334155;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-family: 'Inter', sans-serif;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    text-align: center;
+}
+
+/* Personalizar la flecha indicadora inferior */
+.leaflet-tooltip-top.custom-tooltip-croquis::before {
+    border-top-color: #1e293b;
+}
+
+/* Estilos para el HTML interno */
+.tooltip-edificio-contenido .tooltip-titulo {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-weight: bold;
+    font-size: 1rem;
+    color: #084469;
+    margin-bottom: 2px;
+}
+
+.tooltip-edificio-contenido img {
+    object-fit: cover;
+    width: 100%;
+    border-radius: 5px;
+}
+
+.leaflet-tooltip.custom-tooltip-croquis {
+    background-color: rgba(255, 255, 255, 0.95);
+    border: none;
+}
+
+.tooltip-edificio-contenido .tooltip-descripcion {
+    margin: 0;
+    font-size: 0.8rem;
+    color: black;
+    line-height: 1.2;
+}/* ====================================================
+    ESTILOS PARA TOOLTIPS DEL CROQUIS
+==================================================== */
+
+/* Contenedor principal del Tooltip */
+.leaflet-tooltip.custom-tooltip-croquis {
+    color: #f8fafc;
+    border: 1px solid #334155;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-family: 'Inter', sans-serif;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    text-align: center;
+}
+
+/* Personalizar la flecha indicadora inferior */
+.leaflet-tooltip-top.custom-tooltip-croquis::before {
+    border-top-color: #1e293b;
+}
+
+/* Estilos para el HTML interno */
+.tooltip-edificio-contenido .tooltip-titulo {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-weight: bold;
+    font-size: 1rem;
+    color: #084469;
+    margin-bottom: 2px;
+}
+
+.tooltip-edificio-contenido img {
+    object-fit: cover;
+    width: 100%;
+    border-radius: 5px;
+}
+
+.leaflet-tooltip.custom-tooltip-croquis {
+    background-color: rgba(255, 255, 255, 0.95);
+    border: none;
+}
+
+.tooltip-edificio-contenido .tooltip-descripcion {
+    margin: 0;
+    font-size: 0.8rem;
+    color: black;
+    line-height: 1.2;
 }
