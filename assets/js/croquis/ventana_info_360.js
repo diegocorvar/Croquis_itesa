@@ -5,6 +5,7 @@ const modulo = await import(rutaModulo);
 
 const CROQUIS_BASE = modulo.CROQUIS_BASE;
 const edificioE = modulo.edificioE;
+const edificioA = modulo.edificioA;
 
 /* ========================================================
     INFORMACIÓN DE EDIFICIOS
@@ -17,6 +18,16 @@ edificioE.on("click", () => {
         'Edificio de la carrera de Ingeniería en Sistemas Computacionales',
         'edificio_E.webp',
         ['LC1', 'LC2', 'LC3', 'LC4', 'LC5', 'LC6', 'LC7', 'SITE']
+    );
+});
+
+edificioA.on("click", () => {
+    abrirVentanaInformacion(
+        'A', // El ID para que funcione la ruta azul
+        'Edificio A',
+        'Edificio principal de Administración y Servicios Escolares',
+        'edificio_E.webp', // Usamos la misma foto prestada por ahora
+        ['Dirección General', 'Control Escolar', 'Finanzas', 'Recursos Humanos', 'Sala de Juntas']
     );
 });
 

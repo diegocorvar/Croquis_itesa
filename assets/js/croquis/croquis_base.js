@@ -77,14 +77,23 @@ const coordsEdificioE = [
     [1721, 1554]
 ];
 
+const coordsEdificioA = [
+    [1268, 529],
+    [1223, 816],
+    [1076, 789],
+    [1125, 504]
+];
+
 /* ====================================================
     POLIGONOS DE EDIFICIOS
 ==================================================== */
 
 export const edificioE = L.polygon(coordsEdificioE, {className: 'poligono-edificio'}).addTo(CROQUIS_BASE);
+export const edificioA = L.polygon(coordsEdificioA, {className: 'poligono-edificio'}).addTo(CROQUIS_BASE); // <-- LÍNEA NUEVA
 
 export const EDIFICIOS_MAPA = [
-    edificioE
+    edificioE,
+    edificioA
 ];
 
 /**
@@ -113,6 +122,23 @@ edificioE.bindTooltip(`
         <img src="${BASE_URL}assets/img/material_croquis/fotos_de_edificios/fachada_edificioE.webp"/>
         <span class="tooltip-titulo">Edificio E</span>
         <p class="tooltip-descripcion">Ingeniería en Sistemas Computacionales</p>
+    </div>
+    `, {
+    sticky: false,
+    direction: 'top',
+    permanent: false,
+    opacity: 0.95,
+    className: 'custom-tooltip-croquis',
+    offset: [0, -30]
+});
+
+// ... (Aquí arriba está el bindTooltip del edificioE)
+
+edificioA.bindTooltip(`
+    <div class="tooltip-edificio-contenido">
+        <img src="${BASE_URL}assets/img/material_croquis/fotos_de_edificios/fachada_edificioA.webp"/>
+        <span class="tooltip-titulo">Edificio A</span>
+        <p class="tooltip-descripcion">Administración y Servicios Escolares</p>
     </div>
     `, {
     sticky: false,

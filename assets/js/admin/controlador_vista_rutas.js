@@ -79,9 +79,14 @@ btnBorrarRuta.addEventListener('click', () => {
 ==================================================== */
 
 const edificioE = moduloCroquisBase.edificioE;
+const edificioA = moduloCroquisBase.edificioA;
 
 edificioE.on('click', () => {
     gestionarSeleccionEdificio('E', 'Edificio E');
+});
+
+edificioA.on('click', () => {
+    gestionarSeleccionEdificio('A', 'Edificio A'); 
 });
 
 function gestionarSeleccionEdificio(idEdificio, nombreEdificio) {
