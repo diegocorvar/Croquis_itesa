@@ -7,21 +7,20 @@
 
 
 <div id="croquisItesa"></div>
-<div class="modal-ayuda ocultar">
+<div class="modal-ayuda flex-column-center ocultar">
     <p><i class="fa-solid fa-circle-info" style="color: rgb(255, 212, 59);"></i></p>
     <p>Seleccione algún edificio para editar su ruta</p>
 </div>
 
-<div class="contenedor-edificio-seleccionado ocultar">
+<div class="contenedor-edificio-seleccionado flex-column-center no-seleccionable ocultar">
     <p>Editando la ruta de</p>
     <p id="nombre-edificio-editando"></p>
 </div>
 
 <div id="modal-borrar-ruta" class="modal ocultar">
-    <div class="contenedor-confirmar-eliminacion">
+    <div class="contenedor-confirmar-eliminacion flex-column-center">
         <div>
-            <p>¿Seguro que quieres borrar la ruta de</p> 
-            <p><span id="nombre-edificio-elimiar-ruta">Edificio E</span>?</p>
+            <p>¿Segur@ que quieres borrar la ruta de <span id="nombre-edificio-elimiar-ruta">Edificio E</span>?</p> 
         </div>
         <div>
             <button id="confirmar-eliminacion-ruta" class="opcion-eliminar-ruta">Sí</button>
@@ -30,6 +29,7 @@
     </div>
 </div>
 
-<div class="contenedor-mensaje-eliminacion-ruta">
-    <p>Ruta eliminada correctamente</p>ñ
+<div class="contenedor-mensaje-eliminacion-ruta flex-column-center ocultar no-seleccionable">
+    <i class="fa-solid fa-circle-info" style="color: rgb(0, 0, 0);"></i>
+    <p></p>
 </div>

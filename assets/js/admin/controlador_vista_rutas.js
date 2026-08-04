@@ -20,8 +20,13 @@ const btnMostrarRuta = document.getElementById('boton-nav-mostrar-ruta');
 const btnOcultarRuta = document.getElementById('boton-nav-ocultar-ruta');
 const btnEditarRuta  = document.getElementById('boton-nav-editar-ruta');
 const btnGuardarRuta = document.getElementById('boton-nav-guardar-ruta');
-const btnBorrarRuta  = document.getElementById('boton-nav-borrar-ruta');
 
+const btnBorrarRuta  = document.getElementById('boton-nav-borrar-ruta');
+const btnConfirmarBorrarRuta = document.getElementById('confirmar-eliminacion-ruta');
+const btnCancelarBorrarRuta = document.getElementById('cancelar-eliminacion-ruta');
+
+const modalBorrarRuta = document.getElementById('modal-borrar-ruta');
+const contenedorMensajeDeAccion = document.querySelector('.contenedor-mensaje-eliminacion-ruta');
 const salirEditarRuta = document.getElementById('boton-salir-editar-ruta');
 const opcionesEditarRuta = document.getElementById('botones-editar-ruta');
 const opcionesMenuAdmin = document.querySelector('.barra-lateral-izq-admin');
@@ -70,8 +75,31 @@ btnGuardarRuta.addEventListener('click', () => {
 
 btnBorrarRuta.addEventListener('click', () => {
     if (!edificioSeleccionadoId) return;
-    
+    alternarVisibilidad(modalBorrarRuta);
 });
+
+btnConfirmarBorrarRuta.addEventListener('click', () => {
+    moduloGestorRutas.borrarRuta(edificioSeleccionadoId);
+    alternarVisibilidad(modalBorrarRuta);
+    mostrarMensaje('Ruta eliminada correctamente');
+});
+
+btnCancelarBorrarRuta.addEventListener('click', () => {
+    alternarVisibilidad(modalBorrarRuta);
+});
+
+function alternarVisibilidad(elemento) {
+    elemento.classList.toggle('ocultar');
+}
+
+function mostrarMensaje(mensaje) {
+    contenedorMensajeDeAccion.querySelector('p').textContent = mensaje;
+    alternarVisibilidad(contenedorMensajeDeAccion);
+
+    setTimeout(() => {
+        alternarVisibilidad(contenedorMensajeDeAccion);
+    }, 1500)
+}
 
 
 /* ====================================================

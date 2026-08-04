@@ -1,3 +1,10 @@
+.flex-column-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .menu-flotante {
     position: absolute;
     width: auto;
@@ -35,12 +42,7 @@
     height: 100%;
     background-color: rgba(0, 0, 0, 0.7);
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
     gap: 10px;
-
-    flex-direction: column;
 
     z-index: 9999;
     cursor: default;
@@ -75,10 +77,6 @@
     font-family: 'Inter', sans-serif;
     font-weight: bold;
     text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
 
     border-radius: 10px;
 
@@ -95,4 +93,89 @@
 
 #nombre-edificio-editando {
     font-size: 2rem;
+}
+
+/* =====================================================
+    VENTANA EMERGENTE PARA CONFIRMAR ELIMINACIÓN DE RUTA
+======================================================== */
+
+.contenedor-confirmar-eliminacion {
+    box-sizing: border-box;
+    width: 400px;
+    height: 300px;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.900),
+        rgba(255, 240, 240, 0.900)
+    );
+
+    padding: 50px;
+    border-radius: 50px;
+    gap: 20px
+}
+
+.contenedor-confirmar-eliminacion p{
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    text-align: center;
+    font-size: 2rem;
+    margin: 0;
+}
+
+#nombre-edificio-elimiar-ruta {
+    font-weight: bold;
+    color: #0153a0;
+}
+
+.opcion-eliminar-ruta {
+    font-family: 'Inter', sans-serif;
+    font-weight: bold;
+    font-size: 3rem;
+
+    color: white;
+    width: 100px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+
+    filter: brightness(0.7);
+    background-color: #003362;
+}
+
+.opcion-eliminar-ruta:hover{
+    filter: brightness(1);
+}
+
+.opcion-eliminar-ruta:active {
+    scale: 1.05;
+}
+
+.contenedor-mensaje-eliminacion-ruta {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: auto;
+    height: auto;
+    padding: 50px;
+
+    background-color: #f8d302;
+
+    z-index: 9999;
+
+    font-family: 'Inter', sans-serif;
+    font-weight: bold;
+    font-size: 3rem;
+    color: black;
+}
+
+.contenedor-mensaje-eliminacion-ruta p {
+    margin: 10px 0 0 0;
+}
+
+.no-seleccionable {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
