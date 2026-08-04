@@ -16,3 +16,20 @@
     <p>Editando la ruta de</p>
     <p id="nombre-edificio-editando"></p>
 </div>
+
+<div id="modal-borrar-ruta" class="modal ocultar">
+    <div class="contenedor-confirmar-eliminacion">
+        <div>
+            <p>¿Seguro que quieres borrar la ruta de</p> 
+            <p><span id="nombre-edificio-elimiar-ruta">Edificio E</span>?</p>
+        </div>
+        <div>
+            <button id="confirmar-eliminacion-ruta" class="opcion-eliminar-ruta">Sí</button>
+            <button id="cancelar-eliminacion-ruta" class="opcion-eliminar-ruta">No</button>
+        </div>
+    </div>
+</div>
+
+<div class="contenedor-mensaje-eliminacion-ruta">
+    <p>Ruta eliminada correctamente</p>ñ
+</div>

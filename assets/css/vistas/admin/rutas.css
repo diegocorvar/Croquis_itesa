@@ -6,15 +6,16 @@
     left: 0;
 
     z-index: 9999;
-    background-color: rebeccapurple;
     margin: 10px;
-    border-radius: 5px;
+    border-radius: 30px;
     padding: 10px 20px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
 }
 
 .edicion-nav {
     display: flex;
     flex-direction: row;
+    gap: 20px;
 }
 
 .contenedor-editar-ruta {
@@ -63,7 +64,11 @@
     margin: 10px;
     width: auto;
     height: auto;
-    background-color: #945207;
+    background: linear-gradient(
+        135deg,
+        #003362,
+        #0153a0
+    ) !important;
     color: white;
 
     padding: 10px 20px;
@@ -85,7 +90,7 @@
 }
 
 .contenedor-edificio-seleccionado p:first-of-type {
-    color: #2e1902;
+    color: #b7c6f8;
 }
 
 #nombre-edificio-editando {
