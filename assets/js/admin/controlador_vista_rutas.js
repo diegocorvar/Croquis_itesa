@@ -71,6 +71,7 @@ btnGuardarRuta.addEventListener('click', () => {
     if (!edificioSeleccionadoId) return;
     moduloGestorRutas.confirmarSeleccionAdmin(edificioSeleccionadoId);
     restablecerNavegacion();
+    mostrarMensaje('Ruta guardada correctamente');
 });
 
 btnBorrarRuta.addEventListener('click', () => {
@@ -98,7 +99,7 @@ function mostrarMensaje(mensaje) {
 
     setTimeout(() => {
         alternarVisibilidad(contenedorMensajeDeAccion);
-    }, 1500);
+    }, 1000);
 }
 
 
