@@ -98,7 +98,7 @@ function mostrarMensaje(mensaje) {
 
     setTimeout(() => {
         alternarVisibilidad(contenedorMensajeDeAccion);
-    }, 1500)
+    }, 1500);
 }
 
 
