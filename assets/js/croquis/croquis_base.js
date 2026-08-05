@@ -31,6 +31,8 @@ CROQUIS_BASE.on('click', function(e) {
     console.log(`[${y}, ${x}]`);
 });
 
+CROQUIS_BASE.setZoom(-1);
+
 /* ====================================================
     CARGAR IMAGEN DEL CROQUIS
 ==================================================== */
@@ -144,7 +146,7 @@ export function resaltarEdificioEnMapa(poligonoLeaflet) {
     poligonoActivo = poligonoLeaflet;
 }
 
-function activarParpadeoPoligono(elementoSVG) {
+export function activarParpadeoPoligono(elementoSVG) {
     if (elementoSVG) {
         elementoSVG.classList.add('poligono-remarcado');
 
@@ -155,7 +157,7 @@ function activarParpadeoPoligono(elementoSVG) {
 }
 
 // Limpia cualquier parpadeo previo y temporizador activo
-function reiniciarPoligonoRemarcado() {
+export function reiniciarPoligonoRemarcado() {
     if (poligonoActivo) {
         poligonoActivo.getElement()?.classList.remove('poligono-remarcado');
     }

@@ -32,6 +32,7 @@ const opcionesEditarRuta = document.getElementById('botones-editar-ruta');
 const opcionesMenuAdmin = document.querySelector('.barra-lateral-izq-admin');
 const nombreEdificioEnEdicion = document.getElementById('nombre-edificio-editando');
 const contenedorNombreElementoEdicion = document.querySelector('.contenedor-edificio-seleccionado');
+const modalAyuda = document.querySelector('.modal-ayuda');
 
 // Lista con TODOS los botones principales del nav para iterar fácilmente
 const TODOS_LOS_BOTONES_NAV = [
@@ -109,6 +110,10 @@ function mostrarMensaje(mensaje) {
 
 const edificioE = moduloCroquisBase.edificioE;
 
+const listaEdificios = [
+    edificioE
+];
+
 edificioE.on('click', () => {
     gestionarSeleccionEdificio('E', 'Edificio E');
 });
@@ -183,12 +188,23 @@ reiniciarTemporizador();
 
 function reiniciarTemporizador() {
     clearTimeout(tiempoInactivo);
-    document.querySelector('.modal-ayuda').classList.add('ocultar');
+    modalAyuda.classList.add('ocultar');
 
     tiempoInactivo = setTimeout(() => {
         if (!opcionesEditarRuta.classList.contains('ocultar')) return;
-        document.querySelector('.modal-ayuda').classList.remove('ocultar');
-    }, 3000);
+        modalAyuda.classList.remove('ocultar');
+        moduloCroquisBase.reiniciarPoligonoRemarcado();
+    }, 5000);
 }
 
-window.addEventListener('mousemove', reiniciarTemporizador);
+function resaltarEdificiosHabilitados(edificios) {
+    for (let edificio of edificios) 
+        moduloCroquisBase.activarParpadeoPoligono(edificio.getElement());
+}
+
+window.addEventListener('mousemove', () => {
+    if (!modalAyuda.classList.contains('ocultar')) {
+        resaltarEdificiosHabilitados(listaEdificios);
+    }
+    reiniciarTemporizador();
+})
