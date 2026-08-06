@@ -8,23 +8,17 @@ const CROQUIS_BASE = moduloCroquisBase.CROQUIS_BASE;
 const DESACTIVAR_EDIFICIOS = true;
 const ACTIVAR_EDIFICIOS = false;
 
-// Variable de control para saber qué edificio se está editando actualmente
 let edificioSeleccionadoId = null;
+let tiempoInactivo = null;
 
-
-/* ====================================================
-    ELEMENTOS DEL DOM
-==================================================== */
-
+// Elementos del DOM
 const btnMostrarRuta = document.getElementById('boton-nav-mostrar-ruta');
 const btnOcultarRuta = document.getElementById('boton-nav-ocultar-ruta');
 const btnEditarRuta  = document.getElementById('boton-nav-editar-ruta');
 const btnGuardarRuta = document.getElementById('boton-nav-guardar-ruta');
-
 const btnBorrarRuta  = document.getElementById('boton-nav-borrar-ruta');
 const btnConfirmarBorrarRuta = document.getElementById('confirmar-eliminacion-ruta');
 const btnCancelarBorrarRuta = document.getElementById('cancelar-eliminacion-ruta');
-
 const modalBorrarRuta = document.getElementById('modal-borrar-ruta');
 const contenedorMensajeDeAccion = document.querySelector('.contenedor-mensaje-eliminacion-ruta');
 const salirEditarRuta = document.getElementById('boton-salir-editar-ruta');
@@ -34,7 +28,9 @@ const nombreEdificioEnEdicion = document.getElementById('nombre-edificio-editand
 const contenedorNombreElementoEdicion = document.querySelector('.contenedor-edificio-seleccionado');
 const modalAyuda = document.querySelector('.modal-ayuda');
 
-// Lista con TODOS los botones principales del nav para iterar fácilmente
+const edificioE = moduloCroquisBase.edificioE;
+const listaEdificios = [edificioE];
+
 const TODOS_LOS_BOTONES_NAV = [
     btnMostrarRuta,
     btnOcultarRuta,
@@ -44,103 +40,122 @@ const TODOS_LOS_BOTONES_NAV = [
     salirEditarRuta
 ];
 
-
 /* ====================================================
-    CONFIGURACIÓN DE LISTENERS (SE EJECUTAN UNA SOLA VEZ)
+    MANEJADORES DE EVENTOS (HANDLERS)
 ==================================================== */
+function onClickEdificioE() {
+    gestionarSeleccionEdificio('E', 'Edificio E');
+}
 
-salirEditarRuta.addEventListener('click', alternarOpcionesMenu);
+function onMouseMove() {
+    if (!modalAyuda.classList.contains('ocultar')) {
+        resaltarEdificiosHabilitados(listaEdificios);
+    }
+    reiniciarTemporizador();
+}
 
-btnMostrarRuta.addEventListener('click', () => {
+function onClickMostrarRuta() {
     if (!edificioSeleccionadoId) return;
     moduloGestorRutas.mostrarRutaEdificio(edificioSeleccionadoId, CROQUIS_BASE);
     resaltarAccion(btnOcultarRuta);
-});
+}
 
-btnOcultarRuta.addEventListener('click', () => {
+function onClickOcultarRuta() {
     moduloGestorRutas.ocultarRutas();
     restablecerNavegacion();
-});
+}
 
-btnEditarRuta.addEventListener('click', () => {
+function onClickEditarRuta() {
     if (!edificioSeleccionadoId) return;
     moduloGestorRutas.activarModoAsignacion(edificioSeleccionadoId, CROQUIS_BASE);
     resaltarAccion(btnGuardarRuta);
-});
+}
 
-btnGuardarRuta.addEventListener('click', () => {
+function onClickGuardarRuta() {
     if (!edificioSeleccionadoId) return;
     moduloGestorRutas.confirmarSeleccionAdmin(edificioSeleccionadoId);
     restablecerNavegacion();
     mostrarMensaje('Ruta guardada correctamente');
-});
+}
 
-btnBorrarRuta.addEventListener('click', () => {
+function onClickBorrarRuta() {
     if (!edificioSeleccionadoId) return;
     alternarVisibilidad(modalBorrarRuta);
-});
+}
 
-btnConfirmarBorrarRuta.addEventListener('click', () => {
+function onClickConfirmarBorrar() {
     moduloGestorRutas.borrarRuta(edificioSeleccionadoId);
     alternarVisibilidad(modalBorrarRuta);
     mostrarMensaje('Ruta eliminada correctamente');
-});
-
-btnCancelarBorrarRuta.addEventListener('click', () => {
-    alternarVisibilidad(modalBorrarRuta);
-});
-
-function alternarVisibilidad(elemento) {
-    elemento.classList.toggle('ocultar');
 }
+
+function onClickCancelarBorrar() {
+    alternarVisibilidad(modalBorrarRuta);
+}
+
+/* ====================================================
+    MÉTODOS DE CICLO DE VIDA
+==================================================== */
+export function activarVistaRutas() {
+    salirEditarRuta.addEventListener('click', alternarOpcionesMenu);
+    btnMostrarRuta.addEventListener('click', onClickMostrarRuta);
+    btnOcultarRuta.addEventListener('click', onClickOcultarRuta);
+    btnEditarRuta.addEventListener('click', onClickEditarRuta);
+    btnGuardarRuta.addEventListener('click', onClickGuardarRuta);
+    btnBorrarRuta.addEventListener('click', onClickBorrarRuta);
+    btnConfirmarBorrarRuta.addEventListener('click', onClickConfirmarBorrar);
+    btnCancelarBorrarRuta.addEventListener('click', onClickCancelarBorrar);
+    window.addEventListener('mousemove', onMouseMove);
+
+    edificioE.on('click', onClickEdificioE);
+
+    reiniciarTemporizador();
+}
+
+export function desactivarVistaRutas() {
+    salirEditarRuta.removeEventListener('click', alternarOpcionesMenu);
+    btnMostrarRuta.removeEventListener('click', onClickMostrarRuta);
+    btnOcultarRuta.removeEventListener('click', onClickOcultarRuta);
+    btnEditarRuta.removeEventListener('click', onClickEditarRuta);
+    btnGuardarRuta.removeEventListener('click', onClickGuardarRuta);
+    btnBorrarRuta.removeEventListener('click', onClickBorrarRuta);
+    btnConfirmarBorrarRuta.removeEventListener('click', onClickConfirmarBorrar);
+    btnCancelarBorrarRuta.removeEventListener('click', onClickCancelarBorrar);
+    window.removeEventListener('mousemove', onMouseMove);
+
+    edificioE.off('click', onClickEdificioE);
+
+    clearTimeout(tiempoInactivo);
+    modalAyuda.classList.add('ocultar');
+    
+    if (edificioSeleccionadoId) {
+        alternarOpcionesMenu();
+    }
+    moduloGestorRutas.ocultarRutas();
+}
+
+/* Auxiliares */
+function alternarVisibilidad(elemento) { elemento.classList.toggle('ocultar'); }
 
 function mostrarMensaje(mensaje) {
     contenedorMensajeDeAccion.querySelector('p').textContent = mensaje;
     alternarVisibilidad(contenedorMensajeDeAccion);
-
-    setTimeout(() => {
-        alternarVisibilidad(contenedorMensajeDeAccion);
-    }, 1000);
+    setTimeout(() => alternarVisibilidad(contenedorMensajeDeAccion), 1000);
 }
-
-
-/* ====================================================
-    LÓGICA DE SELECCIÓN DE EDIFICIO
-==================================================== */
-
-const edificioE = moduloCroquisBase.edificioE;
-
-const listaEdificios = [
-    edificioE
-];
-
-edificioE.on('click', () => {
-    gestionarSeleccionEdificio('E', 'Edificio E');
-});
 
 function gestionarSeleccionEdificio(idEdificio, nombreEdificio) {
     edificioSeleccionadoId = idEdificio;
-
-    if (opcionesEditarRuta.classList.contains('ocultar')) {
-        alternarOpcionesMenu();
-    }
-
+    if (opcionesEditarRuta.classList.contains('ocultar')) alternarOpcionesMenu();
     restablecerNavegacion();
-
-    mostrarNombreEdificioEnEdicion(nombreEdificio);
-    moduloCroquisBase.toggleEstadoEdificios(DESACTIVAR_EDIFICIOS);
-}
-
-function mostrarNombreEdificioEnEdicion(nombre) {
-    nombreEdificioEnEdicion.textContent = nombre;
+    nombreEdificioEnEdicion.textContent = nombreEdificio;
     contenedorNombreElementoEdicion.classList.remove('ocultar');
+    moduloCroquisBase.toggleEstadoEdificios(DESACTIVAR_EDIFICIOS);
 }
 
 function alternarOpcionesMenu() {
     opcionesEditarRuta.classList.toggle('ocultar');
     opcionesMenuAdmin.classList.toggle('ocultar');
     contenedorNombreElementoEdicion.classList.add('ocultar');
-    
     if (opcionesEditarRuta.classList.contains('ocultar')) {
         edificioSeleccionadoId = null;
         moduloGestorRutas.ocultarRutas();
@@ -149,27 +164,13 @@ function alternarOpcionesMenu() {
     }
 }
 
-/* ====================================================
-    GESTIÓN DE ESTADO DE NAVEGACIÓN
-==================================================== */
-
-/**
- * Oculta todos los botones de la navegación excepto el que se pasa como parámetro.
- * @param {HTMLElement} botonVisible - El único botón que debe quedarse visible.
- */
 function resaltarAccion(botonVisible) {
     TODOS_LOS_BOTONES_NAV.forEach(btn => {
-        if (btn === botonVisible) {
-            btn.classList.remove('ocultar');
-        } else {
-            btn.classList.add('ocultar');
-        }
+        if (btn === botonVisible) btn.classList.remove('ocultar');
+        else btn.classList.add('ocultar');
     });
 }
 
-/**
- * Vuelve la barra a su estado inicial de edición (Mostrar, Editar, Borrar, Agregar visibles).
- */
 function restablecerNavegacion() {
     btnMostrarRuta.classList.remove('ocultar');
     btnOcultarRuta.classList.add('ocultar');
@@ -179,17 +180,9 @@ function restablecerNavegacion() {
     salirEditarRuta.classList.remove('ocultar');
 }
 
-/* ====================================================
-    MODAL DE AYUDA
-==================================================== */
-
-let tiempoInactivo;
-reiniciarTemporizador();
-
 function reiniciarTemporizador() {
     clearTimeout(tiempoInactivo);
     modalAyuda.classList.add('ocultar');
-
     tiempoInactivo = setTimeout(() => {
         if (!opcionesEditarRuta.classList.contains('ocultar')) return;
         modalAyuda.classList.remove('ocultar');
@@ -201,10 +194,3 @@ function resaltarEdificiosHabilitados(edificios) {
     for (let edificio of edificios) 
         moduloCroquisBase.activarParpadeoPoligono(edificio.getElement());
 }
-
-window.addEventListener('mousemove', () => {
-    if (!modalAyuda.classList.contains('ocultar')) {
-        resaltarEdificiosHabilitados(listaEdificios);
-    }
-    reiniciarTemporizador();
-})
