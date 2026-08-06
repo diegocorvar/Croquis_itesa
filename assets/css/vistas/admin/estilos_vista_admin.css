@@ -38,7 +38,11 @@
 }
 
 .sub-menu {
-    background-color: #945207 !important;
+    background: linear-gradient(
+        135deg,
+        #003362,
+        #0153a0
+    ) !important;
 }
 
 .admin-nav {
@@ -62,7 +66,11 @@
 }
 
 .sub-menu .tooltip-boton-barra-lateral-admin {
-    background-color: #945207 !important;
+    background: linear-gradient(
+        135deg,
+        #003362,
+        #0153a0
+    ) !important;
 }
 
 .tooltip-boton-barra-lateral-admin {
@@ -88,9 +96,9 @@
 }
 
 .sobre-elemento {
-    left: 0;
-    top: -60px;
-    left: -10px;
+    top: -70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     text-align: center;
 }
 
@@ -115,7 +123,7 @@
     position: relative;
 }
 
-#vista-admin-rutas {
+.vista-admin > div {
     height: 100%;
     width: 100%;
     position: relative;

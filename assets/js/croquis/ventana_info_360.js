@@ -27,7 +27,7 @@ function abrirVentanaInformacion(idEdificio, nombreEdificio, infoEdficio, nombre
         <div id="modal-edificio" class="modal">
             <div class="ventana-informacion-edificio">
                 <button id="btn-cerrar-modal" class="boton-cerrar-info-edificio">
-                    <img src="/assets/img/iconos/cruz.png">
+                    <img src="${BASE_URL}assets/img/iconos/cruz.png">
                 </button>
                 <div id="visor-360" class="contenedor-imagen-edificio">
                 </div>
@@ -87,7 +87,7 @@ function cerrarModalConAnimacion(modal) {
 function inicializarVisor360(imagenPanoramica) {
     pannellum.viewer('visor-360', {
         "type": "equirectangular",
-        "vaov": 60,
+        "vaov": 180,
         "panorama": `${BASE_URL}assets/img/material_croquis/imagenes_360/${imagenPanoramica}`,
         "autoLoad": true,
         "autoRotate": -2,

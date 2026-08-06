@@ -118,3 +118,8 @@ export function confirmarSeleccionAdmin(idEdificio) {
     capaAdministradorGroup.clearLayers();
     mostrarRutaEdificio(idEdificio);
 };
+
+export function borrarRuta(idEdificio) {
+    guardarRutaLocal(idEdificio, []);
+    capaAdministradorGroup.clearLayers();
+}
