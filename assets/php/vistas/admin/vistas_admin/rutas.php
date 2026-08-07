@@ -1,12 +1,4 @@
 <!-- ============================================================ 
-    MODAL DE AYUDA
-============================================================ -->
-<div class="modal-ayuda flex-column-center ocultar">
-    <p><i class="fa-solid fa-circle-info" style="color: rgb(255, 212, 59);"></i></p>
-    <p>Seleccione algún edificio para editar su ruta</p>
-</div>
-
-<!-- ============================================================ 
     MENSAJE PARA INDICAR LA RUTA DE QUÉ EDIFICIO SE ESTÁ EDITANDO
 ============================================================ -->
 <div class="contenedor-edificio-seleccionado flex-column-center no-seleccionable ocultar">
@@ -27,12 +19,4 @@
             <button id="cancelar-eliminacion-ruta" class="opcion-eliminar-ruta">No</button>
         </div>
     </div>
-</div>
-
-<!-- ============================================================
-    MENSAJE PARA INDICAR UNA ACCIÓN
-============================================================ -->
-<div class="contenedor-mensaje-eliminacion-ruta flex-column-center ocultar no-seleccionable">
-    <i class="fa-solid fa-circle-info" style="color: rgb(0, 0, 0);"></i>
-    <p></p>
 </div>

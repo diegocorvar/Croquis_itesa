@@ -20,7 +20,7 @@ const btnBorrarRuta  = document.getElementById('boton-nav-borrar-ruta');
 const btnConfirmarBorrarRuta = document.getElementById('confirmar-eliminacion-ruta');
 const btnCancelarBorrarRuta = document.getElementById('cancelar-eliminacion-ruta');
 const modalBorrarRuta = document.getElementById('modal-borrar-ruta');
-const contenedorMensajeDeAccion = document.querySelector('.contenedor-mensaje-eliminacion-ruta');
+const contenedorMensajeDeAccion = document.querySelector('.contenedor-mensaje-accion');
 const salirEditarRuta = document.getElementById('boton-salir-editar-ruta');
 const opcionesEditarRuta = document.getElementById('botones-editar-ruta');
 const opcionesMenuAdmin = document.querySelector('.barra-lateral-izq-admin');
@@ -82,6 +82,7 @@ function onClickGuardarRuta() {
 function onClickBorrarRuta() {
     if (!edificioSeleccionadoId) return;
     alternarVisibilidad(modalBorrarRuta);
+    console.log(modalBorrarRuta);
 }
 
 function onClickConfirmarBorrar() {

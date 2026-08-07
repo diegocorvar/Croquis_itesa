@@ -45,6 +45,22 @@ include_once __DIR__ . '/../../../../config.php';
 
         <main class="vista-admin">
             <!-- ============================================================ 
+                MODAL DE AYUDA
+            ============================================================ -->
+            <div class="modal-ayuda flex-column-center ocultar">
+                <p><i class="fa-solid fa-circle-info" style="color: rgb(255, 212, 59);"></i></p>
+                <p>Seleccione algún edificio para editar su ruta</p>
+            </div>
+
+            <!-- ============================================================
+                MENSAJE PARA INDICAR UNA ACCIÓN
+            ============================================================ -->
+            <div class="contenedor-mensaje-accion flex-column-center ocultar no-seleccionable">
+                <i class="fa-solid fa-circle-info" style="color: rgb(0, 0, 0);"></i>
+                <p></p>
+            </div>
+
+            <!-- ============================================================ 
                 CROQUIS BASE
             ============================================================ -->
             <div id="croquisItesa"></div>

@@ -5,6 +5,13 @@
     align-items: center;
 }
 
+.no-seleccionable {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
 .menu-flotante {
     position: absolute;
     width: auto;
@@ -32,31 +39,6 @@
     background-color: red;
 
     z-index: 9999;
-}
-
-.modal-ayuda {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-
-    gap: 10px;
-
-    z-index: 9999;
-    cursor: default;
-}
-
-.modal-ayuda p {
-    margin: 0;
-    background-color: transparent;
-    font-size: 4rem;
-    text-align: center;
-    max-width: 50%;
-    font-family: 'Inter', sans-serif;
-    font-weight: bold;
-    color: white;
 }
 
 .contenedor-edificio-seleccionado {
@@ -148,34 +130,4 @@
 
 .opcion-eliminar-ruta:active {
     scale: 1.05;
-}
-
-.contenedor-mensaje-eliminacion-ruta {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: auto;
-    height: auto;
-    padding: 50px;
-
-    background-color: #f8d302;
-
-    z-index: 9999;
-
-    font-family: 'Inter', sans-serif;
-    font-weight: bold;
-    font-size: 3rem;
-    color: black;
-}
-
-.contenedor-mensaje-eliminacion-ruta p {
-    margin: 10px 0 0 0;
-}
-
-.no-seleccionable {
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
 }

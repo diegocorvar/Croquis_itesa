@@ -9,6 +9,13 @@ const edificioE = moduloCroquisBase.edificioE;
 const listaEdificios = [edificioE];
 
 
-function onClickEdificioE() {
-    gestionarSeleccionEdificio('E', 'Edificio E');
+function onClickEdificio(e) {
+    const {id, nombre} = e.target.options;
+    gestionarSeleccionEdificio(id, nombre);
+}
+
+export function activarVistaRutas() {
+    listaEdificios.forEach(edificio => {
+        edificio.on('click', onClickEdificio);
+    });
 }
