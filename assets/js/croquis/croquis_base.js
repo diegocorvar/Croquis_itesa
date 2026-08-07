@@ -83,7 +83,11 @@ const coordsEdificioE = [
     POLIGONOS DE EDIFICIOS
 ==================================================== */
 
-export const edificioE = L.polygon(coordsEdificioE, {className: 'poligono-edificio'}).addTo(CROQUIS_BASE);
+export const edificioE = L.polygon(coordsEdificioE, {
+    className: 'poligono-edificio',
+    id: 'E',
+    nombre: 'Edificio E'
+}).addTo(CROQUIS_BASE);
 
 export const EDIFICIOS_MAPA = [
     edificioE
