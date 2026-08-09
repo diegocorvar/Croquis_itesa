@@ -34,7 +34,7 @@ include_once __DIR__ . '/../../../../config.php';
 <body>
     <div id="contenedor-admin">
         <aside class="barra-lateral-izq-admin">
-            <div id="botones-inicio-admin" class="">
+            <div id="botones-inicio-admin" class="ocultar">
                 <?php include __DIR__ . '/botones_menu/botones_inicio_admin.php'; ?>
             </div>
         </aside>

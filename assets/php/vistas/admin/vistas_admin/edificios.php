@@ -1,62 +1,74 @@
-<div class="contenedor-crud-edificio">
-    <div class="main-crud-edificio">
+<div class="crud-edificio">
+    <main class="crud-edificio__main">
         <!-- NOMBRE DEL EDIFICIO -->
-        <div class="header-edificio">
-            <div class="contenedor-nombre-edificio">
-                <p id="nombre-edificio">Edificio E</p>
-                <button id="btn-editar-nombre-edificio" class="boton-editar-campo" title="editar nombre de edificio">
-                    <i class="fa-solid fa-pen-to-square" style="color: rgb(0, 0, 0);"></i>
+        <header class="crud-edificio__header">
+            <div class="crud-edificio__grupo-nombre">
+                <h1 class="crud-edificio__titulo">Edificio E</h1>
+                <button class="crud-edificio__btn crud-edificio__btn--edit" title="Editar nombre de edificio">
+                    <i class="fa-solid fa-pen-to-square"></i>
                 </button>
             </div>
-            <div class="contenedor-salir-edificio">
-                <button id="btn-guardar-cambios-edificio" class="boton-editar-campo" title="Guardar cambios">
-                    <span><i class="fa-solid fa-floppy-disk" style="color: white;"></i> Guardar cambios</span>
+            <div class="crud-edificio__grupo-acciones">
+                <button class="crud-edificio__btn crud-edificio__btn--save" title="Guardar cambios">
+                    <i class="fa-solid fa-floppy-disk"></i>
+                    <span>Guardar cambios</span>
                 </button>
-                <button id="btn-salir-editar-edificio" class="boton-editar-campo" title="Salir">
-                    <i class="fa-solid fa-x" style="color: white;"></i>
+                <button class="crud-edificio__btn crud-edificio__btn--cancel" title="Salir">
+                    <i class="fa-solid fa-x"></i>
                 </button>
             </div>
-        </div>
+        </header>
+
         <!-- IMÁGENES DEL EDIFICIO -->
-        <div class="contenedor-imagenes-edificio">
-            <div class="contenedor-img-edificio">
-                <button id="btn-editar-img-edificio" class="boton-editar-campo" title="Subir nueva imagen">
-                    <i class="fa-solid fa-arrow-up-from-bracket" style="color: rgb(0, 0, 0);"></i>
+        <section class="crud-edificio__imagenes">
+            <div class="crud-edificio__img-wrapper crud-edificio__img-wrapper--normal">
+                <button class="crud-edificio__btn crud-edificio__btn--edit crud-edificio__btn--flotante" title="Subir nueva imagen">
+                    <i class="fa-solid fa-arrow-up-from-bracket"></i>
                 </button>
             </div>
-            <div class="contenedor-img360-edificio">
-                <button id="btn-editar-img360-edificio" class="boton-editar-campo" title="Subir nueva imagen 360">
-                    <i class="fa-solid fa-arrow-up-from-bracket" style="color: rgb(0, 0, 0);"></i>
+            <div class="crud-edificio__img-wrapper crud-edificio__img-wrapper--360">
+                <button class="crud-edificio__btn crud-edificio__btn--edit crud-edificio__btn--flotante" title="Subir nueva imagen 360">
+                    <i class="fa-solid fa-arrow-up-from-bracket"></i>
                 </button>
             </div>
-        </div>
+        </section>
+
         <!-- DESCRIPCIÓN DEL EDIFICIO -->
-        <div class="contenedor-descripcion-edificio">
-            <p id="descripcion-edificio"></p>
-            <button id="btn-editar-descripcion-edificio">
-                <img src="" alt="">
-            </button>
-        </div>
+        <section class="crud-edificio__seccion-tarjeta">
+            <header class="crud-edificio__leyenda">
+                <h2>Descripción</h2>
+                <button class="crud-edificio__btn crud-edificio__btn--edit" title="Editar descripción">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                </button>
+            </header>
+            <!-- Usé readonly en lugar de disabled para mejorar la accesibilidad manteniendo el bloqueo de edición -->
+            <textarea class="crud-edificio__textarea" readonly>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi impedit dignissimos eum! Exercitationem consequuntur voluptatum</textarea>
+        </section>
+
         <!-- PISOS DEL EDIFICIO -->
-        <div class="contenedor-pisos-edificio">
-            <div class="contenedor-piso1">
-                <img class="img-piso" src="" alt="">
-                <p class="nombre-piso"></p>
-                <button id="btn-editar-piso1-edificio">
-                    <img src="" alt="">
-                </button>
+        <section class="crud-edificio__seccion-tarjeta">
+            <header class="crud-edificio__leyenda">
+                <h2>Configuración de pisos</h2>
+            </header>
+            <div class="crud-edificio__grid-pisos">
+                <div class="crud-edificio__piso">
+                    <button class="crud-edificio__btn-piso" title="Editar configuración del piso 1">
+                        <img class="crud-edificio__img-piso" src="<?php echo BASE_URL; ?>assets/img/iconos/piso_1.png" alt="icono de piso 1">
+                        <span class="crud-edificio__nombre-piso">Piso 1</span>
+                    </button>
+                </div>
+                <div class="crud-edificio__piso">
+                    <button class="crud-edificio__btn-piso" title="Editar configuración del piso 2">
+                        <img class="crud-edificio__img-piso" src="<?php echo BASE_URL; ?>assets/img/iconos/piso_2.png" alt="icono de piso 2">
+                        <span class="crud-edificio__nombre-piso">Piso 2</span>
+                    </button>
+                </div>
             </div>
-            <div class="contenedor-piso2">
-                <img class="img-piso" src="" alt="">
-                <p class="nombre-piso"></p>
-                <button id="btn-editar-piso2-edificio">
-                    <img src="" alt="">
-                </button>
-            </div>
-        </div>
+        </section>
+
         <!-- ÁREAS DEL EDIFICIO -->
-        <div class="contenedor-areas-edificio">
-            <p>Áreas</p>
-        </div>
-    </div>
+        <section class="crud-edificio__seccion-tarjeta">
+            <h2>Áreas</h2>
+        </section>
+    </main>
 </div>

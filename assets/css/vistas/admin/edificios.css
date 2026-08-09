@@ -1,156 +1,260 @@
-.contenedor-crud-edificio {
+:root {
+    /* Variables de paleta para facilitar modificaciones globales */
+    --crud-bg: #fbfbfb;
+    --crud-card-bg: #ffffff;
+    --crud-text-dark: #01396e;
+    --crud-text-light: #ffffff;
+    --crud-text-icon: #000000;
+    
+    --crud-edit-bg: #fad76a;
+    --crud-edit-hover: #ffe597;
+    
+    --crud-save-bg: #0153a0;
+    --crud-save-hover: #01396e;
+    
+    --crud-cancel-bg: #ca4040;
+    --crud-cancel-hover: #942a2a;
+    
+    --crud-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    --crud-border-color: #b6b6b6;
+}
+
+/* ======================================
+    CONTENEDOR PRINCIPAL
+====================================== */
+.crud-edificio {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #fbfbfb;
-
+    background-color: var(--crud-bg);
     display: flex;
     justify-content: center;
-
     z-index: 9999;
+    overflow-y: auto;
+    font-family: 'Inter', sans-serif;
 }
 
-.main-crud-edificio {
+.crud-edificio *,
+.crud-edificio *::before,
+.crud-edificio *::after {
     box-sizing: border-box;
+}
+
+.crud-edificio__main {
     display: flex;
     flex-direction: column;
     width: 90%;
-    max-width: 2000px;
-    padding: 0 50px;
+    max-width: 1200px;
+    padding: 0 50px 50px 50px;
+    gap: 40px;
 }
 
-.contenedor-crud-edificio > div {
-    width: 100%;
+/* ======================================
+    ESTRUCTURAS REUTILIZABLES (TARJETAS)
+====================================== */
+.crud-edificio__seccion-tarjeta {
+    background-color: var(--crud-card-bg);
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: var(--crud-shadow);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
-.boton-editar-campo {
+.crud-edificio__leyenda {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.crud-edificio__leyenda h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+/* ======================================
+    SISTEMA DE BOTONES GLOBALES
+====================================== */
+.crud-edificio__btn {
     border: none;
     cursor: pointer;
-
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #fad76a;
-
-    box-sizing: border-box;
-    padding: 3px;
+    transition: background-color 0.2s ease;
 }
 
-.boton-editar-campo:hover {
-    padding: 2px;
-    background-color: #ffe597;
+.crud-edificio__btn--edit {
+    background-color: var(--crud-edit-bg);
+    color: var(--crud-text-icon);
+    width: 30px;
+    height: 30px;
+}
+
+.crud-edificio__btn--edit:hover {
+    background-color: var(--crud-edit-hover);
+}
+
+.crud-edificio__btn--save {
+    background-color: var(--crud-save-bg);
+    color: var(--crud-text-light);
+    padding: 8px 12px;
+    gap: 8px;
+    height: 35px;
+}
+
+.crud-edificio__btn--save:hover {
+    background-color: var(--crud-save-hover);
+}
+
+.crud-edificio__btn--cancel {
+    background-color: var(--crud-cancel-bg);
+    color: var(--crud-text-light);
+    width: 35px;
+    height: 35px;
+}
+
+.crud-edificio__btn--cancel:hover {
+    background-color: var(--crud-cancel-hover);
+}
+
+.crud-edificio__btn--flotante {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
 }
 
 /* ======================================
-    NOMBRE DE EDIFICIO
+    HEADER (NOMBRE DE EDIFICIO)
 ====================================== */
-
-.header-edificio {
-    box-sizing: border-box;
+.crud-edificio__header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: 20px;
 }
 
-.contenedor-nombre-edificio {
+.crud-edificio__grupo-nombre,
+.crud-edificio__grupo-acciones {
     display: flex;
     align-items: center;
-    gap: 10px
+    gap: 10px;
 }
 
-#btn-editar-nombre-edificio {
-    width: 25px;
-    height: 25px;
-    display: inline-block;
-}
-
-#nombre-edificio {
-    display: inline-block;
+.crud-edificio__titulo {
     font-size: 2.5rem;
     font-weight: bold;
-    font-family: 'Inter', sans-serif;   
-}
-
-.icono-boton {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-}
-
-/* ======================================
-    BOTONES PARA GUARDAR Y SALIR
-====================================== */
-
-.contenedor-salir-edificio {
-    display: flex;
-    gap: 10px
-}
-
-#btn-guardar-cambios-edificio {
-    box-sizing: border-box;
-    background-color: #0153a0;
-    font-family: 'Inter', sans-serif;
-    color: white;
-    padding: 0 10px;
-}
-
-#btn-guardar-cambios-edificio:hover {
-    background-color: #01396e;
-}
-
-#btn-salir-editar-edificio {
-    width: 30px;
-    height: 30px;
-    background-color: rgb(202, 64, 64);
-}
-
-#btn-salir-editar-edificio:hover {
-    background-color: rgb(148, 42, 42);
+    margin: 0;
 }
 
 /* ======================================
     IMÁGENES
 ====================================== */
-
-.contenedor-imagenes-edificio {
+.crud-edificio__imagenes {
     display: flex;
     justify-content: space-between;
     gap: 50px;
 }
 
-.contenedor-imagenes-edificio > div {
-    width: 52%;
-    max-width: 1000px;
+.crud-edificio__img-wrapper {
+    flex: 1;
     background-color: black;
-
     position: relative;
-
     aspect-ratio: 16 / 9;
-
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: var(--crud-shadow);
 }
 
-.contenedor-img-edificio {
+.crud-edificio__img-wrapper--normal {
     background-image: url(/assets/img/plantillas/plantilla_imagen.png);
 }
 
-.contenedor-img360-edificio {
+.crud-edificio__img-wrapper--360 {
     background-image: url(/assets/img/plantillas/plantilla_imagen360.png);
 }
 
-.contenedor-imagenes-edificio button {
-    position: absolute;
-    right: 0;
-    bottom: 0;
+/* ======================================
+    DESCRIPCIÓN
+====================================== */
+.crud-edificio__textarea {
+    width: 100%;
+    min-height: 250px;
+    padding: 15px;
+    border: 2px dashed var(--crud-border-color);
+    font-family: inherit;
+    font-size: 1.5rem;
+    text-align: justify;
+    resize: vertical;
+    background-color: #fafafa;
+}
 
-    margin: 10px;
+/* ======================================
+    PISOS
+====================================== */
+.crud-edificio__grid-pisos {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+}
 
-    width: 30px;
-    height: 30px;
+.crud-edificio__piso {
+    display: flex;
+    justify-content: center;
+    width: 45%;
+    height: 500px;
+}
+
+.crud-edificio__btn-piso {
+    background-color: transparent;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    width: 70%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.crud-edificio__btn-piso:hover {
+    background-color: #ebebeb;
+    outline: 10px solid var(--crud-text-dark);
+}
+
+/* Utilizamos transform en lugar de scale para mejor soporte cross-browser */
+.crud-edificio__btn-piso:hover .crud-edificio__img-piso {
+    transform: scale(1.15);
+}
+
+.crud-edificio__btn-piso:active .crud-edificio__img-piso {
+    transform: scale(1);
+}
+
+.crud-edificio__img-piso {
+    width: 70%;
+    transition: transform 0.2s ease;
+}
+
+.crud-edificio__nombre-piso {
+    font-family: "Archivo Black", sans-serif;
+    font-weight: bold;
+    font-size: 2rem;
+    margin-top: 40px;
+    color: var(--crud-text-dark);
+}
+
+.crud-edificio__piso--desactivado {
+    filter: brightness(0.5);
+    cursor: not-allowed;
+    pointer-events: none; /* Asegura que no reciba clicks */
 }
