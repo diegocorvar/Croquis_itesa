@@ -34,7 +34,7 @@ include_once __DIR__ . '/../../../../config.php';
 <body>
     <div id="contenedor-admin">
         <aside class="barra-lateral-izq-admin">
-            <div id="botones-inicio-admin" class="ocultar">
+            <div id="botones-inicio-admin" class="">
                 <?php include __DIR__ . '/botones_menu/botones_inicio_admin.php'; ?>
             </div>
         </aside>
@@ -66,11 +66,11 @@ include_once __DIR__ . '/../../../../config.php';
             <div id="croquisItesa"></div>
 
             <!-- CONTENEDORES DE INTERFAZ -->
-            <div id="vista-admin-rutas" class="ocultar">
+            <div id="vista-admin-rutas" class="">
                 <?php include __DIR__ . '/vistas_admin/rutas.php'; ?>
             </div>
 
-            <div id="vista-admin-edificios" class="">
+            <div id="vista-admin-edificios" class="ocultar">
                 <?php include __DIR__ . '/vistas_admin/edificios.php'; ?>
             </div>
         </main>

@@ -68,7 +68,27 @@
 
         <!-- ÁREAS DEL EDIFICIO -->
         <section class="crud-edificio__seccion-tarjeta">
-            <h2>Áreas</h2>
+            <header class="crud-edificio__leyenda">
+                <h2>Áreas</h2>
+            </header>
         </section>
+
+        <!-- ACTIVACIÓN DE EDIFICIO -->
+        <section class="crud-edificio__seccion-tarjeta">
+            <header class="crud-edificio__leyenda">
+                <h2>Activación de edificio</h2>
+            </header>
+            <div class="crud-edificio__estado">
+                <h3>Estado de edificio</h3>
+                <div class="crud-edificio__estado-deslizador">
+                    <span class="crud-edificio__estado-etiqueta">INACTIVO</span>
+                    <label class="switch">
+                        <input type="checkbox">
+                        <span class="deslizador"></span>
+                    </label>
+                </div>
+            </div>
+        </section>
+
     </main>
 </div>

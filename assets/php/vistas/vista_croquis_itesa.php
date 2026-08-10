@@ -18,7 +18,7 @@
     <link rel="shortcut icon" href="<?php echo BASE_URL; ?>assets/img/logos/logo-itesa2.ico" type="image/x-icon">
 </head>
 <body>
-    <main>
+    <main class="vista-croquis__main">
         <?php include __DIR__ . '/../componentes/menu_desplegable_izquierdo.php'; ?>
         <?php include __DIR__ . '/../componentes/barra_busqueda.php'; ?>
 

@@ -122,15 +122,18 @@
 }
 
 .vista-admin {
-    min-height: 100vh;
-    min-width: 0;
+    flex: 1;
+    height: 100vh;
     position: relative;
+    overflow: hidden;
 }
 
 .vista-admin > div {
     height: 100%;
     width: 100%;
-    position: relative;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 .modal-ayuda {
