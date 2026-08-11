@@ -16,6 +16,11 @@
 
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/main.css">
     <link rel="shortcut icon" href="<?php echo BASE_URL; ?>assets/img/logos/logo-itesa2.ico" type="image/x-icon">
+
+    <script>
+        // Variable global en JavaScript con la URL Base de PHP
+        const BASE_URL = "<?php echo BASE_URL; ?>";
+    </script>
 </head>
 <body>
     <main class="vista-croquis__main">
@@ -24,10 +29,6 @@
 
         <!-- Script de la librería Leaflet.js -->
         <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-        <script>
-            // Variable global en JavaScript con la URL Base de PHP
-            const BASE_URL = "<?php echo BASE_URL; ?>";
-        </script>
         <script type="module" src="<?php echo BASE_URL; ?>assets/js/croquis/ventana_info_360.js" defer></script>
 
         <div id="croquisItesa"></div>
