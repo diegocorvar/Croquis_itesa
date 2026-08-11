@@ -20,7 +20,7 @@ const btnBorrarRuta  = document.getElementById('boton-nav-borrar-ruta');
 const btnConfirmarBorrarRuta = document.getElementById('confirmar-eliminacion-ruta');
 const btnCancelarBorrarRuta = document.getElementById('cancelar-eliminacion-ruta');
 const modalBorrarRuta = document.getElementById('modal-borrar-ruta');
-const contenedorMensajeDeAccion = document.querySelector('.contenedor-mensaje-eliminacion-ruta');
+const contenedorMensajeDeAccion = document.querySelector('.contenedor-mensaje-accion');
 const salirEditarRuta = document.getElementById('boton-salir-editar-ruta');
 const opcionesEditarRuta = document.getElementById('botones-editar-ruta');
 const opcionesMenuAdmin = document.querySelector('.barra-lateral-izq-admin');
@@ -43,8 +43,9 @@ const TODOS_LOS_BOTONES_NAV = [
 /* ====================================================
     MANEJADORES DE EVENTOS (HANDLERS)
 ==================================================== */
-function onClickEdificioE() {
-    gestionarSeleccionEdificio('E', 'Edificio E');
+function onClickEdificio(e) {
+    const {id, nombre} = e.target.options;
+    gestionarSeleccionEdificio(id, nombre);
 }
 
 function onMouseMove() {
@@ -81,6 +82,7 @@ function onClickGuardarRuta() {
 function onClickBorrarRuta() {
     if (!edificioSeleccionadoId) return;
     alternarVisibilidad(modalBorrarRuta);
+    console.log(modalBorrarRuta);
 }
 
 function onClickConfirmarBorrar() {
@@ -107,7 +109,9 @@ export function activarVistaRutas() {
     btnCancelarBorrarRuta.addEventListener('click', onClickCancelarBorrar);
     window.addEventListener('mousemove', onMouseMove);
 
-    edificioE.on('click', onClickEdificioE);
+    listaEdificios.forEach(edificio => {
+        edificio.on('click', onClickEdificio);
+    });
 
     reiniciarTemporizador();
 }
@@ -123,7 +127,9 @@ export function desactivarVistaRutas() {
     btnCancelarBorrarRuta.removeEventListener('click', onClickCancelarBorrar);
     window.removeEventListener('mousemove', onMouseMove);
 
-    edificioE.off('click', onClickEdificioE);
+    listaEdificios.forEach(edificio => {
+        edificio.off('click', onClickEdificio);
+    });
 
     clearTimeout(tiempoInactivo);
     modalAyuda.classList.add('ocultar');
