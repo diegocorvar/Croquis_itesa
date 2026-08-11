@@ -100,6 +100,7 @@
     color: var(--crud-text-icon);
     width: 30px;
     height: 30px;
+    transition: 0.2s;
 }
 
 .crud-edificio__btn--edit:hover {

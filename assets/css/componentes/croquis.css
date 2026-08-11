@@ -100,12 +100,17 @@
     ESTILOS PARA TOOLTIPS DEL CROQUIS
 ==================================================== */
 
+.leaflet-tooltip-top {
+    margin: 0 !important;
+    padding: 1px !important;
+}
+
 /* Contenedor principal del Tooltip */
 .leaflet-tooltip.custom-tooltip-croquis {
     color: #f8fafc;
     border: 1px solid #334155;
+    width: 150px;
     border-radius: 8px;
-    padding: 8px 12px;
     font-family: 'Inter', sans-serif;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     text-align: center;
@@ -113,7 +118,7 @@
 
 /* Personalizar la flecha indicadora inferior */
 .leaflet-tooltip-top.custom-tooltip-croquis::before {
-    border-top-color: #1e293b;
+    border-top-color: #f8fafc !important;
 }
 
 /* Estilos para el HTML interno */
@@ -123,7 +128,7 @@
     font-weight: bold;
     font-size: 1rem;
     color: #084469;
-    margin-bottom: 2px;
+    margin: 0;
 }
 
 .tooltip-edificio-contenido img {
@@ -142,7 +147,9 @@
     font-size: 0.8rem;
     color: black;
     line-height: 1.2;
-}/* ====================================================
+}
+
+/* ====================================================
     ESTILOS PARA TOOLTIPS DEL CROQUIS
 ==================================================== */
 

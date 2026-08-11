@@ -12,11 +12,11 @@ const edificioE = modulo.edificioE;
 
 edificioE.on("click", () => {
     abrirVentanaInformacion(
-        'E',
-        'Edificio E',
-        'Edificio de la carrera de Ingeniería en Sistemas Computacionales',
-        'edificio_E.webp',
-        ['LC1', 'LC2', 'LC3', 'LC4', 'LC5', 'LC6', 'LC7', 'SITE']
+        edificioE.id,
+        edificioE.nombre,
+        edificioE.descripcion,
+        edificioE.imagen360,
+        edificioE.areas
     );
 });
 

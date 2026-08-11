@@ -14,8 +14,17 @@ function onClickEdificio(e) {
     gestionarSeleccionEdificio(id, nombre);
 }
 
-export function activarVistaRutas() {
+export function activarVistaEdificios() {
     listaEdificios.forEach(edificio => {
         edificio.on('click', onClickEdificio);
     });
+}
+
+function gestionarSeleccionEdificio(idEdificio, nombreEdificio) {
+    edificioSeleccionadoId = idEdificio;
+    if (opcionesEditarRuta.classList.contains('ocultar')) alternarOpcionesMenu();
+    restablecerNavegacion();
+    nombreEdificioEnEdicion.textContent = nombreEdificio;
+    contenedorNombreElementoEdicion.classList.remove('ocultar');
+    moduloCroquisBase.toggleEstadoEdificios(DESACTIVAR_EDIFICIOS);
 }

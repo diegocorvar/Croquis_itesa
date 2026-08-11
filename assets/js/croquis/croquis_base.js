@@ -86,7 +86,11 @@ const coordsEdificioE = [
 export const edificioE = L.polygon(coordsEdificioE, {
     className: 'poligono-edificio',
     id: 'E',
-    nombre: 'Edificio E'
+    nombre: 'Edificio E',
+    descripcion: 'Edificio de la carrera de Ingeniería en Sistemas Computacionales',
+    imagen: 'fachada_edificioE.webp',
+    imagen360: 'edificio_E.webp',
+    areas: ['LC1', 'LC2', 'LC3', 'LC4', 'LC5', 'LC6', 'LC7', 'SITE']
 }).addTo(CROQUIS_BASE);
 
 export const EDIFICIOS_MAPA = [
@@ -114,20 +118,21 @@ export function toggleEstadoEdificios(desactivar) {
     TOOLTIPS DE EDIFICIOS
 ==================================================== */
 
-edificioE.bindTooltip(`
-    <div class="tooltip-edificio-contenido">
-        <img src="${BASE_URL}assets/img/material_croquis/fotos_de_edificios/fachada_edificioE.webp"/>
-        <span class="tooltip-titulo">Edificio E</span>
-        <p class="tooltip-descripcion">Ingeniería en Sistemas Computacionales</p>
-    </div>
-    `, {
-    sticky: false,
-    direction: 'top',
-    permanent: false,
-    opacity: 0.95,
-    className: 'custom-tooltip-croquis',
-    offset: [0, -30]
-});
+for (let edificio of EDIFICIOS_MAPA) {
+    edificio.bindTooltip(`
+        <div class="tooltip-edificio-contenido">
+            <img src="${BASE_URL}assets/img/material_croquis/fotos_de_edificios/${edificio.options.imagen}"/>
+            <span class="tooltip-titulo">${edificio.options.nombre}</span>
+        </div>
+        `, {
+        sticky: false,
+        direction: 'top',
+        permanent: false,
+        opacity: 0.95,
+        className: 'custom-tooltip-croquis',
+        offset: [0, -30]
+    });
+}
 
 /* ====================================================
     VARIABLE Y TIMEOUT PARA EL POLÍGONO ACTIVO

@@ -1,5 +1,5 @@
-<div class="crud-edificio">
-    <main class="crud-edificio__main">
+<div class="crud-edificio ocultar">
+    <div class="crud-edificio__main">
         <!-- NOMBRE DEL EDIFICIO -->
         <header class="crud-edificio__header">
             <div class="crud-edificio__grupo-nombre">
@@ -90,5 +90,5 @@
             </div>
         </section>
 
-    </main>
+    </div>
 </div>
