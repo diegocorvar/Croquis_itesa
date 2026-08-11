@@ -71,6 +71,40 @@
             <header class="crud-edificio__leyenda">
                 <h2>Áreas</h2>
             </header>
+            <table class="crud-edificio__tabla-areas">
+                <thead>
+                    <tr>
+                        <th>Clave</th>
+                        <th>Nombre</th>
+                        <th>Piso</th>
+                        <th>Descripción</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="tabla-areas__tupla-area">
+                        <td>34</td>
+                        <td>LC1</td>
+                        <td>Piso 1</td>
+                        <td>Laboratorio de computación 1</td>
+                        <td class="tabla-areas__botones">
+                            <button title="Remover área de edificio" class="crud-edificio__btn crud-edificio__btn--edit tabla-araes__btn-quitar-area">
+                                <i class="fa-solid fa-square-minus crud-edificio__btn--remover-area"></i>
+                            </button>
+                            <button title="Editar área" class="crud-edificio__btn crud-edificio__btn--edit">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr class="tabla-areas__fila-agregar-area">
+                        <td colspan="5" title="Agregar área">
+                            <button id="crud-edificio__btn-agregar-area" class="crud-edificio__btn crud-edificio__btn--edit">
+                                <i class="fa-solid fa-plus"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </section>
 
         <!-- ACTIVACIÓN DE EDIFICIO -->
