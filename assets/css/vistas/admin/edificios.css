@@ -138,6 +138,43 @@
 }
 
 /* ======================================
+    TOOLTIPS DE AYUDA
+====================================== */
+
+.help-tooltip-icon {
+    cursor: pointer;
+    color: rgb(255, 196, 0);
+}
+
+.help-tooltip-icon:hover + .help-tooltip-mensaje {
+    display: flex;
+}
+
+.help-tooltip-mensaje {
+    display: none;
+    position: absolute;
+    background-color: #000000b2;
+    width: 200px;
+    padding: 5px;
+    color: white;
+    font-size: 0.85rem;
+    font-weight: lighter;
+    border-radius: 5px;
+}
+
+.help-tooltip-mensaje-left::before {
+    position: absolute;
+    content: '';
+    width: 0;
+    height: 0;
+    border-bottom: 10px solid transparent;
+    border-right: 10px solid #000000b2;
+    border-top: 10px solid transparent;
+    left: -10px;
+    top: 30%;
+}
+
+/* ======================================
     HEADER (NOMBRE DE EDIFICIO)
 ====================================== */
 .crud-edificio__header {
@@ -283,8 +320,19 @@
     font-weight: bold;
 }
 
+.crud-edificio__estado-titulo {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    position: relative;
+}
+
 .crud-edificio__estado h3 {
     font-size: 1.2rem;
+}
+
+.crud-edificio__estado-titulo .help-tooltip-mensaje {
+    right: -110%;
 }
 
 .switch {
@@ -343,7 +391,6 @@ input:checked + .deslizador::before {
 }
 
 .crud-edificio__estado-etiqueta {
-    
     color: white;
     padding: 5px;
     font-weight: bold;

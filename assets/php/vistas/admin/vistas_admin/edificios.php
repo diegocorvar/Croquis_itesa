@@ -1,4 +1,4 @@
-<div class="crud-edificio ocultar">
+<div class="crud-edificio">
     <div class="crud-edificio__main">
         <!-- NOMBRE DEL EDIFICIO -->
         <header class="crud-edificio__header">
@@ -79,7 +79,13 @@
                 <h2>Activación de edificio</h2>
             </header>
             <div class="crud-edificio__estado">
-                <h3>Estado de edificio</h3>
+                <div class="crud-edificio__estado-titulo">
+                    <h3>Estado de edificio</h3>
+                    <span class="help-tooltip-icon"><i class="fa-regular fa-circle-question"> </i></span>
+                    <p class="help-tooltip-mensaje help-tooltip-mensaje-left">
+                        Hace visible el edificio en todos los croquis, y permite ver y editar su ruta.
+                    </p>
+                </div>
                 <div class="crud-edificio__estado-deslizador">
                     <span class="crud-edificio__estado-etiqueta">INACTIVO</span>
                     <label class="switch">

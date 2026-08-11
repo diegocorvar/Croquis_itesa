@@ -11,6 +11,10 @@ include_once __DIR__ . '/config.php';
 
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/main.css">
     <link rel="shortcut icon" href="<?php echo BASE_URL; ?>assets/img/logos/logo-itesa2.ico" type="image/x-icon">
+
+    <script>
+        const BASE_URL = "<?php echo BASE_URL; ?>";
+    </script>
 </head>
 <body>
     <main>
