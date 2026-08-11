@@ -65,12 +65,14 @@ include_once __DIR__ . '/../../../../config.php';
             ============================================================ -->
             <div id="croquisItesa" ></div>
 
-            <!-- CONTENEDORES DE INTERFAZ -->
-            <div id="vista-admin-rutas" class="ocultar">
+            <!-- ============================================================ 
+                CONTENEDORES DE INTERFAZ
+            ============================================================ -->
+            <div id="vista-admin-rutas" class="">
                 <?php include __DIR__ . '/vistas_admin/rutas.php'; ?>
             </div>
 
-            <div id="vista-admin-edificios" class="">
+            <div id="vista-admin-edificios" class="ocultar">
                 <?php include __DIR__ . '/vistas_admin/edificios.php'; ?>
             </div>
         </main>

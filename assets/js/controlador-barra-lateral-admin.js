@@ -16,7 +16,7 @@ const contenedorCroquis = document.getElementById('croquisItesa');
 activarToolTips(botonesMenu);
 
 // Vista por defecto al cargar la página (Rutas)
-// moduloVistaRutas.activarVistaRutas();
+moduloVistaRutas.activarVistaRutas();
 
 botonRutas.addEventListener('click', () => {
     // 1. Desactivar vista anterior
