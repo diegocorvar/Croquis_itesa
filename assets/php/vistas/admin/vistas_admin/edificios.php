@@ -4,7 +4,8 @@
         <header class="crud-edificio__header">
             <div class="crud-edificio__grupo-nombre">
                 <h1 class="crud-edificio__titulo">Edificio E</h1>
-                <button class="crud-edificio__btn crud-edificio__btn--edit" title="Editar nombre de edificio">
+                <input type="text" class="crud-edificio__titulo ocultar" value="Edificio E">
+                <button id="btn-editar-nombre-edificio" class="crud-edificio__btn crud-edificio__btn--edit" title="Editar nombre de edificio">
                     <i class="fa-solid fa-pen-to-square"></i>
                 </button>
             </div>
@@ -26,7 +27,7 @@
                     <i class="fa-solid fa-arrow-up-from-bracket"></i>
                 </button>
             </div>
-            <div class="crud-edificio__img-wrapper crud-edificio__img-wrapper--360">
+            <div id="contenedor-img-360" class="crud-edificio__img-wrapper crud-edificio__img-wrapper--360">
                 <button class="crud-edificio__btn crud-edificio__btn--edit crud-edificio__btn--flotante" title="Subir nueva imagen 360">
                     <i class="fa-solid fa-arrow-up-from-bracket"></i>
                 </button>

@@ -44,7 +44,6 @@ botonEdificios.addEventListener('click', () => {
     // 2. Alternar visibilidad en DOM
     ocultarVistasAdmin();
     resaltarBoton(botonEdificios);
-    document.getElementById('vista-admin-edificios').classList.remove('ocultar');
     contenedorCroquis.classList.remove('ocultar');
 
     // 3. Activar vista actual

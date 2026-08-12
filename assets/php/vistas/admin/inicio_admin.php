@@ -26,6 +26,11 @@ include_once __DIR__ . '/../../../../config.php';
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
         integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
 
+    <!-- ESTILOS Y SCRIPT DE PANELLIUM 
+    ========================================== -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pannellum/2.5.6/pannellum.css"/>
+    <script   script src="https://cdnjs.cloudflare.com/ajax/libs/pannellum/2.5.6/pannellum.js"></script>
+
     <!-- CONTROLADOR DE ICONOS FONTAWESOME 
     ========================================== -->
     <script src="https://kit.fontawesome.com/7ff90f9f34.js" crossorigin="anonymous"></script>
