@@ -26,6 +26,11 @@ include_once __DIR__ . '/../../../../config.php';
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
         integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
 
+    <!-- ESTILOS Y SCRIPT DE PANELLIUM 
+    ========================================== -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pannellum/2.5.6/pannellum.css"/>
+    <script   script src="https://cdnjs.cloudflare.com/ajax/libs/pannellum/2.5.6/pannellum.js"></script>
+
     <!-- CONTROLADOR DE ICONOS FONTAWESOME 
     ========================================== -->
     <script src="https://kit.fontawesome.com/7ff90f9f34.js" crossorigin="anonymous"></script>
@@ -49,7 +54,7 @@ include_once __DIR__ . '/../../../../config.php';
             ============================================================ -->
             <div class="modal-ayuda flex-column-center ocultar">
                 <p><i class="fa-solid fa-circle-info" style="color: rgb(255, 212, 59);"></i></p>
-                <p>Seleccione algún edificio para editar su ruta</p>
+                <p class="modal-ayuda--texto"></p>
             </div>
 
             <!-- ============================================================
@@ -65,12 +70,14 @@ include_once __DIR__ . '/../../../../config.php';
             ============================================================ -->
             <div id="croquisItesa" ></div>
 
-            <!-- CONTENEDORES DE INTERFAZ -->
-            <div id="vista-admin-rutas" class="ocultar">
+            <!-- ============================================================ 
+                CONTENEDORES DE INTERFAZ
+            ============================================================ -->
+            <div id="vista-admin-rutas" class="">
                 <?php include __DIR__ . '/vistas_admin/rutas.php'; ?>
             </div>
 
-            <div id="vista-admin-edificios" class="">
+            <div id="vista-admin-edificios" class="ocultar">
                 <?php include __DIR__ . '/vistas_admin/edificios.php'; ?>
             </div>
         </main>

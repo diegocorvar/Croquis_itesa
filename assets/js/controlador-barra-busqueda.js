@@ -1,11 +1,10 @@
+const rutaCroquisBase = `${BASE_URL}assets/js/croquis/croquis_base.js`;
+const moduloCroquisBase = await import(rutaCroquisBase);
+
 /* ========================================================
     CONFIGURACIÓN Y DATOS DE EDIFICIOS
 =========================================================== */
-// Agregar un nuevo edificio en el futuro es tan fácil como añadir un objeto a esta lista:
-const EDIFICIOS_PLANTEL = [
-    { id: 'E', nombre: 'Edificio E', icono: 'edificio-3d.png' },
-    // { id: 'F', nombre: 'Edificio F', icono: 'edificio-3d.png' }
-];
+const listaEdificios = moduloCroquisBase.EDIFICIOS_MAPA;
 
 /* ========================================================
     ELEMENTOS DEL DOM
@@ -23,7 +22,7 @@ const campoInput = document.getElementById('busqueda-campo-input');
 =========================================================== */
 document.addEventListener('DOMContentLoaded', () => {
     // Renderizamos las tarjetas de los edificios dinámicamente
-    renderizarEdificios(EDIFICIOS_PLANTEL);
+    renderizarEdificios(listaEdificios);
 
     // Abrir modal
     btnFiltroEdificio?.addEventListener('click', abrirModalEdificios);
@@ -47,9 +46,9 @@ function renderizarEdificios(listaEdificios) {
     if (!contenedorEdificios) return;
 
     const htmlEdificios = listaEdificios.map(edificio => `
-        <div class="edificio-busqueda" data-edificio-id="${edificio.id}">
-            <img src="${BASE_URL}assets/img/iconos/${edificio.icono}" alt="${edificio.nombre}">
-            <p class="nombre-edificio-busqueda">${edificio.nombre}</p>
+        <div class="edificio-busqueda" data-edificio-id="${edificio.options.id}">
+            <img src="${BASE_URL}assets/img/iconos/edificio-3d.png" alt="${edificio.options.nombre}">
+            <p class="nombre-edificio-busqueda">${edificio.options.nombre}</p>
         </div>
     `).join('');
 
@@ -78,18 +77,10 @@ const moduloCroquis = await import(rutaModuloCroquis);
 function seleccionarEdificio(id) {
     cerrarModalEdificios();
 
-    // Mapeo entre el ID de la lista y la variable del polígono Leaflet
-    const mapaEdificios = {
-        'E': moduloCroquis.edificioE,
-        // En el futuro asocias las demás letras conforme agregues coordenadas:
-        // 'A': moduloCroquis.edificioA,
-        // 'B': moduloCroquis.edificioB,
-    };
-
-    const poligonoObjetivo = mapaEdificios[id];
+    const poligonoObjetivo = listaEdificios.find(edificio => edificio.options.id === id);
 
     if (poligonoObjetivo) {
-        // Ejecutamos la función para centrar y resaltar en Leaflet
+
         moduloCroquis.resaltarEdificioEnMapa(poligonoObjetivo);
     } else {
         console.warn(`El edificio ${id} aún no tiene polígono trazado en el mapa.`);

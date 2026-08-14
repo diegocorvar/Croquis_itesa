@@ -27,9 +27,10 @@ const opcionesMenuAdmin = document.querySelector('.barra-lateral-izq-admin');
 const nombreEdificioEnEdicion = document.getElementById('nombre-edificio-editando');
 const contenedorNombreElementoEdicion = document.querySelector('.contenedor-edificio-seleccionado');
 const modalAyuda = document.querySelector('.modal-ayuda');
+const textoModalAyuda = document.querySelector('.modal-ayuda--texto');
 
 const edificioE = moduloCroquisBase.edificioE;
-const listaEdificios = [edificioE];
+const listaEdificios = moduloCroquisBase.EDIFICIOS_MAPA;
 
 const TODOS_LOS_BOTONES_NAV = [
     btnMostrarRuta,
@@ -107,13 +108,30 @@ export function activarVistaRutas() {
     btnBorrarRuta.addEventListener('click', onClickBorrarRuta);
     btnConfirmarBorrarRuta.addEventListener('click', onClickConfirmarBorrar);
     btnCancelarBorrarRuta.addEventListener('click', onClickCancelarBorrar);
+    textoModalAyuda.textContent = 'Seleccione algún edificio para editar su ruta';
     window.addEventListener('mousemove', onMouseMove);
 
     listaEdificios.forEach(edificio => {
         edificio.on('click', onClickEdificio);
     });
 
+    reiniciarTemporizador();
+}
 
+export function desactivarVistaRutas() {
+    salirEditarRuta.removeEventListener('click', alternarOpcionesMenu);
+    btnMostrarRuta.removeEventListener('click', onClickMostrarRuta);
+    btnOcultarRuta.removeEventListener('click', onClickOcultarRuta);
+    btnEditarRuta.removeEventListener('click', onClickEditarRuta);
+    btnGuardarRuta.removeEventListener('click', onClickGuardarRuta);
+    btnBorrarRuta.removeEventListener('click', onClickBorrarRuta);
+    btnConfirmarBorrarRuta.removeEventListener('click', onClickConfirmarBorrar);
+    btnCancelarBorrarRuta.removeEventListener('click', onClickCancelarBorrar);
+    window.removeEventListener('mousemove', onMouseMove);
+
+    listaEdificios.forEach(edificio => {
+        edificio.off('click', onClickEdificio);
+    });
 
     clearTimeout(tiempoInactivo);
     modalAyuda.classList.add('ocultar');
@@ -169,6 +187,10 @@ function restablecerNavegacion() {
     btnBorrarRuta.classList.remove('ocultar');
     salirEditarRuta.classList.remove('ocultar');
 }
+
+/* =======================================
+    LÓGICA PARA EL MODAL DE AYUDA
+======================================= */
 
 function reiniciarTemporizador() {
     clearTimeout(tiempoInactivo);

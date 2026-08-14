@@ -106,7 +106,7 @@ export const edificioA = L.polygon(coordsEdificioA, {
     nombre: 'Edificio A',
     descripcion: 'Edificio principal de Administración y Servicios Escolares',
     imagen: 'fachada_edificioA.webp',
-    imagen360: 'edificio_E.webp',
+    imagen360: 'edificio_A.webp',
     areas: ['Dirección General', 'Control Escolar', 'Finanzas', 'Recursos Humanos', 'Sala de Juntas']
 }).addTo(CROQUIS_BASE);
 
@@ -151,23 +151,6 @@ for (let edificio of EDIFICIOS_MAPA) {
         offset: [0, -30]
     });
 }
-
-// ... (Aquí arriba está el bindTooltip del edificioE)
-
-edificioA.bindTooltip(`
-    <div class="tooltip-edificio-contenido">
-        <img src="${BASE_URL}assets/img/material_croquis/fotos_de_edificios/fachada_edificioA.webp"/>
-        <span class="tooltip-titulo">Edificio A</span>
-        <p class="tooltip-descripcion">Administración y Servicios Escolares</p>
-    </div>
-    `, {
-    sticky: false,
-    direction: 'top',
-    permanent: false,
-    opacity: 0.95,
-    className: 'custom-tooltip-croquis',
-    offset: [0, -30]
-});
 
 /* ====================================================
     VARIABLE Y TIMEOUT PARA EL POLÍGONO ACTIVO
