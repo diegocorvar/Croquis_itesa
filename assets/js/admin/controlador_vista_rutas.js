@@ -27,6 +27,7 @@ const opcionesMenuAdmin = document.querySelector('.barra-lateral-izq-admin');
 const nombreEdificioEnEdicion = document.getElementById('nombre-edificio-editando');
 const contenedorNombreElementoEdicion = document.querySelector('.contenedor-edificio-seleccionado');
 const modalAyuda = document.querySelector('.modal-ayuda');
+const textoModalAyuda = document.querySelector('.modal-ayuda--texto');
 
 const edificioE = moduloCroquisBase.edificioE;
 const listaEdificios = [edificioE];
@@ -107,6 +108,7 @@ export function activarVistaRutas() {
     btnBorrarRuta.addEventListener('click', onClickBorrarRuta);
     btnConfirmarBorrarRuta.addEventListener('click', onClickConfirmarBorrar);
     btnCancelarBorrarRuta.addEventListener('click', onClickCancelarBorrar);
+    textoModalAyuda.textContent = 'Seleccione algún edificio para editar su ruta';
     window.addEventListener('mousemove', onMouseMove);
 
     listaEdificios.forEach(edificio => {
@@ -185,6 +187,10 @@ function restablecerNavegacion() {
     btnBorrarRuta.classList.remove('ocultar');
     salirEditarRuta.classList.remove('ocultar');
 }
+
+/* =======================================
+    LÓGICA PARA EL MODAL DE AYUDA
+======================================= */
 
 function reiniciarTemporizador() {
     clearTimeout(tiempoInactivo);

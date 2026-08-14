@@ -54,7 +54,7 @@ include_once __DIR__ . '/../../../../config.php';
             ============================================================ -->
             <div class="modal-ayuda flex-column-center ocultar">
                 <p><i class="fa-solid fa-circle-info" style="color: rgb(255, 212, 59);"></i></p>
-                <p>Seleccione algún edificio para editar su ruta</p>
+                <p class="modal-ayuda--texto"></p>
             </div>
 
             <!-- ============================================================

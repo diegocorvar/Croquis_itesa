@@ -8,12 +8,18 @@
     
     --crud-edit-bg: #fad76a;
     --crud-edit-hover: #ffe597;
+
+    --crud-guardar-bg: #027871;
+    --crud-guardar-hover: #03a59a;
+
+    --crud-cancelar-bg: #ca4040;
+    --crud-cancelar-hover: #ee4d4d;
     
-    --crud-save-bg: #0153a0;
-    --crud-save-hover: #01396e;
+    --crud-guardar-cambios-bg: #0153a0;
+    --crud-guardar-cambios-hover: #01396e;
     
-    --crud-cancel-bg: #ca4040;
-    --crud-cancel-hover: #942a2a;
+    --crud-salir-bg: #ca4040;
+    --crud-salir-hover: #942a2a;
     
     --crud-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
     --crud-border-color: #b6b6b6;
@@ -100,40 +106,62 @@
     transition: background-color 0.2s ease;
 }
 
-.crud-edificio__btn--edit {
-    background-color: var(--crud-edit-bg);
+.crud-edificio__btn--edit,
+.crud-edificio__btn--guardar,
+.crud-edificio__btn--cancelar {
     color: var(--crud-text-icon);
     width: 30px;
     height: 30px;
     transition: 0.2s;
 }
-
-.crud-edificio__btn--edit:hover {
-    background-color: var(--crud-edit-hover);
-    font-size: 1.1rem;
+.crud-edificio__btn--edit {
+    background-color: var(--crud-edit-bg);
+}
+.crud-edificio__btn--guardar {
+    color: white;
+    background-color: var(--crud-guardar-bg);
+}
+.crud-edificio__btn--cancelar {
+    color: white;
+    background-color: var(--crud-cancelar-bg);
 }
 
-.crud-edificio__btn--save {
-    background-color: var(--crud-save-bg);
+.crud-edificio__btn--edit:hover,
+.crud-edificio__btn--guardar:hover,
+.crud-edificio__btn--cancelar:hover {
+    font-size: 1.1rem;
+}
+.crud-edificio__btn--edit:hover {
+    background-color: var(--crud-edit-hover);
+}
+.crud-edificio__btn--guardar:hover {
+    background-color: var(--crud-guardar-hover);
+}
+.crud-edificio__btn--cancelar:hover {
+    background-color: var(--crud-cancelar-hover);
+}
+
+.crud-edificio__btn--guardar-cambios {
+    background-color: var(--crud-guardar-cambios-bg);
     color: var(--crud-text-light);
     padding: 8px 12px;
     gap: 8px;
     height: 35px;
 }
 
-.crud-edificio__btn--save:hover {
-    background-color: var(--crud-save-hover);
+.crud-edificio__btn--guardar-cambios:hover {
+    background-color: var(--crud-guardar-cambios-hover);
 }
 
-.crud-edificio__btn--cancel {
-    background-color: var(--crud-cancel-bg);
+.crud-edificio__btn--salir {
+    background-color: var(--crud-salir-bg);
     color: var(--crud-text-light);
     width: 35px;
     height: 35px;
 }
 
-.crud-edificio__btn--cancel:hover {
-    background-color: var(--crud-cancel-hover);
+.crud-edificio__btn--salir:hover {
+    background-color: var(--crud-salir-hover);
 }
 
 .crud-edificio__btn--flotante {
@@ -352,12 +380,12 @@ input.crud-edificio__titulo:focus {
 }
 
 .tabla-araes__btn-quitar-area {
-    background-color: var(--crud-cancel-bg);
+    background-color: var(--crud-salir-bg);
     color: white;
 }
 
 .tabla-araes__btn-quitar-area:hover {
-    background-color: var(--crud-cancel-hover);
+    background-color: var(--crud-salir-hover);
 }
 
 .tabla-areas__fila-agregar-area td {

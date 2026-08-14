@@ -3,18 +3,24 @@
         <!-- NOMBRE DEL EDIFICIO -->
         <header class="crud-edificio__header">
             <div class="crud-edificio__grupo-nombre">
-                <h1 class="crud-edificio__titulo">Edificio E</h1>
-                <input type="text" class="crud-edificio__titulo ocultar" value="Edificio E">
+                <h1 class="crud-edificio__titulo"></h1>
+                <input type="text" class="crud-edificio__titulo ocultar">
                 <button id="btn-editar-nombre-edificio" class="crud-edificio__btn crud-edificio__btn--edit" title="Editar nombre de edificio">
                     <i class="fa-solid fa-pen-to-square"></i>
                 </button>
+                <button id="btn-confirmar-edicion-nombre" class="crud-edificio__btn crud-edificio__btn--guardar ocultar" title="Guardar">
+                    <i class="fa-solid fa-check"></i>
+                </button>
+                <button id="btn-cancelar-edicion-nombre" class="crud-edificio__btn crud-edificio__btn--cancelar ocultar" title="Cancelar">
+                    <i class="fa-solid fa-x"></i>
+                </button>
             </div>
             <div class="crud-edificio__grupo-acciones">
-                <button class="crud-edificio__btn crud-edificio__btn--save" title="Guardar cambios">
+                <button class="crud-edificio__btn crud-edificio__btn--guardar-cambios" title="Guardar cambios">
                     <i class="fa-solid fa-floppy-disk"></i>
                     <span>Guardar cambios</span>
                 </button>
-                <button class="crud-edificio__btn crud-edificio__btn--cancel" title="Salir">
+                <button class="crud-edificio__btn crud-edificio__btn--salir" title="Salir">
                     <i class="fa-solid fa-x"></i>
                 </button>
             </div>
