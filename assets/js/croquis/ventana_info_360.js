@@ -4,7 +4,9 @@ const rutaModulo = `${BASE_URL}assets/js/croquis/croquis_base.js`;
 const modulo = await import(rutaModulo);
 
 const CROQUIS_BASE = modulo.CROQUIS_BASE;
+
 const listaEdificios = modulo.EDIFICIOS_MAPA;
+
 
 /* ========================================================
     INFORMACIÓN DE EDIFICIOS
@@ -21,6 +23,7 @@ for (let edificio of listaEdificios) {
         );
     });
 }
+
 
 function abrirVentanaInformacion(idEdificio, nombreEdificio, infoEdficio, nombreImg, listaAreas) {
     const listaAreasHTML = listaAreas.map(area => `<li class="nombre-area">${area}</li>`).join('');

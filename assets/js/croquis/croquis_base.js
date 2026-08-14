@@ -79,6 +79,13 @@ const coordsEdificioE = [
     [1721, 1554]
 ];
 
+const coordsEdificioA = [
+    [1268, 529],
+    [1223, 816],
+    [1076, 789],
+    [1125, 504]
+];
+
 /* ====================================================
     POLIGONOS DE EDIFICIOS
 ==================================================== */
@@ -93,8 +100,19 @@ export const edificioE = L.polygon(coordsEdificioE, {
     areas: ['LC1', 'LC2', 'LC3', 'LC4', 'LC5', 'LC6', 'LC7', 'SITE']
 }).addTo(CROQUIS_BASE);
 
+export const edificioA = L.polygon(coordsEdificioA, {
+    className: 'poligono-edificio',
+    id: 'A',
+    nombre: 'Edificio A',
+    descripcion: 'Edificio principal de Administración y Servicios Escolares',
+    imagen: 'fachada_edificioA.webp',
+    imagen360: 'edificio_E.webp',
+    areas: ['Dirección General', 'Control Escolar', 'Finanzas', 'Recursos Humanos', 'Sala de Juntas']
+}).addTo(CROQUIS_BASE);
+
 export const EDIFICIOS_MAPA = [
-    edificioE
+    edificioE,
+    edificioA
 ];
 
 /**
@@ -133,6 +151,23 @@ for (let edificio of EDIFICIOS_MAPA) {
         offset: [0, -30]
     });
 }
+
+// ... (Aquí arriba está el bindTooltip del edificioE)
+
+edificioA.bindTooltip(`
+    <div class="tooltip-edificio-contenido">
+        <img src="${BASE_URL}assets/img/material_croquis/fotos_de_edificios/fachada_edificioA.webp"/>
+        <span class="tooltip-titulo">Edificio A</span>
+        <p class="tooltip-descripcion">Administración y Servicios Escolares</p>
+    </div>
+    `, {
+    sticky: false,
+    direction: 'top',
+    permanent: false,
+    opacity: 0.95,
+    className: 'custom-tooltip-croquis',
+    offset: [0, -30]
+});
 
 /* ====================================================
     VARIABLE Y TIMEOUT PARA EL POLÍGONO ACTIVO

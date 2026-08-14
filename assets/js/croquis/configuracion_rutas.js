@@ -1,6 +1,8 @@
 // Objeto mutable que simula los registros de la tabla 'edificio_caminos'
 export const CONFIG_RUTAS_LOCAL = {
-    'E': ['camino_1', 'camino_2', 'camino_3', 'camino_4', 'camino_5', 'camino_6', 'camino_7', 'camino_8', 'camino_9']
+    'E': ['camino_1', 'camino_2', 'camino_3', 'camino_4', 'camino_5', 'camino_6', 'camino_7', 'camino_8', 'camino_9'],
+    
+    'A': ['camino_10', 'camino_11']
 };
 
 /**
