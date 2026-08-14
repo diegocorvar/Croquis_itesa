@@ -113,23 +113,7 @@ export function activarVistaRutas() {
         edificio.on('click', onClickEdificio);
     });
 
-    reiniciarTemporizador();
-}
 
-export function desactivarVistaRutas() {
-    salirEditarRuta.removeEventListener('click', alternarOpcionesMenu);
-    btnMostrarRuta.removeEventListener('click', onClickMostrarRuta);
-    btnOcultarRuta.removeEventListener('click', onClickOcultarRuta);
-    btnEditarRuta.removeEventListener('click', onClickEditarRuta);
-    btnGuardarRuta.removeEventListener('click', onClickGuardarRuta);
-    btnBorrarRuta.removeEventListener('click', onClickBorrarRuta);
-    btnConfirmarBorrarRuta.removeEventListener('click', onClickConfirmarBorrar);
-    btnCancelarBorrarRuta.removeEventListener('click', onClickCancelarBorrar);
-    window.removeEventListener('mousemove', onMouseMove);
-
-    listaEdificios.forEach(edificio => {
-        edificio.off('click', onClickEdificio);
-    });
 
     clearTimeout(tiempoInactivo);
     modalAyuda.classList.add('ocultar');
