@@ -8,27 +8,29 @@ const CROQUIS_BASE = moduloCroquisBase.CROQUIS_BASE;
 const DESACTIVAR_EDIFICIOS = true;
 const ACTIVAR_EDIFICIOS = false;
 
-// Variable de control para saber qué edificio se está editando actualmente
 let edificioSeleccionadoId = null;
+let tiempoInactivo = null;
 
-
-/* ====================================================
-    ELEMENTOS DEL DOM
-==================================================== */
-
+// Elementos del DOM
 const btnMostrarRuta = document.getElementById('boton-nav-mostrar-ruta');
 const btnOcultarRuta = document.getElementById('boton-nav-ocultar-ruta');
 const btnEditarRuta  = document.getElementById('boton-nav-editar-ruta');
 const btnGuardarRuta = document.getElementById('boton-nav-guardar-ruta');
 const btnBorrarRuta  = document.getElementById('boton-nav-borrar-ruta');
-
+const btnConfirmarBorrarRuta = document.getElementById('confirmar-eliminacion-ruta');
+const btnCancelarBorrarRuta = document.getElementById('cancelar-eliminacion-ruta');
+const modalBorrarRuta = document.getElementById('modal-borrar-ruta');
+const contenedorMensajeDeAccion = document.querySelector('.contenedor-mensaje-accion');
 const salirEditarRuta = document.getElementById('boton-salir-editar-ruta');
 const opcionesEditarRuta = document.getElementById('botones-editar-ruta');
 const opcionesMenuAdmin = document.querySelector('.barra-lateral-izq-admin');
 const nombreEdificioEnEdicion = document.getElementById('nombre-edificio-editando');
 const contenedorNombreElementoEdicion = document.querySelector('.contenedor-edificio-seleccionado');
+const modalAyuda = document.querySelector('.modal-ayuda');
 
-// Lista con TODOS los botones principales del nav para iterar fácilmente
+const edificioE = moduloCroquisBase.edificioE;
+const listaEdificios = [edificioE];
+
 const TODOS_LOS_BOTONES_NAV = [
     btnMostrarRuta,
     btnOcultarRuta,
@@ -38,80 +40,112 @@ const TODOS_LOS_BOTONES_NAV = [
     salirEditarRuta
 ];
 
-
 /* ====================================================
-    CONFIGURACIÓN DE LISTENERS (SE EJECUTAN UNA SOLA VEZ)
+    MANEJADORES DE EVENTOS (HANDLERS)
 ==================================================== */
+function onClickEdificio(e) {
+    const {id, nombre} = e.target.options;
+    gestionarSeleccionEdificio(id, nombre);
+}
 
-salirEditarRuta.addEventListener('click', alternarOpcionesMenu);
+function onMouseMove() {
+    if (!modalAyuda.classList.contains('ocultar')) {
+        resaltarEdificiosHabilitados(listaEdificios);
+    }
+    reiniciarTemporizador();
+}
 
-btnMostrarRuta.addEventListener('click', () => {
+function onClickMostrarRuta() {
     if (!edificioSeleccionadoId) return;
     moduloGestorRutas.mostrarRutaEdificio(edificioSeleccionadoId, CROQUIS_BASE);
     resaltarAccion(btnOcultarRuta);
-});
+}
 
-btnOcultarRuta.addEventListener('click', () => {
+function onClickOcultarRuta() {
     moduloGestorRutas.ocultarRutas();
     restablecerNavegacion();
-});
+}
 
-btnEditarRuta.addEventListener('click', () => {
+function onClickEditarRuta() {
     if (!edificioSeleccionadoId) return;
     moduloGestorRutas.activarModoAsignacion(edificioSeleccionadoId, CROQUIS_BASE);
     resaltarAccion(btnGuardarRuta);
-});
+}
 
-btnGuardarRuta.addEventListener('click', () => {
+function onClickGuardarRuta() {
     if (!edificioSeleccionadoId) return;
     moduloGestorRutas.confirmarSeleccionAdmin(edificioSeleccionadoId);
     restablecerNavegacion();
-});
+    mostrarMensaje('Ruta guardada correctamente');
+}
 
-btnBorrarRuta.addEventListener('click', () => {
+function onClickBorrarRuta() {
     if (!edificioSeleccionadoId) return;
-    
-});
+    alternarVisibilidad(modalBorrarRuta);
+    console.log(modalBorrarRuta);
+}
 
+function onClickConfirmarBorrar() {
+    moduloGestorRutas.borrarRuta(edificioSeleccionadoId);
+    alternarVisibilidad(modalBorrarRuta);
+    mostrarMensaje('Ruta eliminada correctamente');
+}
+
+function onClickCancelarBorrar() {
+    alternarVisibilidad(modalBorrarRuta);
+}
 
 /* ====================================================
-    LÓGICA DE SELECCIÓN DE EDIFICIO
+    MÉTODOS DE CICLO DE VIDA
 ==================================================== */
+export function activarVistaRutas() {
+    salirEditarRuta.addEventListener('click', alternarOpcionesMenu);
+    btnMostrarRuta.addEventListener('click', onClickMostrarRuta);
+    btnOcultarRuta.addEventListener('click', onClickOcultarRuta);
+    btnEditarRuta.addEventListener('click', onClickEditarRuta);
+    btnGuardarRuta.addEventListener('click', onClickGuardarRuta);
+    btnBorrarRuta.addEventListener('click', onClickBorrarRuta);
+    btnConfirmarBorrarRuta.addEventListener('click', onClickConfirmarBorrar);
+    btnCancelarBorrarRuta.addEventListener('click', onClickCancelarBorrar);
+    window.addEventListener('mousemove', onMouseMove);
 
-const edificioE = moduloCroquisBase.edificioE;
-const edificioA = moduloCroquisBase.edificioA;
+    listaEdificios.forEach(edificio => {
+        edificio.on('click', onClickEdificio);
+    });
 
-edificioE.on('click', () => {
-    gestionarSeleccionEdificio('E', 'Edificio E');
-});
 
-edificioA.on('click', () => {
-    gestionarSeleccionEdificio('A', 'Edificio A'); 
-});
+
+    clearTimeout(tiempoInactivo);
+    modalAyuda.classList.add('ocultar');
+    
+    if (edificioSeleccionadoId) {
+        alternarOpcionesMenu();
+    }
+    moduloGestorRutas.ocultarRutas();
+}
+
+/* Auxiliares */
+function alternarVisibilidad(elemento) { elemento.classList.toggle('ocultar'); }
+
+function mostrarMensaje(mensaje) {
+    contenedorMensajeDeAccion.querySelector('p').textContent = mensaje;
+    alternarVisibilidad(contenedorMensajeDeAccion);
+    setTimeout(() => alternarVisibilidad(contenedorMensajeDeAccion), 1000);
+}
 
 function gestionarSeleccionEdificio(idEdificio, nombreEdificio) {
     edificioSeleccionadoId = idEdificio;
-
-    if (opcionesEditarRuta.classList.contains('ocultar')) {
-        alternarOpcionesMenu();
-    }
-
+    if (opcionesEditarRuta.classList.contains('ocultar')) alternarOpcionesMenu();
     restablecerNavegacion();
-
-    mostrarNombreEdificioEnEdicion(nombreEdificio);
-    moduloCroquisBase.toggleEstadoEdificios(DESACTIVAR_EDIFICIOS);
-}
-
-function mostrarNombreEdificioEnEdicion(nombre) {
-    nombreEdificioEnEdicion.textContent = nombre;
+    nombreEdificioEnEdicion.textContent = nombreEdificio;
     contenedorNombreElementoEdicion.classList.remove('ocultar');
+    moduloCroquisBase.toggleEstadoEdificios(DESACTIVAR_EDIFICIOS);
 }
 
 function alternarOpcionesMenu() {
     opcionesEditarRuta.classList.toggle('ocultar');
     opcionesMenuAdmin.classList.toggle('ocultar');
     contenedorNombreElementoEdicion.classList.add('ocultar');
-    
     if (opcionesEditarRuta.classList.contains('ocultar')) {
         edificioSeleccionadoId = null;
         moduloGestorRutas.ocultarRutas();
@@ -120,27 +154,13 @@ function alternarOpcionesMenu() {
     }
 }
 
-/* ====================================================
-    GESTIÓN DE ESTADO DE NAVEGACIÓN
-==================================================== */
-
-/**
- * Oculta todos los botones de la navegación excepto el que se pasa como parámetro.
- * @param {HTMLElement} botonVisible - El único botón que debe quedarse visible.
- */
 function resaltarAccion(botonVisible) {
     TODOS_LOS_BOTONES_NAV.forEach(btn => {
-        if (btn === botonVisible) {
-            btn.classList.remove('ocultar');
-        } else {
-            btn.classList.add('ocultar');
-        }
+        if (btn === botonVisible) btn.classList.remove('ocultar');
+        else btn.classList.add('ocultar');
     });
 }
 
-/**
- * Vuelve la barra a su estado inicial de edición (Mostrar, Editar, Borrar, Agregar visibles).
- */
 function restablecerNavegacion() {
     btnMostrarRuta.classList.remove('ocultar');
     btnOcultarRuta.classList.add('ocultar');
@@ -150,21 +170,17 @@ function restablecerNavegacion() {
     salirEditarRuta.classList.remove('ocultar');
 }
 
-/* ====================================================
-    MODAL DE AYUDA
-==================================================== */
-
-let tiempoInactivo;
-reiniciarTemporizador();
-
 function reiniciarTemporizador() {
     clearTimeout(tiempoInactivo);
-    document.querySelector('.modal-ayuda').classList.add('ocultar');
-
+    modalAyuda.classList.add('ocultar');
     tiempoInactivo = setTimeout(() => {
         if (!opcionesEditarRuta.classList.contains('ocultar')) return;
-        document.querySelector('.modal-ayuda').classList.remove('ocultar');
-    }, 3000);
+        modalAyuda.classList.remove('ocultar');
+        moduloCroquisBase.reiniciarPoligonoRemarcado();
+    }, 5000);
 }
 
-window.addEventListener('mousemove', reiniciarTemporizador);
+function resaltarEdificiosHabilitados(edificios) {
+    for (let edificio of edificios) 
+        moduloCroquisBase.activarParpadeoPoligono(edificio.getElement());
+}

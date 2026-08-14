@@ -31,6 +31,8 @@ CROQUIS_BASE.on('click', function(e) {
     console.log(`[${y}, ${x}]`);
 });
 
+CROQUIS_BASE.setZoom(-1);
+
 /* ====================================================
     CARGAR IMAGEN DEL CROQUIS
 ==================================================== */
@@ -88,8 +90,25 @@ const coordsEdificioA = [
     POLIGONOS DE EDIFICIOS
 ==================================================== */
 
-export const edificioE = L.polygon(coordsEdificioE, {className: 'poligono-edificio'}).addTo(CROQUIS_BASE);
-export const edificioA = L.polygon(coordsEdificioA, {className: 'poligono-edificio'}).addTo(CROQUIS_BASE); // <-- LÍNEA NUEVA
+export const edificioE = L.polygon(coordsEdificioE, {
+    className: 'poligono-edificio',
+    id: 'E',
+    nombre: 'Edificio E',
+    descripcion: 'Edificio de la carrera de Ingeniería en Sistemas Computacionales',
+    imagen: 'fachada_edificioE.webp',
+    imagen360: 'edificio_E.webp',
+    areas: ['LC1', 'LC2', 'LC3', 'LC4', 'LC5', 'LC6', 'LC7', 'SITE']
+}).addTo(CROQUIS_BASE);
+
+export const edificioA = L.polygon(coordsEdificioA, {
+    className: 'poligono-edificio',
+    id: 'A',
+    nombre: 'Edificio A',
+    descripcion: 'Edificio principal de Administración y Servicios Escolares',
+    imagen: 'fachada_edificioA.webp',
+    imagen360: 'edificio_E.webp',
+    areas: ['Dirección General', 'Control Escolar', 'Finanzas', 'Recursos Humanos', 'Sala de Juntas']
+}).addTo(CROQUIS_BASE);
 
 export const EDIFICIOS_MAPA = [
     edificioE,
@@ -117,20 +136,21 @@ export function toggleEstadoEdificios(desactivar) {
     TOOLTIPS DE EDIFICIOS
 ==================================================== */
 
-edificioE.bindTooltip(`
-    <div class="tooltip-edificio-contenido">
-        <img src="${BASE_URL}assets/img/material_croquis/fotos_de_edificios/fachada_edificioE.webp"/>
-        <span class="tooltip-titulo">Edificio E</span>
-        <p class="tooltip-descripcion">Ingeniería en Sistemas Computacionales</p>
-    </div>
-    `, {
-    sticky: false,
-    direction: 'top',
-    permanent: false,
-    opacity: 0.95,
-    className: 'custom-tooltip-croquis',
-    offset: [0, -30]
-});
+for (let edificio of EDIFICIOS_MAPA) {
+    edificio.bindTooltip(`
+        <div class="tooltip-edificio-contenido">
+            <img src="${BASE_URL}assets/img/material_croquis/fotos_de_edificios/${edificio.options.imagen}"/>
+            <span class="tooltip-titulo">${edificio.options.nombre}</span>
+        </div>
+        `, {
+        sticky: false,
+        direction: 'top',
+        permanent: false,
+        opacity: 0.95,
+        className: 'custom-tooltip-croquis',
+        offset: [0, -30]
+    });
+}
 
 // ... (Aquí arriba está el bindTooltip del edificioE)
 
@@ -170,7 +190,7 @@ export function resaltarEdificioEnMapa(poligonoLeaflet) {
     poligonoActivo = poligonoLeaflet;
 }
 
-function activarParpadeoPoligono(elementoSVG) {
+export function activarParpadeoPoligono(elementoSVG) {
     if (elementoSVG) {
         elementoSVG.classList.add('poligono-remarcado');
 
@@ -181,7 +201,7 @@ function activarParpadeoPoligono(elementoSVG) {
 }
 
 // Limpia cualquier parpadeo previo y temporizador activo
-function reiniciarPoligonoRemarcado() {
+export function reiniciarPoligonoRemarcado() {
     if (poligonoActivo) {
         poligonoActivo.getElement()?.classList.remove('poligono-remarcado');
     }

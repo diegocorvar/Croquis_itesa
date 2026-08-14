@@ -4,32 +4,26 @@ const rutaModulo = `${BASE_URL}assets/js/croquis/croquis_base.js`;
 const modulo = await import(rutaModulo);
 
 const CROQUIS_BASE = modulo.CROQUIS_BASE;
-const edificioE = modulo.edificioE;
-const edificioA = modulo.edificioA;
+
+const listaEdificios = modulo.EDIFICIOS_MAPA;
+
 
 /* ========================================================
     INFORMACIÓN DE EDIFICIOS
 =========================================================== */
 
-edificioE.on("click", () => {
-    abrirVentanaInformacion(
-        'E',
-        'Edificio E',
-        'Edificio de la carrera de Ingeniería en Sistemas Computacionales',
-        'edificio_E.webp',
-        ['LC1', 'LC2', 'LC3', 'LC4', 'LC5', 'LC6', 'LC7', 'SITE']
-    );
-});
+for (let edificio of listaEdificios) {
+    edificio.on("click", () => {
+        abrirVentanaInformacion(
+            edificio.options.id,
+            edificio.options.nombre,
+            edificio.options.descripcion,
+            edificio.options.imagen360,
+            edificio.options.areas
+        );
+    });
+}
 
-edificioA.on("click", () => {
-    abrirVentanaInformacion(
-        'A', // El ID para que funcione la ruta azul
-        'Edificio A',
-        'Edificio principal de Administración y Servicios Escolares',
-        'edificio_E.webp', // Usamos la misma foto prestada por ahora
-        ['Dirección General', 'Control Escolar', 'Finanzas', 'Recursos Humanos', 'Sala de Juntas']
-    );
-});
 
 function abrirVentanaInformacion(idEdificio, nombreEdificio, infoEdficio, nombreImg, listaAreas) {
     const listaAreasHTML = listaAreas.map(area => `<li class="nombre-area">${area}</li>`).join('');
@@ -38,7 +32,7 @@ function abrirVentanaInformacion(idEdificio, nombreEdificio, infoEdficio, nombre
         <div id="modal-edificio" class="modal">
             <div class="ventana-informacion-edificio">
                 <button id="btn-cerrar-modal" class="boton-cerrar-info-edificio">
-                    <img src="/assets/img/iconos/cruz.png">
+                    <img src="${BASE_URL}assets/img/iconos/cruz.png">
                 </button>
                 <div id="visor-360" class="contenedor-imagen-edificio">
                 </div>
@@ -98,7 +92,7 @@ function cerrarModalConAnimacion(modal) {
 function inicializarVisor360(imagenPanoramica) {
     pannellum.viewer('visor-360', {
         "type": "equirectangular",
-        "vaov": 60,
+        "vaov": 180,
         "panorama": `${BASE_URL}assets/img/material_croquis/imagenes_360/${imagenPanoramica}`,
         "autoLoad": true,
         "autoRotate": -2,

@@ -14,6 +14,9 @@ const btnFiltroEdificio = document.getElementById('filtro-edificio');
 const modalEdificios = document.getElementById('modal-edificios');
 const btnCerrarModal = document.getElementById('boton-cerrar-busqueda');
 const contenedorEdificios = document.getElementById('lista-edificios-contenedor');
+const activadorBusqueda = document.getElementById('busqueda-activador-boton');
+const bloqueDesplegable = document.getElementById('busqueda-bloque-desplegable');
+const campoInput = document.getElementById('busqueda-campo-input');
 
 /* ========================================================
     INICIALIZACIÓN Y EVENTOS
@@ -92,3 +95,22 @@ function seleccionarEdificio(id) {
         console.warn(`El edificio ${id} aún no tiene polígono trazado en el mapa.`);
     }
 }
+
+activadorBusqueda.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const estaOculto = bloqueDesplegable.classList.toggle('oculto');
+    
+    if (!estaOculto) {
+        campoInput.focus();
+    }
+});
+
+bloqueDesplegable.addEventListener('click', (e) => {
+    e.stopPropagation();
+});
+
+document.addEventListener('click', () => {
+    if (!bloqueDesplegable.classList.contains('oculto')) {
+        bloqueDesplegable.classList.add('oculto');
+    }
+});

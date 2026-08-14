@@ -1,0 +1,470 @@
+:root {
+    /* Variables de paleta para facilitar modificaciones globales */
+    --crud-bg: #fbfbfb;
+    --crud-card-bg: #ffffff;
+    --crud-text-dark: #01396e;
+    --crud-text-light: #ffffff;
+    --crud-text-icon: #000000;
+    
+    --crud-edit-bg: #fad76a;
+    --crud-edit-hover: #ffe597;
+    
+    --crud-save-bg: #0153a0;
+    --crud-save-hover: #01396e;
+    
+    --crud-cancel-bg: #ca4040;
+    --crud-cancel-hover: #942a2a;
+    
+    --crud-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    --crud-border-color: #b6b6b6;
+
+    --crud-deslizador-activo: #027871;
+    --crud-deslizador-inactivo: #bd4949;
+
+    --tooltip-bg: #000000b2;
+
+    --dark-blue: #01396e;
+}
+
+/* ======================================
+    CONTENEDOR PRINCIPAL
+====================================== */
+.crud-edificio {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--crud-bg);
+    z-index: 9999;
+    overflow-y: auto;
+    font-family: 'Inter', sans-serif;
+    padding-bottom: 60px;
+}
+
+.crud-edificio *,
+.crud-edificio *::before,
+.crud-edificio *::after {
+    box-sizing: border-box;
+}
+
+.crud-edificio__main {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto 0 auto;
+    padding: 0 50px;
+    gap: 40px;
+}
+
+.crud-edificio__main section:last-of-type {
+    margin-bottom: 40px;
+}
+
+/* ======================================
+    ESTRUCTURAS REUTILIZABLES (TARJETAS)
+====================================== */
+.crud-edificio__seccion-tarjeta {
+    background-color: var(--crud-card-bg);
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: var(--crud-shadow);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.crud-edificio__leyenda {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.crud-edificio__leyenda h2 {
+    color: var(--crud-text-dark);
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+/* ======================================
+    SISTEMA DE BOTONES GLOBALES
+====================================== */
+.crud-edificio__btn {
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.2s ease;
+}
+
+.crud-edificio__btn--edit {
+    background-color: var(--crud-edit-bg);
+    color: var(--crud-text-icon);
+    width: 30px;
+    height: 30px;
+    transition: 0.2s;
+}
+
+.crud-edificio__btn--edit:hover {
+    background-color: var(--crud-edit-hover);
+    font-size: 1.1rem;
+}
+
+.crud-edificio__btn--save {
+    background-color: var(--crud-save-bg);
+    color: var(--crud-text-light);
+    padding: 8px 12px;
+    gap: 8px;
+    height: 35px;
+}
+
+.crud-edificio__btn--save:hover {
+    background-color: var(--crud-save-hover);
+}
+
+.crud-edificio__btn--cancel {
+    background-color: var(--crud-cancel-bg);
+    color: var(--crud-text-light);
+    width: 35px;
+    height: 35px;
+}
+
+.crud-edificio__btn--cancel:hover {
+    background-color: var(--crud-cancel-hover);
+}
+
+.crud-edificio__btn--flotante {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+}
+
+/* ======================================
+    TOOLTIPS DE AYUDA
+====================================== */
+
+.help-tooltip-icon {
+    cursor: pointer;
+    color: rgb(255, 196, 0);
+}
+
+.help-tooltip-icon:hover + .help-tooltip-mensaje {
+    display: flex;
+}
+
+.help-tooltip-mensaje {
+    display: none;
+    position: absolute;
+    background-color: var(--tooltip-bg);
+    width: 200px;
+    padding: 5px;
+    color: white;
+    font-size: 0.85rem;
+    font-weight: lighter;
+    border-radius: 5px;
+}
+
+.help-tooltip-mensaje-left::before {
+    position: absolute;
+    content: '';
+    width: 0;
+    height: 0;
+    border-bottom: 10px solid transparent;
+    border-right: 10px solid var(--tooltip-bg);
+    border-top: 10px solid transparent;
+    left: -10px;
+    top: 30%;
+}
+
+/* ======================================
+    HEADER (NOMBRE DE EDIFICIO)
+====================================== */
+.crud-edificio__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.crud-edificio__grupo-nombre,
+.crud-edificio__grupo-acciones {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.crud-edificio__titulo {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+/* ======================================
+    IMÁGENES
+====================================== */
+.crud-edificio__imagenes {
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+}
+
+.crud-edificio__img-wrapper {
+    flex: 1;
+    background-color: black;
+    position: relative;
+    aspect-ratio: 16 / 9;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    box-shadow: var(--crud-shadow);
+}
+
+.crud-edificio__img-wrapper--normal {
+    background-image: url(/assets/img/plantillas/plantilla_imagen.png);
+}
+
+.crud-edificio__img-wrapper--360 {
+    background-image: url(/assets/img/plantillas/plantilla_imagen360.png);
+}
+
+/* ======================================
+    DESCRIPCIÓN
+====================================== */
+.crud-edificio__textarea {
+    width: 100%;
+    min-height: 100px;
+    padding: 15px;
+    border: 2px dashed var(--crud-border-color);
+    font-family: inherit;
+    font-size: 1.5rem;
+    text-align: justify;
+    resize: vertical;
+    background-color: #fafafa;
+}
+
+/* ======================================
+    PISOS
+====================================== */
+.crud-edificio__grid-pisos {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.crud-edificio__piso {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 45%;
+    height: 500px;
+}
+
+.crud-edificio__btn-piso {
+    background-color: transparent;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    width: 70%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.crud-edificio__btn-piso:hover {
+    background-color: #ebebeb;
+    outline: 10px solid var(--crud-text-dark);
+}
+
+.crud-edificio__btn-piso:hover .crud-edificio__img-piso {
+    transform: scale(1.15);
+}
+
+.crud-edificio__btn-piso:active .crud-edificio__img-piso {
+    transform: scale(1);
+}
+
+.crud-edificio__img-piso {
+    width: 70%;
+    transition: transform 0.2s ease;
+}
+
+.crud-edificio__nombre-piso {
+    font-family: "Archivo Black", sans-serif;
+    font-weight: bold;
+    font-size: 2rem;
+    margin-top: 40px;
+    color: var(--crud-text-dark);
+}
+
+.crud-edificio__piso--desactivado {
+    filter: brightness(0.5);
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* ======================================
+    ÁREAS
+====================================== */
+
+.crud-edificio__tabla-areas {
+    padding: 10px 0;
+    text-align: center;
+}
+
+.crud-edificio__tabla-areas th {
+    background-color: var(--dark-blue);
+    color: white;
+}
+
+.crud-edificio__tabla-areas th:last-of-type,
+.tabla-areas__tupla-area td:last-of-type {
+    width: 80px;
+}
+
+.crud-edificio__tabla-areas td {
+    padding: 10px 0;
+    border-bottom: 1px solid black;
+}
+
+.tabla-areas__botones {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.tabla-araes__btn-quitar-area {
+    background-color: var(--crud-cancel-bg);
+    color: white;
+}
+
+.tabla-araes__btn-quitar-area:hover {
+    background-color: var(--crud-cancel-hover);
+}
+
+.tabla-areas__fila-agregar-area td {
+    cursor: pointer;
+    border-bottom: 2px dashed var(--dark-blue);
+    border-radius: 10px;
+
+    transition: all 0.2s ease;
+}
+
+.tabla-areas__fila-agregar-area td:hover {
+    background-color: var(--dark-blue);
+}
+
+.tabla-areas__fila-agregar-area td:hover #crud-edificio__btn-agregar-area{
+    color: white;
+    font-size: 1.1rem;
+}
+
+.tabla-areas__fila-agregar-area td:active #crud-edificio__btn-agregar-area{
+    font-size: 0.85rem;
+}
+
+#crud-edificio__btn-agregar-area {
+    margin: 0 auto;
+    background-color: transparent;
+    color: var(--dark-blue);
+}
+
+
+/* ======================================
+    ESTADO
+====================================== */
+
+.crud-edificio__estado {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background-color: var(--crud-bg);
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.crud-edificio__estado-titulo {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    position: relative;
+}
+
+.crud-edificio__estado h3 {
+    font-size: 1.2rem;
+}
+
+.crud-edificio__estado-titulo .help-tooltip-mensaje {
+    right: -110%;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.crud-edificio__estado-deslizador {
+    display: flex;
+    align-items: center;
+    background-color: var(--crud-deslizador-inactivo);
+    padding: 5px;
+    border-radius: 5px;
+    gap: 5px;
+}
+
+.deslizador {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--crud-deslizador-inactivo);
+    transition: 0.4s;
+    border-radius: 34px;
+    outline: 2px solid var(--crud-card-bg);
+}
+
+.deslizador::before {
+    position: absolute;
+    content: '';
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+input:checked + .deslizador {
+    background-color: var(--crud-deslizador-activo);
+}
+
+input:checked + .deslizador::before {
+    transform: translateX(26px);
+}
+
+.crud-edificio__estado-etiqueta {
+    color: white;
+    padding: 5px;
+    font-weight: bold;
+}

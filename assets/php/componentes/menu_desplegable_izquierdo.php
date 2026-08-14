@@ -1,12 +1,6 @@
 <?php 
 $pagina_actual = basename($_SERVER['PHP_SELF']); 
 ?>
-<script>
-    // Variable global en JavaScript con la URL Base de PHP
-    const BASE_URL = "<?php echo BASE_URL; ?>";
-</script>
-
-
 <div>
     <div class="contenedor-boton-menu" id="boton-abrir-menu">
         <img
@@ -55,17 +49,19 @@ $pagina_actual = basename($_SERVER['PHP_SELF']);
     </div>
     <div id="modal-login-admin" class="modal-fondo oculto">
         <div class="contenedor-ingreso-admin">
-            <div class="contenedor-clave-admin">
+            <form id="form-login-admin" class="contenedor-clave-admin">
                 <p>INGRESAR COMO ADMINISTRADOR</p>
                 <label for="clave-acceso-admin">Contraseña:</label>
                 <input id="clave-acceso-admin" type="password" required>
-                <button id="boton-ingresar-admin">Ingresar</button>
+                
+                <button id="boton-ingresar-admin" type="submit">Ingresar</button>
+                
                 <p>
                     <i class="fa-solid fa-circle-exclamation" style="color: rgb(255, 212, 59);"></i>    
                     Solo personal autorizado
                 </p>
                 <img id="boton-cerrar-login" src="<?php echo BASE_URL; ?>assets/img/iconos/cruz.png" alt="Icono cerrar menú">
-            </div>
+            </form>
         </div>
     </div>
 </div>

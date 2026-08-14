@@ -38,7 +38,11 @@
 }
 
 .sub-menu {
-    background-color: #945207 !important;
+    background: linear-gradient(
+        135deg,
+        #003362,
+        #0153a0
+    ) !important;
 }
 
 .admin-nav {
@@ -62,7 +66,11 @@
 }
 
 .sub-menu .tooltip-boton-barra-lateral-admin {
-    background-color: #945207 !important;
+    background: linear-gradient(
+        135deg,
+        #003362,
+        #0153a0
+    ) !important;
 }
 
 .tooltip-boton-barra-lateral-admin {
@@ -88,15 +96,19 @@
 }
 
 .sobre-elemento {
-    left: 0;
-    top: -60px;
-    left: -10px;
+    top: -70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     text-align: center;
 }
 
 .boton-barra-lateral-admin:hover:not(.boton-activo) {
     background-color: rgba(0, 0, 0, 0.1);
     border-radius: 5px;
+}
+
+.boton-barra-lateral-admin:active {
+    scale: 0.9;
 }
 
 .boton-activo {
@@ -110,13 +122,65 @@
 }
 
 .vista-admin {
-    min-height: 100vh;
-    min-width: 0;
+    flex: 1;
+    height: 100vh;
     position: relative;
+    overflow: hidden;
 }
 
-#vista-admin-rutas {
+.vista-admin > div {
     height: 100%;
     width: 100%;
-    position: relative;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.modal-ayuda {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+
+    gap: 10px;
+
+    z-index: 9999;
+    cursor: default;
+}
+
+.modal-ayuda p {
+    margin: 0;
+    background-color: transparent;
+    font-size: 4rem;
+    text-align: center;
+    max-width: 50%;
+    font-family: 'Inter', sans-serif;
+    font-weight: bold;
+    color: white;
+}
+
+.contenedor-mensaje-accion {
+    position: absolute !important;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: auto !important;
+    height: auto !important;
+    padding: 50px;
+
+    background-color: #f8d302;
+
+    z-index: 9999;
+
+    font-family: 'Inter', sans-serif;
+    font-weight: bold;
+    font-size: 3rem;
+    color: black;
+    text-align: center;
+}
+
+.contenedor-mensaje-accion p {
+    margin: 10px 0 0 0;
 }

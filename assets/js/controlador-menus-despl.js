@@ -46,42 +46,16 @@ modalLoginAdmin.addEventListener('click', (e) => {
 
 // IR A ADMIN ===========================================================
 
-const botonIngresarAdmin = document.getElementById('boton-ingresar-admin');
+const formLoginAdmin = document.getElementById('form-login-admin');
 
-botonIngresarAdmin.addEventListener('click', () => {
+formLoginAdmin.addEventListener('submit', (e) => {
+    e.preventDefault();
+
     const clave = document.getElementById('clave-acceso-admin').value;
 
     if (clave === 'admin123') {
-        window.location.href = BASE_URL + "/assets/php/vistas/admin/inicio_admin.php";
-    }
-    else {
-        console.log('contraseña incorrecta');
-        console.log(clave);
-    }
-})
-
-// BARRA DE BÚSQUEDA ===========================================================
-
-const activadorBusqueda = document.getElementById('busqueda-activador-boton');
-const bloqueDesplegable = document.getElementById('busqueda-bloque-desplegable');
-const campoInput = document.getElementById('busqueda-campo-input');
-
-
-activadorBusqueda.addEventListener('click', (e) => {
-    e.stopPropagation();
-    const estaOculto = bloqueDesplegable.classList.toggle('oculto');
-    
-    if (!estaOculto) {
-        campoInput.focus();
-    }
-});
-
-bloqueDesplegable.addEventListener('click', (e) => {
-    e.stopPropagation();
-});
-
-document.addEventListener('click', () => {
-    if (!bloqueDesplegable.classList.contains('oculto')) {
-        bloqueDesplegable.classList.add('oculto');
+        window.location.href = BASE_URL + "assets/php/vistas/admin/inicio_admin.php";
+    } else {
+        console.log('Contraseña incorrecta:', clave);
     }
 });
