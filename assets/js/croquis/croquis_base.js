@@ -86,6 +86,54 @@ const coordsEdificioA = [
     [1125, 504]
 ];
 
+const coordsEdificioD = [
+    [1340, 1448],
+    [1308, 1633],
+    [1032, 1584],
+    [1060, 1404]
+];
+
+const coordsEdificioC = [
+    [1635, 1102],
+    [1595, 1378],
+    [1444, 1352],
+    [1491, 1082]
+];
+
+const coordsEdificioB = [
+    [1709, 517],
+    [1666, 788],
+    [1490, 760],
+    [1532, 489]
+];
+
+const coordsEdificioF = [
+    [2121, 645],
+    [2096, 812],
+    [1845, 770],
+    [1867, 610]
+];
+
+const coordsEdificioG = [
+    [2253, 861],
+    [2230, 1019],
+    [2157, 1010],
+    [2176, 849]
+];
+
+const coordsCafeteria = [
+    [1914, 996],
+    [1901, 1081],
+    [1799, 1065],
+    [1809, 978]
+];
+
+const coordsBiblioteca = [
+    [1896, 1652],
+    [1878, 1768],
+    [1607, 1727],
+    [1623, 1609]
+];
 /* ====================================================
     POLIGONOS DE EDIFICIOS
 ==================================================== */
@@ -106,13 +154,91 @@ export const edificioA = L.polygon(coordsEdificioA, {
     nombre: 'Edificio A',
     descripcion: 'Edificio principal de Administración y Servicios Escolares',
     imagen: 'fachada_edificioA.webp',
-    imagen360: 'edificio_A.webp',
+    imagen360: 'edificio_E.webp',
     areas: ['Dirección General', 'Control Escolar', 'Finanzas', 'Recursos Humanos', 'Sala de Juntas']
+}).addTo(CROQUIS_BASE);
+
+
+export const edificioB = L.polygon(coordsEdificioB, {
+    className: 'poligono-edificio',
+    id: 'B',
+    nombre: 'Edificio B',
+    descripcion: 'Descripción pendiente del Edificio B',
+    imagen: 'fachada_edificioB.webp', 
+    imagen360: 'edificio_E.webp',
+    areas: ['Área B1', 'Área B2']
+}).addTo(CROQUIS_BASE);
+
+export const edificioC = L.polygon(coordsEdificioC, {
+    className: 'poligono-edificio',
+    id: 'C',
+    nombre: 'Edificio C',
+    descripcion: 'Descripción pendiente del Edificio C',
+    imagen: 'fachada_edificioC.webp',
+    imagen360: 'edificio_E.webp',
+    areas: ['Área C1', 'Área C2']
+}).addTo(CROQUIS_BASE);
+
+export const edificioD = L.polygon(coordsEdificioD, {
+    className: 'poligono-edificio',
+    id: 'D',
+    nombre: 'Edificio D',
+    descripcion: 'Descripción pendiente del Edificio D',
+    imagen: 'fachada_edificioD.webp',
+    imagen360: 'edificio_E.webp',
+    areas: ['Área D1', 'Área D2']
+}).addTo(CROQUIS_BASE);
+
+export const edificioF = L.polygon(coordsEdificioF, {
+    className: 'poligono-edificio',
+    id: 'F',
+    nombre: 'Edificio F',
+    descripcion: 'Descripción pendiente del Edificio F',
+    imagen: 'fachada_edificioF.webp',
+    imagen360: 'edificio_E.webp',
+    areas: ['Área F1', 'Área F2']
+}).addTo(CROQUIS_BASE);
+
+export const edificioG = L.polygon(coordsEdificioG, {
+    className: 'poligono-edificio',
+    id: 'G',
+    nombre: 'Edificio G',
+    descripcion: 'Descripción pendiente del Edificio G',
+    imagen: 'fachada_edificioG.webp',
+    imagen360: 'edificio_E.webp',
+    areas: ['Área G1', 'Área G2']
+}).addTo(CROQUIS_BASE);
+
+export const cafeteria = L.polygon(coordsCafeteria, {
+    className: 'poligono-edificio',
+    id: 'Cafeteria',
+    nombre: 'Cafetería',
+    descripcion: 'Área de alimentos y descanso para estudiantes',
+    imagen: 'fachada_cafeteria.webp', // Usamos foto prestada temporalmente
+    imagen360: 'edificio_E.webp',
+    areas: ['Área de mesas', 'Barra de servicio', 'Cocina']
+}).addTo(CROQUIS_BASE);
+
+export const biblioteca = L.polygon(coordsBiblioteca, {
+    className: 'poligono-edificio',
+    id: 'Biblioteca',
+    nombre: 'Biblioteca',
+    descripcion: 'Centro de información y área de estudio silencioso',
+    imagen: 'fachada_biblioteca.webp',
+    imagen360: 'edificio_E.webp',
+    areas: ['Acervo General', 'Área de lectura', 'Centro de cómputo', 'Módulo de préstamos']
 }).addTo(CROQUIS_BASE);
 
 export const EDIFICIOS_MAPA = [
     edificioE,
-    edificioA
+    edificioA,
+    edificioB,
+    edificioC,
+    edificioD,
+    edificioF,
+    edificioG,
+    cafeteria,
+    biblioteca
 ];
 
 /**
@@ -151,6 +277,23 @@ for (let edificio of EDIFICIOS_MAPA) {
         offset: [0, -30]
     });
 }
+
+// ... (Aquí arriba está el bindTooltip del edificioE)
+
+edificioA.bindTooltip(`
+    <div class="tooltip-edificio-contenido">
+        <img src="${BASE_URL}assets/img/material_croquis/fotos_de_edificios/fachada_edificioA.webp"/>
+        <span class="tooltip-titulo">Edificio A</span>
+        <p class="tooltip-descripcion">Administración y Servicios Escolares</p>
+    </div>
+    `, {
+    sticky: false,
+    direction: 'top',
+    permanent: false,
+    opacity: 0.95,
+    className: 'custom-tooltip-croquis',
+    offset: [0, -30]
+});
 
 /* ====================================================
     VARIABLE Y TIMEOUT PARA EL POLÍGONO ACTIVO
