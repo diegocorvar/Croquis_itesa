@@ -1,16 +1,19 @@
 const rutaCroquisBase = `${BASE_URL}assets/js/croquis/croquis_base.js`;
 const rutaVistaRutas = `${BASE_URL}assets/js/admin/controlador_vista_rutas.js`;
 const rutaVistaEdificios = `${BASE_URL}assets/js/admin/controlador_vista_edificios.js`;
+const rutaVistaPersonal = `${BASE_URL}assets/js/admin/controlador_vista_personal.js`; 
 
 const moduloCroquisBase = await import(rutaCroquisBase);
 const moduloVistaRutas = await import(rutaVistaRutas);
 const moduloVistaEdificios = await import(rutaVistaEdificios);
+const moduloVistaPersonal = await import(rutaVistaPersonal);
 
 const CROQUIS_BASE = moduloCroquisBase.CROQUIS_BASE;
 
 const botonesMenu = document.querySelectorAll('.boton-barra-lateral-admin');
 const botonRutas = document.getElementById('boton-nav-rutas');
 const botonEdificios = document.getElementById('boton-nav-edificios');
+const botonPersonal = document.getElementById('boton-nav-personal');
 const contenedorCroquis = document.getElementById('croquisItesa');
 
 activarToolTips(botonesMenu);
@@ -53,6 +56,20 @@ botonEdificios.addEventListener('click', () => {
     setTimeout(() => {
         CROQUIS_BASE.invalidateSize();
     }, 300);
+});
+
+botonPersonal.addEventListener('click', () => {
+    // 1. Desactivar vistas anteriores
+    moduloVistaRutas.desactivarVistaRutas();
+    moduloVistaEdificios.desactivarVistaEdificios();
+
+    // 2. Alternar visibilidad en DOM
+    ocultarVistasAdmin(); // Esto oculta todas las vistas y el croquis automáticamente
+    resaltarBoton(botonPersonal);
+    document.getElementById('vista-admin-personal').classList.remove('ocultar');
+
+    // 3. Activar vista actual (Renderiza las tarjetas)
+    moduloVistaPersonal.renderizarDirectorioPersonal();
 });
 
 function ocultarVistasAdmin() {
