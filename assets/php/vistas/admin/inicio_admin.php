@@ -80,6 +80,10 @@ include_once __DIR__ . '/../../../../config.php';
             <div id="vista-admin-edificios" class="ocultar">
                 <?php include __DIR__ . '/vistas_admin/edificios.php'; ?>
             </div>
+
+            <div id="vista-admin-personal" class="ocultar">
+                <?php include __DIR__ . '/vistas_admin/personal.php'; ?>
+            </div>
         </main>
     </div>
 </body>
